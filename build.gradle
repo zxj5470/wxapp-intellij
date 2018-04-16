@@ -1,0 +1,58 @@
+buildscript {
+    ext.kotlin_version = '1.2.21'
+    ext.grammarKitVersion = "2018.1.1"
+
+    repositories {
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.github.JetBrains:gradle-grammar-kit-plugin:$grammarKitVersion"
+    }
+}
+
+plugins {
+    id 'org.jetbrains.intellij' version '0.3.1'
+}
+
+group 'com.github.zxj5470'
+version '0.1.0'
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+sourceSets {
+    main.java{
+        srcDirs+= ['gen','src/main/java']
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+intellij {
+    version '2017.3'
+    updateSinceUntilBuild false
+    alternativeIdePath "D:\\jetbrains\\apps\\WebStorm\\ch-0\\181.4445.68"
+    plugins ['CSS']
+}
+patchPluginXml {
+    changeNotes """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}

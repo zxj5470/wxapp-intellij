@@ -1,0 +1,43 @@
+{
+  parserClass="com.github.zxj5470.weapp.psi.wxml.WxmlParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Wxml"
+  psiImplClassSuffix="Impl"
+
+  psiPackage="com.github.zxj5470.weapp.psi"
+  psiImplPackage="com.github.zxj5470.weapp.psi.impl.wxml"
+
+  elementTypeHolderClass="com.github.zxj5470.weapp.psi.wxml.WxmlElementTypes"
+  elementTypeClass="com.github.zxj5470.weapp.psi.wxml.WxmlElementType"
+  tokenTypeClass="com.github.zxj5470.weapp.psi.wxml.WxmlTokenType"
+}
+
+wxmlFile ::= tags*
+tag-open
+private tags ::=
+	(tag-open tags tag-close)
+	| tag-empty
+	| COMMENT
+	| ws
+tag-open ::= '<' tagName STR* attr-list? STR* '>'
+tag-empty ::= '<' tagName STR* attr-list? STR* '/>'
+tag-close ::= '</' tagName STR* '>'
+attr-list ::= (STR+ attr)*
+attr ::= attrEmpty | attrSingleQuoted | attrDoubleQuoted
+
+// <br/>
+attrEmpty ::= attrName
+
+attrSingleQuoted ::= wxAttr STR* assign ws "\'" attrSingleQuotedValue "\'"
+attrDoubleQuoted ::= wxAttr STR* assign ws '\"' attrDoubleQuotedValue '\"'
+
+tagName ::= (ALPHABETS | DIGITS)+
+wxAttr::= attrName | wxName
+attrName ::= STR('-' STR)?
+wxName ::= 'wx:' STR
+
+//attr-unquoted-value ::= /[^\s"'=<>`]+/
+attrSingleQuotedValue ::= STR
+attrDoubleQuotedValue ::= STR
+ws::=WHITE_SPACE
