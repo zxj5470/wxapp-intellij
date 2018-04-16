@@ -1,9 +1,9 @@
-package com.github.zxj5470.weapp;
+package com.github.zxj5470.wxapp;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.containers.*;
-import com.github.zxj5470.weapp.psi.wxml.WxmlTypes;
+import com.github.zxj5470.wxapp.psi.wxml.WxmlTypes;
 import com.intellij.psi.TokenType;
 
 %%

@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.github.zxj5470.weapp</id>
+    <id>com.github.zxj5470.wxapp</id>
     <name>Plugin display name here</name>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
@@ -9,8 +9,8 @@
     ]]></description>
     <depends>com.intellij.modules.xml</depends>
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="com.github.zxj5470.weapp.registry.WeappFileFactory"/>
-        <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.weapp.psi.WxmlParserDefinition"/>
+        <fileTypeFactory implementation="com.github.zxj5470.wxapp.registry.wxappFileFactory"/>
+        <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.psi.WxmlParserDefinition"/>
     </extensions>
 
     <actions>

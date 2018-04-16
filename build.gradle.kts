@@ -91,8 +91,8 @@ java {
 }
 
 
-val parserRoot = Paths.get("com", "github", "zxj5470", "weapp")!!
-val lexerRoot = Paths.get("gen", "com", "github", "zxj5470", "weapp")!!
+val parserRoot = Paths.get("com", "github", "zxj5470", "wxapp")!!
+val lexerRoot = Paths.get("gen", "com", "github", "zxj5470", "wxapp")!!
 fun path(more: Iterable<*>) = more.joinToString(File.separator)
 fun bnf(name: String) = Paths.get("grammar", "$name.bnf").toString()
 fun flex(name: String) = Paths.get("grammar", "$name.flex").toString()
@@ -134,5 +134,8 @@ java.sourceSets {
 			}
 		}
 		resources.srcDirs("src/main/sources")
+	}
+	"test"{
+		resources.srcDirs("testData")
 	}
 }

@@ -1,10 +1,10 @@
-package com.github.zxj5470.weapp.psi
+package com.github.zxj5470.wxapp.psi
 
-import com.github.zxj5470.weapp.WxmlLanguage
-import com.github.zxj5470.weapp.WxmlLexerAdapter
-import com.github.zxj5470.weapp.psi.wxml.WxmlTypes
-import com.github.zxj5470.weapp.psi.wxml.WxmlParser
-import com.github.zxj5470.weapp.registry.WxmlFile
+import com.github.zxj5470.wxapp.WxmlLanguage
+import com.github.zxj5470.wxapp.WxmlLexerAdapter
+import com.github.zxj5470.wxapp.psi.wxml.WxmlTypes
+import com.github.zxj5470.wxapp.psi.wxml.WxmlParser
+import com.github.zxj5470.wxapp.registry.WxmlFile
 import com.intellij.lang.*
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.project.Project

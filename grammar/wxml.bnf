@@ -1,15 +1,15 @@
 {
-  parserClass="com.github.zxj5470.weapp.psi.wxml.WxmlParser"
+  parserClass="com.github.zxj5470.wxapp.psi.wxml.WxmlParser"
   extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
   psiClassPrefix="Wxml"
   psiImplClassSuffix="Impl"
-  psiPackage="com.github.zxj5470.weapp.psi"
-  psiImplPackage="com.github.zxj5470.weapp.psi.impl.wxml"
+  psiPackage="com.github.zxj5470.wxapp.psi"
+  psiImplPackage="com.github.zxj5470.wxapp.psi.impl.wxml"
 
-  tokenTypeClass="com.github.zxj5470.weapp.psi.wxml.WxmlTokenType"
-  elementTypeHolderClass="com.github.zxj5470.weapp.psi.wxml.WxmlTypes"
-  elementTypeClass="com.github.zxj5470.weapp.psi.wxml.WxmlElementType"
+  tokenTypeClass="com.github.zxj5470.wxapp.psi.wxml.WxmlTokenType"
+  elementTypeHolderClass="com.github.zxj5470.wxapp.psi.wxml.WxmlTypes"
+  elementTypeClass="com.github.zxj5470.wxapp.psi.wxml.WxmlElementType"
 }
 
 wxmlFile ::= ws (tags)*

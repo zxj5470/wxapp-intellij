@@ -1,4 +1,4 @@
-package com.github.zxj5470.weapp;
+package com.github.zxj5470.wxapp;
 
 import com.intellij.lang.Language;
 import org.jetbrains.annotations.Contract;

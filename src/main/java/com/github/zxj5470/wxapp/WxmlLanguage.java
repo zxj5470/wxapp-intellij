@@ -1,11 +1,11 @@
-package com.github.zxj5470.weapp;
+package com.github.zxj5470.wxapp;
 
 import com.intellij.lang.Language;
 import com.intellij.lang.xml.XMLLanguage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import static com.github.zxj5470.weapp.constants.ConstsKt.WXML_EXT;
+import static com.github.zxj5470.wxapp.constants.ConstsKt.WXML_EXT;
 
 /**
  * @author zxj5470

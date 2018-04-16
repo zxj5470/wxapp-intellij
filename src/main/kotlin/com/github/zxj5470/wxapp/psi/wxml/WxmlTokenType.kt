@@ -1,6 +1,6 @@
-package com.github.zxj5470.weapp.psi.wxml
+package com.github.zxj5470.wxapp.psi.wxml
 
-import com.github.zxj5470.weapp.WxmlLanguage
+import com.github.zxj5470.wxapp.WxmlLanguage
 import com.intellij.psi.tree.IElementType
 import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.NotNull

@@ -1,7 +1,7 @@
-package com.github.zxj5470.weapp
+package com.github.zxj5470.wxapp
 
-import com.github.zxj5470.weapp.constants.WXML_EXT
-import com.github.zxj5470.weapp.psi.WxmlParserDefinition
+import com.github.zxj5470.wxapp.constants.WXML_EXT
+import com.github.zxj5470.wxapp.psi.WxmlParserDefinition
 import com.intellij.testFramework.ParsingTestCase
 
 /**
