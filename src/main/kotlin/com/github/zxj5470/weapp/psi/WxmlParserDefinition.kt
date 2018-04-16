@@ -2,7 +2,7 @@ package com.github.zxj5470.weapp.psi
 
 import com.github.zxj5470.weapp.WxmlLanguage
 import com.github.zxj5470.weapp.WxmlLexerAdapter
-import com.github.zxj5470.weapp.psi.wxml.WxmlElementTypes
+import com.github.zxj5470.weapp.psi.wxml.WxmlTypes
 import com.github.zxj5470.weapp.psi.wxml.WxmlParser
 import com.github.zxj5470.weapp.registry.WxmlFile
 import com.intellij.lang.*
@@ -33,12 +33,12 @@ class WxmlParserDefinition : ParserDefinition {
 	}
 
 	override fun createElement(node: ASTNode): PsiElement {
-		return WxmlElementTypes.Factory.createElement(node)
+		return WxmlTypes.Factory.createElement(node)
 	}
 
 	companion object {
 		val WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE)
-		val COMMENTS = TokenSet.create(WxmlElementTypes.COMMENT)
+		val COMMENTS = TokenSet.create(WxmlTypes.COMMENT)
 		val FILE = IFileElementType(WxmlLanguage.INSTANCE)
 	}
 }

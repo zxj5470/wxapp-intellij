@@ -1,0 +1,5 @@
+<view>
+    <view wx:if="isa" wx:if='asi2'>
+
+    </view>
+</view>

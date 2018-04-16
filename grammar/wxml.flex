@@ -3,7 +3,7 @@ package com.github.zxj5470.weapp;
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.containers.*;
-import com.github.zxj5470.weapp.psi.wxml.WxmlElementTypes;
+import com.github.zxj5470.weapp.psi.wxml.WxmlTypes;
 import com.intellij.psi.TokenType;
 
 %%
@@ -24,23 +24,45 @@ import com.intellij.psi.TokenType;
 
 %eof}
 
-WHITE_SPACE=[\ \n\t\f]
+WHITE_SPACE=[\ \r\t\f]+
 
-alphabets=[a-zA-Z]
-digits=[0-9]
-str=[a-zA-Z\-]
-SINGLE_QUOTE=\'
-DOUBLE_QUOTE=\"
+chars=[a-zA-Z]+
+digits=[0-9]+
+//SINGLE_QUOTE=\'
+//DOUBLE_QUOTE=\"
 ASSIGN=\=
+LT=<
+LT_BEGIN=\<\/
+GT=>
+//GT_END=\/>
+COMMENT_BEGIN=<\!--
+COMMENT_END=-->
+COLON=:
+MINUS=\-
+S_QUOTE=\'
+D_QUOTE=\"
 %state WAITING_VALUE
 
 %%
 
-<WAITING_VALUE> {WHITE_SPACE}+ { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
-<YYINITIAL> {alphabets} { return WxmlElementTypes.ALPHABETS; }
-<YYINITIAL> {digits} { return WxmlElementTypes.DIGITS; }
-<YYINITIAL> {str} { return WxmlElementTypes.STR; }
+<YYINITIAL> {WHITE_SPACE} { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+<YYINITIAL> \n+ { return WxmlTypes.EOL; }
+<YYINITIAL> {chars} { return WxmlTypes.CHARS; }
+<YYINITIAL> {digits} { return WxmlTypes.DIGITS; }
 
-<YYINITIAL> {ASSIGN} { return WxmlElementTypes.ASSIGN; }
-//<WAITING_VALUE> {SINGLE_QUOTE} { return WxmlElementTypes.SINGLE_QUOTE_SYMBOL; }
-//<WAITING_VALUE> {DOUBLE_QUOTE} { return WxmlElementTypes.DOUBLE_QUOTE_SYMBOL; }
+<YYINITIAL> {ASSIGN} { return WxmlTypes.ASSIGN; }
+<YYINITIAL> {LT} { return WxmlTypes.LT; }
+<YYINITIAL> {GT} { return WxmlTypes.GT; }
+<YYINITIAL> {COMMENT_BEGIN} { return WxmlTypes.COMMENT_BEGIN; }
+<YYINITIAL> {LT_BEGIN} { return WxmlTypes.LT_BEGIN; }
+//<YYINITIAL> {GT_END} { return WxmlTypes.GT_END; }
+<YYINITIAL> {COMMENT_END} { return WxmlTypes.COMMENT_END; }
+
+<YYINITIAL> {COLON} { return WxmlTypes.COLON; }
+<YYINITIAL> {MINUS} { return WxmlTypes.MINUS; }
+
+<YYINITIAL> {S_QUOTE} { return WxmlTypes.S_QUOTE; }
+<YYINITIAL> {D_QUOTE} { return WxmlTypes.D_QUOTE; }
+
+//<WAITING_VALUE> {SINGLE_QUOTE} { return WxmlTypes.SINGLE_QUOTE_SYMBOL; }
+//<WAITING_VALUE> {DOUBLE_QUOTE} { return WxmlTypes.DOUBLE_QUOTE_SYMBOL; }
