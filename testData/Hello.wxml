@@ -1,4 +1,5 @@
 <view>
-    <view wx:if="display:none">
+    <view class="display:none" wx:else="">
     </view>
+    <view wx:else=""/>
 </view>

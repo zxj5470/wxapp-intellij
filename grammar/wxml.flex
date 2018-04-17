@@ -60,46 +60,56 @@ SIMPLE_SYMBOL={VALID_CHAR}({VALID_CHAR}|[\d\!])*
 //NO_WX_SYMBOL={WX_BEGIN}
 
 VALID_CHAR=[a-zA-Z_\U000100-\U10ffff]
-VALID_INTEROP={VALID_CHAR}({VALID_CHAR}|[\d]|{OPS})*
+VALID_INTEROP_CHAR=({VALID_CHAR}|[\d]|{OPS})
+VALID_INTEROP={VALID_INTEROP_CHAR}+
 OPS=[\+\-\*\/\^\~\!\&\|\;\{\}\(\)\[\]]
-//NON_W=[a-vx-zA-Z_\U000100-\U10ffff]
-//NON_X=[a-wyzA-Z_\U000100-\U10ffff]
+
 assign=\=
 lt=<
-LT_END=\<\/
+ltEND=\<\/
 gt=>
-//GT_END=\/>
-commentBegin=<\!--
-COMMENT_END=-->
+gtEND=\/>
+commentBEGIN=<\!--
+commentEND=-->
 colon=:
 minus=\-
-S_QUOTE=\'
-D_QUOTE=\"
-doubleLBR=\{\{
-doubleRBR=\}\}
+sglQUOTE=\'
+dblQUOTE=\"
+dblLBR=\{\{
+dblRBR=\}\}
 
 %%
 
 <YYINITIAL> {WHITE_SPACE} { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+
+<YYINITIAL> wx { return WxmlTypes.WX; }
+<YYINITIAL> for { return WxmlTypes.WX_FOR; }
+<YYINITIAL> for-index { return WxmlTypes.WX_FOR_INDEX; }
+<YYINITIAL> for-item { return WxmlTypes.WX_FOR_ITEM; }
+<YYINITIAL> if { return WxmlTypes.WX_IF; }
+<YYINITIAL> elif { return WxmlTypes.WX_ELIF; }
+<YYINITIAL> else { return WxmlTypes.WX_ELSE; }
+<YYINITIAL> key { return WxmlTypes.WX_KEY; }
+
 <YYINITIAL> \n+ { return WxmlTypes.EOL; }
-<YYINITIAL> {SIMPLE_SYMBOL} { return WxmlTypes.SIMPLE_SYMBOL; }
-<YYINITIAL> {VALID_INTEROP} { return WxmlTypes.VALID_INTEROP; }
+
 <YYINITIAL> {minus} { return WxmlTypes.MINUS; }
 <YYINITIAL> {colon} { return WxmlTypes.COLON; }
-
-<YYINITIAL> {doubleLBR} { return WxmlTypes.DBL_LBR; }
-<YYINITIAL> {doubleRBR} { return WxmlTypes.DBL_RBR; }
+<YYINITIAL> {dblLBR} { return WxmlTypes.DBL_LBR; }
+<YYINITIAL> {dblRBR} { return WxmlTypes.DBL_RBR; }
 
 <YYINITIAL> {assign} { return WxmlTypes.ASSIGN; }
 <YYINITIAL> {lt} { return WxmlTypes.LT; }
 <YYINITIAL> {gt} { return WxmlTypes.GT; }
-<YYINITIAL> {commentBegin} { return WxmlTypes.COMMENT_BEGIN; }
-<YYINITIAL> {LT_END} { return WxmlTypes.LT_END; }
-//<YYINITIAL> {GT_END} { return WxmlTypes.GT_END; }
-<YYINITIAL> {COMMENT_END} { return WxmlTypes.COMMENT_END; }
+<YYINITIAL> {commentBEGIN} { return WxmlTypes.COMMENT_BEGIN; }
+<YYINITIAL> {ltEND} { return WxmlTypes.LT_END; }
+<YYINITIAL> {gtEND} { return WxmlTypes.GT_END; }
+<YYINITIAL> {commentEND} { return WxmlTypes.COMMENT_END; }
 
-<YYINITIAL> {S_QUOTE} { return WxmlTypes.S_QUOTE; }
-<YYINITIAL> {D_QUOTE} { return WxmlTypes.D_QUOTE; }
+<YYINITIAL> {sglQUOTE} { return WxmlTypes.S_QUOTE; }
+<YYINITIAL> {dblQUOTE} { return WxmlTypes.D_QUOTE; }
 
+<YYINITIAL> {SIMPLE_SYMBOL} { return WxmlTypes.SIMPLE_SYMBOL; }
+<YYINITIAL> {VALID_INTEROP} { return WxmlTypes.VALID_INTEROP; }
 //<WAITING_VALUE> {SINGLE_QUOTE} { return WxmlTypes.SINGLE_QUOTE_SYMBOL; }
 //<WAITING_VALUE> {DOUBLE_QUOTE} { return WxmlTypes.DOUBLE_QUOTE_SYMBOL; }

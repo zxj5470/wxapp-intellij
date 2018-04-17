@@ -23,8 +23,20 @@ class WxmlHighlighter : SyntaxHighlighterBase() {
 		val keywords = createTextAttributesKey("WXML_KEY", DefaultLanguageHighlighterColors.KEYWORD)
 		val value = createTextAttributesKey("WXML_VALUE", DefaultLanguageHighlighterColors.STRING)
 		val comments = createTextAttributesKey("WXML_COMMENT", XmlHighlighterColors.XML_COMMENT)
-		val WX = createTextAttributesKey("WXML_BAD_CHARACTER", XmlHighlighterColors.XML_NS_PREFIX)
+		val WX = createTextAttributesKey("WXML_BAD_CHARACTER", DefaultLanguageHighlighterColors.GLOBAL_VARIABLE)
 	}
+
+	private val WX_KEYWORDS_LIST = listOf(
+		WxmlTypes.WX_FOR,
+		WxmlTypes.WX_IF,
+		WxmlTypes.WX_ELIF,
+		WxmlTypes.WX_ELSE,
+		WxmlTypes.WX_KEY,
+		WxmlTypes.WX_FOR,
+		WxmlTypes.WX_ITEM,
+		WxmlTypes.WX_FOR_INDEX,
+		WxmlTypes.WX_FOR_ITEM
+	)
 
 	private val TAG_KEYS = arrayOf(tagNames)
 	private val WX_KEYWORDS_KEYS = arrayOf(keywords)
@@ -44,7 +56,7 @@ class WxmlHighlighter : SyntaxHighlighterBase() {
 
 			WxmlTypes.COMMENT -> COMMENT_KEYS
 			WxmlTypes.WX -> WX_KEY
-			WxmlTypes.CHARS -> WX_KEYWORDS_KEYS
+			in WX_KEYWORDS_LIST -> WX_KEYWORDS_KEYS
 			WxmlTypes.TAG_NAME -> TAG_KEYS
 			WxmlTypes.LT, WxmlTypes.GT -> TAG_SYMBOL_KEYS
 			else -> emptyArray()

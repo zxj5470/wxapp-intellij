@@ -12,31 +12,40 @@
 }
 
 wxmlFile ::= ws (tags)*
+
 	ws ::= endOfLine*
-	tags ::=(tagOpen ws content? tagClose) ws
-		tagOpen ::= LT tagName ws attrList? GT
-		content::= tags|value ws
+		private endOfLine::= WHITE_SPACE | EOL | comment
+			comment ::= COMMENT_BEGIN commentContent COMMENT_END
+				commentContent::= ws validRValue? ws
+
+	tags ::= tagOnly | (tagOpen ws content? tagClose) ws
+		tagOpen ::= tagHead GT
+		tagOnly ::= tagHead GT_END
+			private tagHead ::= LT tagName ws attrList?
+		content::= (tags|value)* ws
 		tagClose ::= LT_END tagName GT
 
-		attrList ::= attr* justAttrName?
-			attr ::= justAttrName assign attrValue
+		attrList ::= ws attr* justAttrName?
+			attr ::= justAttrName assign attrValue ws
 				justAttrName::=  wxAttr | simpleAttr
-					wxAttr ::= wx COLON wxKeyword
+					wxAttr ::= WX COLON wxKeyword
 					simpleAttr::= chars (MINUS chars)?
 				attrValue::= attrSingleQuoted | attrDoubleQuoted
-					attrSingleQuoted ::= S_QUOTE attrSingleQuotedValue S_QUOTE
-					attrDoubleQuoted ::= D_QUOTE attrDoubleQuotedValue D_QUOTE
-
-chars::=SIMPLE_SYMBOL
-wx::='wx'
+					attrSingleQuoted ::= S_QUOTE attrSingleQuotedValue? S_QUOTE
+					attrDoubleQuoted ::= D_QUOTE attrDoubleQuotedValue? D_QUOTE
+						attrSingleQuotedValue ::= value
+						attrDoubleQuotedValue ::= value
+							value::= validRValue | (DBL_LBR validRValue DBL_RBR)
+								validRValue::= vv (COLON vv)*
+									private vv::= VALID_INTEROP | chars
 
 tagName ::= chars
-wxKeyword ::= chars
-private endOfLine::= WHITE_SPACE | EOL | comment
-comment ::= COMMENT_BEGIN validRValue? COMMENT_END
-
-attrSingleQuotedValue ::= value
-attrDoubleQuotedValue ::= value
-value::= validRValue | (DBL_LBR validRValue DBL_RBR)
-private vv::=VALID_INTEROP| chars
-validRValue::= vv (COLON vv)*
+chars::=SIMPLE_SYMBOL
+wxKeyword ::= WX_IF
+	| WX_ELIF
+	| WX_ELSE
+	| WX_KEY
+	| WX_FOR
+	| WX_ITEM
+	| WX_FOR_INDEX
+	| WX_FOR_ITEM
