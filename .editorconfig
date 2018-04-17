@@ -3,3 +3,9 @@ charset=utf-8
 end_of_line=lf
 indent_style=tab
 tab_width=3
+
+[*.bnf]
+charset=utf-8
+end_of_line=lf
+indent_style=tab
+tab_width=3

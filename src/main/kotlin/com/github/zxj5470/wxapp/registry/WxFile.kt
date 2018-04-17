@@ -9,12 +9,5 @@ import org.jetbrains.annotations.NotNull
 class WxmlFile(@NotNull viewProvider: FileViewProvider) : PsiFileBase(viewProvider, WxmlLanguage.INSTANCE) {
 	@NotNull
 	override fun getFileType() = WxmlFileType
-
-	/**
-	 *
-	 * @return String
-	 */
-	override fun toString(): String {
-		return "Wxml File"
-	}
+	override fun toString() = "Wxml File"
 }

@@ -9,8 +9,12 @@
     ]]></description>
     <depends>com.intellij.modules.xml</depends>
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="com.github.zxj5470.wxapp.registry.wxappFileFactory"/>
+        <fileTypeFactory implementation="com.github.zxj5470.wxapp.registry.WxappFileFactory"/>
+
         <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.psi.WxmlParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="wxml" implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>
+
     </extensions>
 
     <actions>
