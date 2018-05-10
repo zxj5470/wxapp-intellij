@@ -32,7 +32,7 @@ wxmlFile ::= ws (tags)*
 					simpleAttr::= chars (MINUS chars)?
 				attrValue::= attrSingleQuoted | attrDoubleQuoted
 					attrSingleQuoted ::= S_QUOTE attrSingleQuotedValue? S_QUOTE
-					attrDoubleQuoted ::= D_QUOTE attrDoubleQuotedValue? D_QUOTE
+					attrDoubleQuoted ::= D_QUOTE_START attrDoubleQuotedValue? D_QUOTE_END
 						attrSingleQuotedValue ::= value
 						attrDoubleQuotedValue ::= value
 							value::= validRValue | (DBL_LBR validRValue DBL_RBR)
@@ -40,7 +40,7 @@ wxmlFile ::= ws (tags)*
 									private vv::= VALID_INTEROP | chars
 
 tagName ::= chars
-chars::=SIMPLE_SYMBOL
+chars::= SIMPLE_SYMBOL
 wxKeyword ::= WX_IF
 	| WX_ELIF
 	| WX_ELSE

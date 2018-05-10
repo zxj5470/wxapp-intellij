@@ -1,5 +1,5 @@
 <view>
-    <view class="display:none" wx:else="">
+    <view class="display:none;{{asd&&kjl}}" wx:if="{{asdad}}">
     </view>
     <view wx:else=""/>
 </view>

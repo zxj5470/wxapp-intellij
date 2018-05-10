@@ -52,6 +52,8 @@ import com.intellij.psi.TokenType;
 %eof}
 
 %state LONG_TEMPLATE
+%state STRING_TEMPLATE
+%state AFTER_SIMPLE_LIT
 
 WHITE_SPACE=[\ \r\t\f]+
 
@@ -106,10 +108,9 @@ dblRBR=\}\}
 <YYINITIAL> {gtEND} { return WxmlTypes.GT_END; }
 <YYINITIAL> {commentEND} { return WxmlTypes.COMMENT_END; }
 
-<YYINITIAL> {sglQUOTE} { return WxmlTypes.S_QUOTE; }
-<YYINITIAL> {dblQUOTE} { return WxmlTypes.D_QUOTE; }
-
-<YYINITIAL> {SIMPLE_SYMBOL} { return WxmlTypes.SIMPLE_SYMBOL; }
 <YYINITIAL> {VALID_INTEROP} { return WxmlTypes.VALID_INTEROP; }
-//<WAITING_VALUE> {SINGLE_QUOTE} { return WxmlTypes.SINGLE_QUOTE_SYMBOL; }
-//<WAITING_VALUE> {DOUBLE_QUOTE} { return WxmlTypes.DOUBLE_QUOTE_SYMBOL; }
+<YYINITIAL> {sglQUOTE} { return WxmlTypes.S_QUOTE; }
+
+<YYINITIAL> {SIMPLE_SYMBOL} { deicefy(); return WxmlTypes.SIMPLE_SYMBOL}
+<YYINITIAL, LONG_TEMPLATE> {dblQUOTE} { icefy(STRING_TEMPLATE); return WxmlTypes.D_QUOTE_START; }
+<STRING_TEMPLATE> {dblQUOTE} { reicefy(AFTER_SIMPLE_LIT); return WxmlTypes.D_QUOTE_END; }

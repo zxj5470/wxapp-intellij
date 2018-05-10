@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.zxj5470.wxapp</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>wxapp Support</name>
+    <vendor email="zxj5470@foxmail.com" url="http://www.github.com/zxj5470">zxj5470</vendor>
 
     <description><![CDATA[
     Enter short description for your plugin here.<br>
@@ -10,7 +10,7 @@
     <depends>com.intellij.modules.xml</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="com.github.zxj5470.wxapp.registry.WxappFileFactory"/>
-
+        <!--<lang.commenter language="wxml"-->
         <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.psi.WxmlParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxml" implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
         <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>

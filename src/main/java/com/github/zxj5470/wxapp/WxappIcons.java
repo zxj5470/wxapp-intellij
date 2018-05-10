@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public final class WxappIcons {
 	@NotNull
-	public final static Icon wxssIcon = IconLoader.getIcon("/icons/julia_file.png");
+	public final static Icon wxssIcon = IconLoader.getIcon("/icons/wxss.svg");
 	@NotNull
-	public final static Icon wxmlIcon = IconLoader.getIcon("/icons/julia_file.png");
+	public final static Icon wxmlIcon = IconLoader.getIcon("/icons/wxml.svg");
 }

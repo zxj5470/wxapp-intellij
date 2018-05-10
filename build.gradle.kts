@@ -42,33 +42,9 @@ allprojects {
 		version = "2017.3"
 		updateSinceUntilBuild = false
 		instrumentCode = true
-//		if(ext["alternative_ide_path"].toString()!="") {
-//
-//		}
+		type = "IU"
 	}
 }
-
-/*
-java.sourceSets {
-	"main" {
-		withConvention(KotlinSourceSet::class) {
-			listOf(java, kotlin).forEach {
-				it.srcDirs("src/main/java", "src/main/kotlin", "gen")
-			}
-		}
-		resources.srcDirs("src/main/resources")
-	}
-
-	"test" {
-		withConvention(KotlinSourceSet::class) {
-			listOf(java, kotlin).forEach {
-				it.srcDirs("test")
-			}
-		}
-		resources.srcDirs("testData")
-	}
-}
- */
 
 repositories {
 	mavenCentral()

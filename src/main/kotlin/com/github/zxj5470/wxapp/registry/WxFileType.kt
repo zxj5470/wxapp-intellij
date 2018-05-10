@@ -24,7 +24,7 @@ object WxmlFileType : LanguageFileType(WxmlLanguage.INSTANCE) {
 
 class WxappFileFactory : FileTypeFactory() {
 	override fun createFileTypes(consumer: FileTypeConsumer) {
-//		consumer.consume(WxssFileType, WXSS_EXT)
+		consumer.consume(WxssFileType)
 		consumer.consume(WxmlFileType)
 	}
 }

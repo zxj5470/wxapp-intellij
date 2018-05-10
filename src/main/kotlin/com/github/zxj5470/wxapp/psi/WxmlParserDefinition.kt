@@ -1,19 +1,20 @@
 package com.github.zxj5470.wxapp.psi
 
 import com.github.zxj5470.wxapp.WxmlLanguage
-import com.github.zxj5470.wxapp.WxmlLexerAdapter
 import com.github.zxj5470.wxapp.psi.wxml.WxmlTypes
-import com.github.zxj5470.wxapp.psi.wxml.WxmlParser
 import com.github.zxj5470.wxapp.registry.WxmlFile
 import com.intellij.lang.*
 import com.intellij.lexer.Lexer
+import com.intellij.lexer.XmlLexer
 import com.intellij.openapi.project.Project
 import com.intellij.psi.*
+import com.intellij.psi.impl.source.parsing.xml.XmlParser
 import com.intellij.psi.tree.*
+import com.intellij.psi.xml.XmlTokenType
 
 class WxmlParserDefinition : ParserDefinition {
 	override fun createLexer(project: Project): Lexer {
-		return WxmlLexerAdapter()
+		return XmlLexer()
 	}
 
 	override fun getWhitespaceTokens() = WHITE_SPACES
@@ -22,7 +23,7 @@ class WxmlParserDefinition : ParserDefinition {
 
 	override fun getStringLiteralElements() = TokenSet.EMPTY
 
-	override fun createParser(project: Project) = WxmlParser()
+	override fun createParser(project: Project) = XmlParser()
 
 	override fun getFileNodeType(): IFileElementType = FILE
 
@@ -38,7 +39,7 @@ class WxmlParserDefinition : ParserDefinition {
 
 	companion object {
 		val WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE)
-		val COMMENTS = TokenSet.create(WxmlTypes.COMMENT)
+		val COMMENTS = TokenSet.create(XmlTokenType.XML_COMMENT_CHARACTERS)
 		val FILE = IFileElementType(WxmlLanguage.INSTANCE)
 	}
 }

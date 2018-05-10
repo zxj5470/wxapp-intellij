@@ -1,6 +1,7 @@
 package com.github.zxj5470.wxapp;
 
 import com.intellij.lang.Language;
+import com.intellij.lang.xml.XMLLanguage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -14,7 +15,7 @@ public final class WxmlLanguage extends Language {
 	WxmlLanguage INSTANCE = new WxmlLanguage();
 
 	private WxmlLanguage() {
-		super("wxml", "text/" + WXML_EXT);
+		super(XMLLanguage.INSTANCE,"wxml", "text/" + WXML_EXT);
 	}
 
 	@Override
