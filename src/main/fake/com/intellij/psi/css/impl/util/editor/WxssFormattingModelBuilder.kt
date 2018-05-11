@@ -31,7 +31,6 @@ import com.intellij.psi.xml.XmlTokenType
 import java.util.*
 
 open class WxssFormattingModelBuilder : FormattingModelBuilder {
-
 	override fun createModel(element: PsiElement, settings: CodeStyleSettings): FormattingModel {
 		val customSettings = CodeStyleSettingsManager.getSettings(element.project).getCustomSettings(CssCodeStyleSettings::class.java) as CssCodeStyleSettings
 		val psiFile = element.containingFile

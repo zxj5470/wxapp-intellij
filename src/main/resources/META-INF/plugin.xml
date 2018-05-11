@@ -24,7 +24,10 @@
         <lang.syntaxHighlighterFactory language="wxml"
                                        implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
         <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>
-
+        <annotator language="wxml"
+                   implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightingAnnotator"/>
+        <completion.contributor language="wxml"
+                                implementationClass=""/>
         <!--WXSS-->
         <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"
