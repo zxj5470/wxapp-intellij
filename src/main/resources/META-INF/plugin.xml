@@ -23,11 +23,12 @@
         <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.psi.WxmlParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxml"
                                        implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
+        <highlightErrorFilter implementation="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightErrorFilter"/>
         <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>
         <annotator language="wxml"
                    implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightingAnnotator"/>
         <completion.contributor language="wxml"
-                                implementationClass=""/>
+                                implementationClass="com.github.zxj5470.wxapp.registry.editing.WxmlCompletionContributor"/>
         <!--WXSS-->
         <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"
