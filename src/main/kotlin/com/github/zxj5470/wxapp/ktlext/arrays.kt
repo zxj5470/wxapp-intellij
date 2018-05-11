@@ -9,3 +9,4 @@ fun <T> Array<out T>.lastOr(orValue: T): T =
 		this[lastIndex]
 	} else
 		orValue
+

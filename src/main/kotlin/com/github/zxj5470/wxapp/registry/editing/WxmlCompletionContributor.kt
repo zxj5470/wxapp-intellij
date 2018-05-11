@@ -6,7 +6,6 @@ import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.patterns.XmlPatterns
-import com.intellij.psi.PsiElement
 import com.intellij.psi.xml.XmlTag
 import com.intellij.util.ProcessingContext
 

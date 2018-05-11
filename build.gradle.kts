@@ -46,12 +46,13 @@ allprojects {
 		instrumentCode = true
 		// use WebStorm
 		alternativeIdePath = alternative_ide_path
-		setPlugins("CSS")
+		setPlugins("JavaScriptLanguage", "CSS")
 	}
 }
 
 repositories {
 	mavenCentral()
+	maven("https://jitpack.io")
 }
 
 dependencies {
@@ -61,6 +62,7 @@ dependencies {
 		exclude(module = "kotlin-reflect")
 		exclude(module = "kotlin-stdlib")
 	}
+	compile("com.github.zxj5470:ktlext:+")
 	testCompile(kotlin("test-junit", kotlinVersion))
 	testCompile("junit", "junit", "4.12")
 }

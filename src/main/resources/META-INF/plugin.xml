@@ -7,8 +7,10 @@
     Enter short description for your plugin here.<br>
     <em>most HTML tags may be used</em>
     ]]></description>
+    <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.xml</depends>
     <depends>com.intellij.css</depends>
+    <depends>JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij.css">
         <elementDescriptorProvider
@@ -29,6 +31,8 @@
                    implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightingAnnotator"/>
         <completion.contributor language="wxml"
                                 implementationClass="com.github.zxj5470.wxapp.registry.editing.WxmlCompletionContributor"/>
+        <languageInjector implementation="com.github.zxj5470.wxapp.registry.editing.WxmlInjectJavascript"/>
+
         <!--WXSS-->
         <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"
