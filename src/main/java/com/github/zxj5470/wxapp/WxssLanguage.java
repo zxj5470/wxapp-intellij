@@ -1,6 +1,7 @@
 package com.github.zxj5470.wxapp;
 
 import com.intellij.lang.Language;
+import com.intellij.lang.css.CSSLanguage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,7 +23,7 @@ public final class WxssLanguage extends Language {
 	WxssLanguage INSTANCE = new WxssLanguage();
 
 	private WxssLanguage() {
-		super("Wxss", "text/" + "wxss");
+		super(CSSLanguage.INSTANCE,"wxss", "text/" + "wxss");
 	}
 
 	@Override

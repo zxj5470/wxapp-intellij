@@ -8,11 +8,22 @@
     <em>most HTML tags may be used</em>
     ]]></description>
     <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.css</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="com.github.zxj5470.wxapp.registry.WxappFileFactory"/>
         <!--<lang.commenter language="wxml"-->
+
+        <!--WXML-->
         <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.psi.WxmlParserDefinition"/>
-        <lang.syntaxHighlighterFactory language="wxml" implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
+        <lang.syntaxHighlighterFactory language="wxml"
+                                       implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
+
+        <!--WXSS-->
+        <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="wxss"
+                                       implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxssSyntaxHighlighterFactory"/>
+        <annotator language="wxss" implementationClass="com.intellij.psi.css.impl.util.CssHighlightingAnnotator"/>
+
         <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>
 
     </extensions>

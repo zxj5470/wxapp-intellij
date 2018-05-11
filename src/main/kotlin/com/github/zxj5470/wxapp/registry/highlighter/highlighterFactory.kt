@@ -15,3 +15,9 @@ class WxmlSyntaxHighlighterFactory : SyntaxHighlighterFactory() {
 		return WxmlHighlighter()
 	}
 }
+
+class WxssSyntaxHighlighterFactory: SyntaxHighlighterFactory() {
+	override fun getSyntaxHighlighter(project: Project?, virtualFile: VirtualFile?): SyntaxHighlighter {
+		return WxssHighlighter()
+	}
+}

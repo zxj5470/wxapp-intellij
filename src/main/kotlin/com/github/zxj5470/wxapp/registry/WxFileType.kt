@@ -9,15 +9,15 @@ import com.intellij.openapi.fileTypes.FileTypeFactory
 import com.intellij.openapi.fileTypes.LanguageFileType
 
 object WxssFileType : LanguageFileType(WxssLanguage.INSTANCE) {
-	override fun getDefaultExtension() = "wxss"
-	override fun getName() = "Wxss"
+	override fun getDefaultExtension() = WXSS_EXT
+	override fun getName() = "WXSS"
 	override fun getIcon() = WxappIcons.wxssIcon
 	override fun getDescription() = "WeiXin Style Sheet"
 }
 
 object WxmlFileType : LanguageFileType(WxmlLanguage.INSTANCE) {
 	override fun getDefaultExtension() = WXML_EXT
-	override fun getName() = "Wxml"
+	override fun getName() = "WXML"
 	override fun getIcon() = WxappIcons.wxmlIcon
 	override fun getDescription() = "WeiXin Markup Language"
 }

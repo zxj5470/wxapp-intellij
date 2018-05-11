@@ -7,6 +7,7 @@ import java.net.URL
 import java.util.stream.Collectors
 
 val kotlinVersion: String by extra
+val alternative_ide_path: String by extra
 
 buildscript {
 	var kotlinVersion: String by extra
@@ -42,7 +43,7 @@ allprojects {
 		version = "2017.3"
 		updateSinceUntilBuild = false
 		instrumentCode = true
-		type = "IU"
+		alternativeIdePath = alternative_ide_path
 	}
 }
 
@@ -52,6 +53,7 @@ repositories {
 
 dependencies {
 	compileOnly(kotlin("stdlib", kotlinVersion))
+	compileOnly(files("lib/css.jar", "lib/css-openapi.jar"))
 	compile(kotlin("stdlib-jdk8", kotlinVersion).toString()) {
 		exclude(module = "kotlin-runtime")
 		exclude(module = "kotlin-reflect")
