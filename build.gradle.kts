@@ -44,6 +44,7 @@ allprojects {
 		type = "IU"
 		updateSinceUntilBuild = false
 		instrumentCode = true
+		// use WebStorm
 		alternativeIdePath = alternative_ide_path
 		setPlugins("CSS")
 	}
@@ -109,7 +110,7 @@ java.sourceSets {
 	"main"{
 		withConvention(KotlinSourceSet::class) {
 			listOf(java, kotlin).forEach {
-				it.srcDirs("gen")
+				it.srcDirs("gen", "src/main/fake")
 			}
 		}
 		resources.srcDirs("src/main/sources")
