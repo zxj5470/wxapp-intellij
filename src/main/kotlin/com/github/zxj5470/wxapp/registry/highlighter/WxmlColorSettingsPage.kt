@@ -27,7 +27,6 @@ class WxmlColorSettingsPage : ColorSettingsPage {
 
 	override fun getDisplayName() = "WXML"
 
-	@Language("XML")
 	override fun getDemoText() = """
 		<view wx:if="{{hasUserInfo}}">
 			<text>text</text>

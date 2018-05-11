@@ -13,15 +13,12 @@ import com.intellij.psi.css.CssBundle
 import com.intellij.psi.css.CssMediaFeatureDescriptor
 import com.intellij.psi.css.CssPropertyDescriptor
 import com.intellij.psi.css.descriptor.BrowserVersion
-import com.intellij.psi.css.descriptor.BrowserVersion.Browser
 import com.intellij.psi.css.descriptor.CssContextType
 import com.intellij.psi.css.descriptor.CssElementDescriptor.CssVersion
 import com.intellij.psi.css.descriptor.CssFunctionDescriptor
 import com.intellij.psi.css.descriptor.CssPseudoSelectorDescriptor
 import com.intellij.psi.css.descriptor.value.CssValueDescriptor
-import com.intellij.psi.css.impl.CssTermTypes
 import com.intellij.psi.css.impl.descriptor.CssCommonDescriptorData
-import com.intellij.psi.css.impl.descriptor.CssFunctionDescriptorImpl
 import com.intellij.psi.css.impl.descriptor.value.CssGroupValue
 import com.intellij.psi.css.impl.descriptor.value.CssGroupValue.Type
 import com.intellij.psi.css.impl.descriptor.value.CssNameValue
@@ -143,81 +140,7 @@ class WxssElementDescriptorFactory2 @JvmOverloads constructor(private val myProg
 
 	companion object {
 		private val LOG = Logger.getInstance(WxssElementDescriptorFactory2::class.java)
-		private val CSS_TOGGLE_FUNCTION_COMMON_DATA: CssCommonDescriptorData = CssCommonDescriptorData("toggle",
-			"toggle", arrayOf(CssContextType.ANY), BrowserVersion.EMPTY_ARRAY, CssVersion.CSS_3_0,
-			"http://dev.w3.org/csswg/css-values/#funcdef-toggle",
-			"The toggle() expression allows descendant elements to cycle over a list of values instead of inheriting the same value.")
-		private val CSS_VAR_FUNCTION_COMMON_DATA: CssCommonDescriptorData = CssCommonDescriptorData("var",
-			"var", arrayOf(CssContextType.ANY), arrayOf(BrowserVersion(Browser.CHROME,
-			"49"), BrowserVersion(Browser.SAFARI,
-			"9.1"), BrowserVersion(Browser.FIREFOX,
-			"29")), CssVersion.CSS_3_0,
-			"https://www.w3.org/TR/css-variables/#funcdef-var",
-			"The var() function returns the value of a custom property.")
-		private val SCHEME_NAMES: Array<String> = arrayOf(
-			"css-cascade-4.xml",
-			"css1.0.xml",
-			"css2.0.xml",
-			"css2.1.xml",
-			"css3.0.xml"
-//			"css-overflow-3.xml",
-//			"css-box.xml",
-//			"css3-gcpm.xml",
-//			"css-page-floats.xml",
-//			"css3-page.xml",
-//			"custom-elements.xml",
-//			"css3-images.xml",
-//			"css4-images.xml",
-//			"css3-line-grid.xml",
-//			"css3-mediaqueries.xml",
-//			"view-mode.xml",
-//			"css3-animations.xml",
-//			"css-device-adapt.xml",
-//			"css3-transitions.xml",
-//			"css3-transforms.xml",
-//			"css-text-3.xml",
-//			"css-ruby-1.xml",
-//			"css3-speech.xml",
-//			"css3-ui.xml",
-//			"css-counter-styles-3.xml",
-//			"css-lists-3.xml",
-//			"css3-filter-effects.xml",
-//			"css-scoping1.xml",
-//			"css-regions.xml",
-//			"css3-break.xml",
-//			"css3-flexbox.xml",
-//			"css3-grid.xml",
-//			"css-masking-1.xml",
-//			"css-shapes-1.xml",
-//			"css3-background.xml",
-//			"css-display-3.xml",
-//			"css3-fonts.xml",
-//			"fontface.xml",
-//			"css-text-decor-3.xml",
-//			"css3-preslev.xml",
-//			"css3-positioning.xml",
-//			"css-compositing-1.xml",
-//			"css3-align.xml",
-//			"ie.xml",
-//			"css3-writing-modes.xml",
-//			"jquery.xml",
-//			"mozilla.xml",
-//			"mso.xml",
-//			"opera.xml",
-//			"svg.xml",
-//			"webkit.xml",
-//			"css-snappoints-1.xml",
-//			"css-will-change.xml",
-//			"css-inline-3.xml",
-//			"appmanifest.xml",
-//			"css-color-4.xml",
-//			"css-selectors-4.xml",
-//			"cssModules.xml",
-//			"css-contain-1.xml",
-//			"cssom-view-1.xml",
-//			"mediaqueries4.xml"
-		)
-
+		val SCHEME_NAMES = arrayOf("css-cascade-4.xml", "css1.0.xml", "css2.0.xml", "css2.1.xml", "css3.0.xml", "css-overflow-3.xml", "css-box.xml", "css3-gcpm.xml", "css-page-floats.xml", "css3-page.xml", "custom-elements.xml", "css3-images.xml", "css4-images.xml", "css3-line-grid.xml", "css3-mediaqueries.xml", "view-mode.xml", "css3-animations.xml", "css-device-adapt.xml", "css3-transitions.xml", "css3-transforms.xml", "css-text-3.xml", "css-ruby-1.xml", "css3-speech.xml", "css3-ui.xml", "css-counter-styles-3.xml", "css-lists-3.xml", "css3-filter-effects.xml", "css-scoping1.xml", "css-regions.xml", "css3-break.xml", "css3-flexbox.xml", "css3-grid.xml", "css-masking-1.xml", "css-shapes-1.xml", "css3-background.xml", "css-display-3.xml", "css3-fonts.xml", "fontface.xml", "css-text-decor-3.xml", "css3-preslev.xml", "css3-positioning.xml", "css-compositing-1.xml", "css3-align.xml", "ie.xml", "css3-writing-modes.xml", "jquery.xml", "mozilla.xml", "mso.xml", "opera.xml", "svg.xml", "webkit.xml", "css-snappoints-1.xml", "css-will-change.xml", "css-inline-3.xml", "appmanifest.xml", "css-color-4.xml", "css-selectors-4.xml", "cssModules.xml", "css-contain-1.xml", "cssom-view-1.xml", "mediaqueries4.xml")
 		val instance: WxssElementDescriptorFactory2
 			get() = ServiceManager.getService(WxssElementDescriptorFactory2::class.java) as WxssElementDescriptorFactory2
 	}

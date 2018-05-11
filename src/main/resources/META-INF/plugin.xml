@@ -31,9 +31,11 @@
                                        implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxssSyntaxHighlighterFactory"/>
         <annotator language="wxss"
                    implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxssHighlightingAnnotator"/>
-        <!--<codeStyleSettingsProvider implementation="com.github.zxj5470.wxapp.registry.codeStyle.WxssCodeStyleSettingsProvider"/>-->
-        <!--<langCodeStyleSettingsProvider implementation="com.simpleplugin.SimpleLanguageCodeStyleSettingsProvider"/>-->
-
+        <applicationService serviceInterface="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"
+                            serviceImplementation="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"/>
+        <lang.formatter
+                language="wxss"
+                implementationClass="com.intellij.psi.css.impl.util.editor.WxssFormattingModelBuilder"/>
     </extensions>
 
     <actions>
