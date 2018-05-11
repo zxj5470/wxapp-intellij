@@ -40,10 +40,12 @@ allprojects {
 	}
 
 	intellij {
-		version = "2017.3"
+		version = "2018.1"
+		type = "IU"
 		updateSinceUntilBuild = false
 		instrumentCode = true
 		alternativeIdePath = alternative_ide_path
+		setPlugins("CSS")
 	}
 }
 
@@ -53,7 +55,6 @@ repositories {
 
 dependencies {
 	compileOnly(kotlin("stdlib", kotlinVersion))
-	compileOnly(files("lib/css.jar", "lib/css-openapi.jar"))
 	compile(kotlin("stdlib-jdk8", kotlinVersion).toString()) {
 		exclude(module = "kotlin-runtime")
 		exclude(module = "kotlin-reflect")

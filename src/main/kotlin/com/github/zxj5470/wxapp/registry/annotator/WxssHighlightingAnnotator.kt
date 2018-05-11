@@ -1,7 +1,6 @@
 package com.github.zxj5470.wxapp.registry.annotator
 
 import com.intellij.psi.css.impl.util.CssHighlightingAnnotator
-import com.intellij.psi.css.impl.util.references.CssIdentifierReference
 
 /**
  * @author zxj5470
