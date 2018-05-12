@@ -671,7 +671,18 @@ open class WxssFormattingModelBuilder : FormattingModelBuilder {
 							} else {
 								// TODO Just Do this, and everything is OK ~\(≧▽≦)/~
 								// TODO is just a notation, not means todo.
-								Spacing.createSpacing(0, 0, 0, false, 0)
+								val firstText = child1.node?.psi?.text.orEmpty()
+								val secondText = child2.node?.psi?.text.orEmpty()
+								println("$firstText \t $secondText\n")
+								val space =
+									when {
+										"rpx" == secondText -> 0
+										secondText.all { it.isLetterOrDigit() || it == '%' } -> 1
+										else -> 0
+									}
+								space.let {
+									Spacing.createSpacing(0, it, 0, false, 0)
+								}
 							}
 						} else {
 							Spacing.createSpacing(0, 0, 0, false, 0)

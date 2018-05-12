@@ -33,6 +33,8 @@
                                 implementationClass="com.github.zxj5470.wxapp.registry.editing.WxmlCompletionContributor"/>
         <languageInjector implementation="com.github.zxj5470.wxapp.registry.editing.WxmlInjectJavascript"/>
 
+        <gotoDeclarationHandler
+                implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlGoToDeclarationProvider"/>
         <!--WXSS-->
         <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"
@@ -44,6 +46,8 @@
         <lang.formatter
                 language="wxss"
                 implementationClass="com.intellij.psi.css.impl.util.editor.WxssFormattingModelBuilder"/>
+        <lang.findUsagesProvider language="wxss"
+                                 implementationClass="com.github.zxj5470.wxapp.registry.navigator.WxssFindUsageProvider"/>
     </extensions>
 
     <actions>

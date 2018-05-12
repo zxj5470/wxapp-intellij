@@ -4,9 +4,11 @@ import com.github.zxj5470.wxapp.WxappIcons
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
+import com.intellij.lang.javascript.psi.JSExpressionStatement
 import com.intellij.patterns.PlatformPatterns.psiElement
-import com.intellij.patterns.XmlPatterns
 import com.intellij.psi.xml.XmlTag
+import com.intellij.psi.xml.XmlTokenType.XML_ATTRIBUTE_VALUE_TOKEN
+import com.intellij.psi.xml.XmlTokenType.XML_NAME
 import com.intellij.util.ProcessingContext
 
 /**
@@ -76,7 +78,8 @@ class WxmlCompletionContributor : XmlCompletionContributor() {
 
 		extend(CompletionType.BASIC,
 			psiElement()
-				.inside(XmlTag::class.java),
+				.inside(XmlTag::class.java)
+				.andNot(psiElement().afterSibling(psiElement(XML_NAME))),
 			WxmlCompletionProvider(xmlTags))
 
 		extend(CompletionType.BASIC,
@@ -85,8 +88,11 @@ class WxmlCompletionContributor : XmlCompletionContributor() {
 			WxmlCompletionProvider(wxElse))
 
 		extend(CompletionType.BASIC,
-			psiElement().inside(XmlPatterns.xmlAttributeValue()),
-			WxmlCompletionProvider(values)
+			psiElement()
+				.andOr(
+					psiElement().inside(psiElement(XML_ATTRIBUTE_VALUE_TOKEN)),
+					psiElement().inside(JSExpressionStatement::class.java)
+				), WxmlCompletionProvider(values)
 		)
 	}
 }

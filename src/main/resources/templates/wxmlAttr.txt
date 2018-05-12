@@ -1,0 +1,6 @@
+value
+bingtap
+bindchange
+bindchanging
+type
+open-type
