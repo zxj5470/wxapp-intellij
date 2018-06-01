@@ -17,13 +17,9 @@ import com.intellij.psi.tree.IFileElementType
  * @date 2018/5/11
  */
 class WxssParserDefinition : CSSParserDefinition() {
-	override fun createLexer(project: Project?): Lexer {
-		return CssLexer()
-	}
+	override fun createLexer(project: Project?): Lexer = CssLexer()
 
-	override fun createParser(project: Project?): PsiParser {
-		return CssParser2()
-	}
+	override fun createParser(project: Project?): PsiParser = CssParser2()
 
 	override fun getFileNodeType(): IFileElementType = FILE
 

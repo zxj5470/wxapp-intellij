@@ -3,10 +3,6 @@
     <name>wxapp Support</name>
     <vendor email="zxj5470@foxmail.com" url="http://www.github.com/zxj5470">zxj5470</vendor>
 
-    <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-    ]]></description>
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.xml</depends>
     <depends>com.intellij.css</depends>
@@ -29,12 +25,14 @@
         <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>
         <annotator language="wxml"
                    implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightingAnnotator"/>
+        <annotator language="JavaScript"
+                   implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlInjectJsAnnotator"/>
         <completion.contributor language="wxml"
                                 implementationClass="com.github.zxj5470.wxapp.registry.editing.WxmlCompletionContributor"/>
         <languageInjector implementation="com.github.zxj5470.wxapp.registry.editing.WxmlInjectJavascript"/>
-
-        <gotoDeclarationHandler
-                implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlGoToDeclarationProvider"/>
+        <!--<globalInspection implementationClass="com.github.zxj5470.wxapp.registry.annotator.W" displayName="emm"/>-->
+        <!--<referenceInjector implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlToJsReferenceInjector"/>-->
+        <!--<gotoDeclarationHandler implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlGoToDeclarationProvider"/>-->
         <!--WXSS-->
         <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"
@@ -50,6 +48,4 @@
                                  implementationClass="com.github.zxj5470.wxapp.registry.navigator.WxssFindUsageProvider"/>
     </extensions>
 
-    <actions>
-    </actions>
 </idea-plugin>

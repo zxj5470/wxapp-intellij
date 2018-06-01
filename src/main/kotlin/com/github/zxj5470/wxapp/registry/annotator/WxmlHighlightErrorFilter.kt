@@ -11,9 +11,21 @@ import com.intellij.psi.xml.XmlTag
  */
 class WxmlHighlightErrorFilter : HighlightErrorFilter() {
 	override fun shouldHighlightErrorElement(element: PsiErrorElement): Boolean {
-		return !element.multiRootElement
+		return when {
+			element.errorDescription in errors ||
+				element.multiRootElement ||
+				element.equalsExpected -> false
+			else -> true
+		}
 	}
 }
 
 inline val PsiErrorElement.multiRootElement: Boolean
 	get() = this.parent.parent is XmlDocument && this.parent is XmlTag
+
+val errors = arrayOf(
+	"Unescaped & or nonterminated character/entity reference"
+)
+
+inline val PsiErrorElement.equalsExpected: Boolean
+	get() = this.errorDescription == "'=' expected" && this.prevSibling.text.startsWith("wx:")

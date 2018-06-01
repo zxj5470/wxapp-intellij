@@ -673,7 +673,6 @@ open class WxssFormattingModelBuilder : FormattingModelBuilder {
 								// TODO is just a notation, not means todo.
 								val firstText = child1.node?.psi?.text.orEmpty()
 								val secondText = child2.node?.psi?.text.orEmpty()
-								println("$firstText \t $secondText\n")
 								val space =
 									when {
 										"rpx" == secondText -> 0

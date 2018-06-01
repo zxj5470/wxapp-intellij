@@ -24,7 +24,7 @@ class WxmlInjectJavascript : LanguageInjector {
 				val end = h.text.lastIndexOf("}}")
 				if (begin != -1 && end != -1) {
 					h.textRange.apply {
-						//						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(startOffset + begin + 2, startOffset + end - 1), "", "")
+						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(begin + 2, end), "", "")
 					}
 				}
 			}
