@@ -68,7 +68,6 @@ dependencies {
 		exclude(module = "kotlin-reflect")
 		exclude(module = "kotlin-stdlib")
 	}
-	compile("com.github.zxj5470:ktlext:+")
 	testCompile(kotlin("test-junit", kotlinVersion))
 	testCompile("junit", "junit", "4.12")
 }

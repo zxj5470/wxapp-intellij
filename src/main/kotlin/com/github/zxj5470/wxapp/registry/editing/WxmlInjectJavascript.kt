@@ -1,6 +1,6 @@
 package com.github.zxj5470.wxapp.registry.editing
 
-import com.github.zxj5470.ktlext.text.indicesOf
+import com.github.zxj5470.wxapp.ktlext.indicesOf
 import com.intellij.lang.javascript.JavascriptLanguage
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.InjectedLanguagePlaces
