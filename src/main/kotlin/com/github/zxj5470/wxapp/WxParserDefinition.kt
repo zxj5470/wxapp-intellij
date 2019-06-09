@@ -14,7 +14,7 @@ import com.intellij.psi.tree.IFileElementType
 class WxmlParserDefinition : XMLParserDefinition() {
 	override fun getFileNodeType(): IFileElementType = FILE
 
-	override fun createFile(viewProvider: FileViewProvider): PsiFile = WxmlFile(viewProvider)
+	override fun createFile(viewProvider: FileViewProvider): PsiFile = WxmlFile(viewProvider, fileNodeType)
 
 	companion object {
 		val FILE = IFileElementType(WxmlLanguage.INSTANCE)

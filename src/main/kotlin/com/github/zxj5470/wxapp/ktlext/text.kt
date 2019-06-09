@@ -1,5 +1,9 @@
 package com.github.zxj5470.wxapp.ktlext
 
+import com.intellij.lang.javascript.JSTokenTypes
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiWhiteSpace
+
 /**
  * @author zxj5470
  * @date 2018/5/12
@@ -14,3 +18,16 @@ fun String.isWxFunction(): Boolean {
 	}
 	return false
 }
+
+val PsiElement.prevRealSibling: PsiElement?
+	get() {
+		var pre = this.prevSibling
+		while (pre != null) {
+			if (pre is PsiWhiteSpace || pre.node.elementType.let { it == JSTokenTypes.XML_ATTR_EQUAL }) {
+				pre = pre.prevSibling
+			} else {
+				return pre
+			}
+		}
+		return pre
+	}

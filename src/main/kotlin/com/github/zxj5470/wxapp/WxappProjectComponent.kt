@@ -8,8 +8,7 @@ import com.intellij.openapi.application.PathManager
 import com.intellij.openapi.application.runWriteAction
 import com.intellij.openapi.components.ProjectComponent
 import com.intellij.openapi.module.ModuleManager
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.guessProjectDir
+import com.intellij.openapi.project.*
 import com.intellij.openapi.roots.*
 import com.intellij.openapi.roots.impl.*
 import com.intellij.openapi.roots.impl.libraries.ProjectLibraryTableImpl
@@ -18,6 +17,7 @@ import com.intellij.openapi.util.Conditions
 import com.intellij.openapi.util.Key
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiManager
+import com.intellij.psi.stubs.StubIndex
 import com.intellij.util.io.createFile
 import com.intellij.util.io.exists
 import java.nio.file.Files
@@ -72,11 +72,15 @@ fun Project.syncDTsLibrary() {
 		f ?: return@runWriteAction
 		val model = ProjectLibraryTableImpl(this).modifiableModel
 		println(model)
-		val lib = model.createLibrary("wx.d.ts")
-		lib.modifiableModel.addRoot(dtsFile.absolutePath, OrderRootType.SOURCES)
-		lib.modifiableModel.commit()
 		val module = ModuleManager.getInstance(this).modules.first()
-		ModuleRootModificationUtil.addDependency(module, lib)
-//		val s = OrderEntryUtil.getModuleLibraries(ModuleRootManager.getInstance(module))
+		OrderEntryUtil.getModuleLibraries(ModuleRootManager.getInstance(module))
+		val s = OrderEntryUtil.getModuleLibraries(ModuleRootManager.getInstance(module))
+		if (s.none { it.name == "wx.d.ts" }) {
+			val lib = model.createLibrary("wx.d.ts")
+			lib.modifiableModel.addRoot(dtsFile.absolutePath, OrderRootType.SOURCES)
+			lib.modifiableModel.commit()
+			ModuleRootModificationUtil.addDependency(module, lib)
+			StubIndex.getInstance().forceRebuild(RuntimeException("Rebuild Index Error!"))
+		}
 	}
 }

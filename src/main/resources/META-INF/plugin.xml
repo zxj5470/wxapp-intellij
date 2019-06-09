@@ -14,42 +14,45 @@
     </extensions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="com.github.zxj5470.wxapp.registry.WxappFileFactory"/>
+        <fileTypeFactory implementation="com.github.zxj5470.wxapp.WxappFileFactory"/>
         <!--<lang.commenter language="wxml"-->
 
         <!--WXML-->
-        <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.psi.WxmlParserDefinition"/>
+        <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.WxmlParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxml"
-                                       implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxmlSyntaxHighlighterFactory"/>
-        <highlightErrorFilter implementation="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightErrorFilter"/>
-        <colorSettingsPage implementation="com.github.zxj5470.wxapp.registry.highlighter.WxmlColorSettingsPage"/>
+                                       implementationClass="com.github.zxj5470.wxapp.highlighter.WxmlSyntaxHighlighterFactory"/>
+        <highlightErrorFilter implementation="com.github.zxj5470.wxapp.annotator.WxmlHighlightErrorFilter"/>
+        <colorSettingsPage implementation="com.github.zxj5470.wxapp.highlighter.WxmlColorSettingsPage"/>
         <annotator language="wxml"
-                   implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlHighlightingAnnotator"/>
-        <annotator language="JavaScript"
-                   implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlInjectJsAnnotator"/>
+                   implementationClass="com.github.zxj5470.wxapp.annotator.WxmlHighlightingAnnotator"/>
+        <!--<annotator language="JavaScript"-->
+        <!--implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlInjectJsAnnotator"/>-->
         <completion.contributor language="wxml"
-                                implementationClass="com.github.zxj5470.wxapp.registry.editing.WxmlCompletionContributor"/>
-        <languageInjector implementation="com.github.zxj5470.wxapp.registry.editing.WxmlInjectJavascript"/>
+                                implementationClass="com.github.zxj5470.wxapp.editing.WxmlCompletionContributor"/>
+        <languageInjector implementation="com.github.zxj5470.wxapp.editing.WxmlInjectJavascript"/>
         <!--<globalInspection implementationClass="com.github.zxj5470.wxapp.registry.annotator.W" displayName="emm"/>-->
         <!--<referenceInjector implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlToJsReferenceInjector"/>-->
-        <!--<gotoDeclarationHandler implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlGoToDeclarationProvider"/>-->
+        <gotoDeclarationHandler implementation="com.github.zxj5470.wxapp.navigator.WxmlGoToDeclarationProvider"/>
+        <gotoDeclarationHandler implementation="com.github.zxj5470.wxapp.navigator.JsGoToDeclarationProvider"/>
         <!--WXSS-->
-        <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.psi.WxssParserDefinition"/>
+        <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"
-                                       implementationClass="com.github.zxj5470.wxapp.registry.highlighter.WxssSyntaxHighlighterFactory"/>
+                                       implementationClass="com.github.zxj5470.wxapp.highlighter.WxssSyntaxHighlighterFactory"/>
         <annotator language="wxss"
-                   implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxssHighlightingAnnotator"/>
+                   implementationClass="com.github.zxj5470.wxapp.annotator.WxssHighlightingAnnotator"/>
         <applicationService serviceInterface="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"
                             serviceImplementation="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"/>
         <lang.formatter
                 language="wxss"
                 implementationClass="com.intellij.psi.css.impl.util.editor.WxssFormattingModelBuilder"/>
         <lang.findUsagesProvider language="wxss"
-                                 implementationClass="com.github.zxj5470.wxapp.registry.navigator.WxssFindUsageProvider"/>
+                                 implementationClass="com.github.zxj5470.wxapp.navigator.WxssFindUsageProvider"/>
     </extensions>
+
     <project-components>
         <component>
             <implementation-class>com.github.zxj5470.wxapp.WxappProjectComponent</implementation-class>
         </component>
     </project-components>
+
 </idea-plugin>

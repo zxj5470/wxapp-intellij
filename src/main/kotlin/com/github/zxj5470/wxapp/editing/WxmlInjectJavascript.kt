@@ -3,13 +3,9 @@ package com.github.zxj5470.wxapp.editing
 import com.github.zxj5470.wxapp.ktlext.indicesOf
 import com.intellij.lang.javascript.JavascriptLanguage
 import com.intellij.openapi.util.TextRange
-import com.intellij.psi.InjectedLanguagePlaces
-import com.intellij.psi.LanguageInjector
-import com.intellij.psi.PsiLanguageInjectionHost
+import com.intellij.psi.*
 import com.intellij.psi.impl.source.xml.XmlTextImpl
-import com.intellij.psi.xml.XmlAttribute
-import com.intellij.psi.xml.XmlAttributeValue
-import com.intellij.psi.xml.XmlText
+import com.intellij.psi.xml.*
 
 /**
  * @author zxj5470
@@ -20,29 +16,33 @@ class WxmlInjectJavascript : LanguageInjector {
 		when (host) {
 			is XmlText -> {
 				val h = (host as XmlTextImpl)
-				val begin = h.text.indexOf("{{")
-				val end = h.text.lastIndexOf("}}")
-				if (begin != -1 && end != -1) {
-					h.textRange.apply {
-						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(begin + 2, end), "", "")
+				val begin = h.text.indicesOf("{{")
+				val end = h.text.indicesOf("}}")
+				if (begin.size == end.size && begin.isNotEmpty()) {
+					for (i in begin.indices) {
+						val b = begin[i] + 2
+						val e = end[i]
+						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(b, e), "const _privateWxapp=", null)
 					}
 				}
 			}
 			is XmlAttributeValue -> {
-				(host as XmlAttributeValue).apply {
+				val attrvalue = (host as XmlAttributeValue)
+				attrvalue.apply {
 					text.let {
 						val lprs = it.indicesOf("{{")
 						val rprs = it.indicesOf("}}")
 						if (lprs.size == 1 && rprs.size == 1) {
 							val begin = lprs.first() + 2
-							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(begin, rprs.first()), "", "")
+							println("$text: $begin ")
+							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(begin, rprs.first()), "const _privateWxapp=", null)
 						} else {
 
 						}
 					}
 					((host as XmlAttributeValue).parent as XmlAttribute).let { attr ->
 						if (attr.nameElement.text.startsWith("bind")) {
-							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, textLength), "", "")
+							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, textLength), "const _=", "")
 						}
 					}
 				}
