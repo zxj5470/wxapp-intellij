@@ -6,18 +6,19 @@ import java.io.*
 import java.nio.file.*
 import java.net.URL
 import java.util.stream.Collectors
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.*
+import java.nio.file.Paths
 
 val kotlinVersion: String by extra
 val alternative_ide_path: String by extra
 
 buildscript {
 	var kotlinVersion: String by extra
-
 	kotlinVersion = "1.2.31"
 
 	repositories {
 		mavenCentral()
-		maven("https://jitpack.io")
 	}
 
 	dependencies {
@@ -25,23 +26,50 @@ buildscript {
 	}
 }
 
+val commitHash = kotlin.run {
+	val process: Process = Runtime.getRuntime().exec("git rev-parse --short HEAD")
+	process.waitFor()
+	@Suppress("RemoveExplicitTypeArguments")
+	val output = process.inputStream.use {
+		process.inputStream.use {
+			it.readBytes().let<ByteArray, String>(::String)
+		}
+	}
+	process.destroy()
+	output.trim()
+}
+val isCI = !System.getenv("CI").isNullOrBlank()
+val pluginComingVersion = "0.2.0"
+val pluginVersion = if (isCI) "$pluginComingVersion-$commitHash" else pluginComingVersion
+val packageName = "com.github.zxj5470.wxapp"
+
+group = packageName
+version = pluginVersion
+
 plugins {
 	idea
 	java
-	id("org.jetbrains.intellij") version "0.3.1"
-	kotlin("jvm") version "1.2.31"
+	id("org.jetbrains.intellij") version "0.4.8"
+	kotlin("jvm") version "1.3.30"
+}
+allprojects {
+	intellij {
+		version = "2018.3"
+		type = "IU"
+		updateSinceUntilBuild = false
+		instrumentCode = true
+		// use WebStorm
+		alternativeIdePath = alternative_ide_path
+		setPlugins("JavaScriptLanguage","CSS")
+	}
 }
 
-intellij {
-	version = "2018.1"
-	type = "IU"
-	updateSinceUntilBuild = false
-	instrumentCode = true
-	// use WebStorm
-	alternativeIdePath = alternative_ide_path
-	setPlugins("JavaScriptLanguage", "CSS")
+tasks.withType<KotlinCompile> {
+	kotlinOptions {
+		jvmTarget = "1.8"
+		freeCompilerArgs = listOf("-Xjvm-default=enable")
+	}
 }
-
 
 val SourceSet.kotlin
 	get() = (this as HasConvention)
@@ -49,25 +77,14 @@ val SourceSet.kotlin
 			.getPlugin(KotlinSourceSet::class.java)
 			.kotlin
 
-//tasks.withType<PatchPluginXmlTask> {
-//			changeNotes(file("change-notes.html").readText())
-//	pluginDescription(file("description.html").readText())
-//		version(pluginComingVersion)
-//		pluginId(packageName)
-//}
-
-repositories {
-	mavenCentral()
-	maven("https://jitpack.io")
+tasks.withType<PatchPluginXmlTask> {
+	pluginDescription(file("description.html").readText())
+	version(pluginComingVersion)
 }
 
+
 dependencies {
-	compileOnly(kotlin("stdlib", kotlinVersion))
-	compile(kotlin("stdlib-jdk8", kotlinVersion).toString()) {
-		exclude(module = "kotlin-runtime")
-		exclude(module = "kotlin-reflect")
-		exclude(module = "kotlin-stdlib")
-	}
+	compile(kotlin("stdlib-jdk8"))
 	testCompile(kotlin("test-junit", kotlinVersion))
 	testCompile("junit", "junit", "4.12")
 }
@@ -77,16 +94,4 @@ java {
 	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-java.sourceSets {
-	"main"{
-		withConvention(KotlinSourceSet::class) {
-			listOf(java, kotlin).forEach {
-				it.srcDirs("src/main/fake")
-			}
-		}
-		resources.srcDirs("src/main/sources")
-	}
-	"test"{
-		resources.srcDirs("testData")
-	}
-}
+repositories { mavenCentral() }

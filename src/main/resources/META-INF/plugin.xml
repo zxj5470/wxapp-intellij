@@ -47,5 +47,9 @@
         <lang.findUsagesProvider language="wxss"
                                  implementationClass="com.github.zxj5470.wxapp.registry.navigator.WxssFindUsageProvider"/>
     </extensions>
-
+    <project-components>
+        <component>
+            <implementation-class>com.github.zxj5470.wxapp.WxappProjectComponent</implementation-class>
+        </component>
+    </project-components>
 </idea-plugin>
