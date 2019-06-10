@@ -1,5 +1,6 @@
 # wxapp Plugin
-
+[![JetBrains plugins](https://img.shields.io/jetbrains/plugin/v/12539-wxapp-support.svg)](https://plugins.jetbrains.com/plugin/12539-wxapp-support)
+[![JetBrains plugins](https://img.shields.io/jetbrains/plugin/d/12539-wxapp-support.svg)](https://plugins.jetbrains.com/plugin/12539-wxapp-support)
 ## 关于代码格式化
 首先……个人建议
 对于微信小程序，请多一层目录拿来搞配置文件……因为微信的谜之编译喜欢把他自己的整个目录搞上去……
