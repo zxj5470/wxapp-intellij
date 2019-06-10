@@ -1,6 +1,7 @@
 <idea-plugin>
     <id>com.github.zxj5470.wxapp</id>
     <name>wxapp Support</name>
+    <idea-version since-build="162.0"/>
     <vendor email="zxj5470@foxmail.com" url="http://www.github.com/zxj5470">zxj5470</vendor>
 
     <depends>com.intellij.modules.lang</depends>
