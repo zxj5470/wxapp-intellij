@@ -36,8 +36,8 @@ class JsGoToDeclarationProvider : JSGotoDeclarationHandler() {
 			"JS:STRING_LITERAL" -> {
 				val path = sourceElement.text.trim('\'', '\"') + ".js"
 				if (path[0] == '/') {
-					val f = elem.project.getWxRootDir.apply { println(this) } ?: return null
-					val par = f.parent.apply { println(this) }
+					val f = elem.project.getWxRootDir ?: return null
+					val par = f.parent
 					return arrayOfPsiElements(par, path)
 				}
 				val file = sourceElement.containingFile ?: return null

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull
  * Even if you're using Kotlin, you have to annotate with @NotNull.
  */
 
-class WxmlFile(@NotNull viewProvider: FileViewProvider, element: IElementType) : XmlFileImpl(viewProvider, element) {
+class WxmlFile(@NotNull viewProvider: FileViewProvider, element: IElementType) : PsiFileBase(viewProvider, WxmlLanguage.INSTANCE) {
 	@NotNull
 	override fun getFileType() = WxmlFileType
 	override fun toString() = "Wxml File"

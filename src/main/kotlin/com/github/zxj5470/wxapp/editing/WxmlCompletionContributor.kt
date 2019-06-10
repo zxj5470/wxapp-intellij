@@ -27,7 +27,7 @@ class WxmlCompletionContributor : XmlCompletionContributor() {
 			LookupElementBuilder
 				.create(it)
 				.withIcon(WxappIcons.wxmlTagIcon)
-				.withTypeText(it, true)
+				.withTypeText("WeiXin $it", true)
 		}
 
 	/**

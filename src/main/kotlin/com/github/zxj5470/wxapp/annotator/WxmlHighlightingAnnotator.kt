@@ -6,7 +6,6 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.xml.XmlAttribute
-import com.intellij.psi.xml.XmlTag
 
 /**
  * @author zxj5470
@@ -23,9 +22,6 @@ class WxmlHighlightingAnnotator : XmlNamespaceAnnotator() {
 							.textAttributes = DefaultLanguageHighlighterColors.KEYWORD
 					}
 				}
-			}
-			is XmlTag ->{
-
 			}
 		}
 	}

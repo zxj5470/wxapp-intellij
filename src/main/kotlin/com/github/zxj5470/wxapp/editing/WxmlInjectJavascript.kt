@@ -4,7 +4,6 @@ import com.github.zxj5470.wxapp.ktlext.indicesOf
 import com.intellij.lang.javascript.JavascriptLanguage
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.*
-import com.intellij.psi.impl.source.xml.XmlTextImpl
 import com.intellij.psi.xml.*
 
 /**
@@ -14,38 +13,27 @@ import com.intellij.psi.xml.*
 class WxmlInjectJavascript : LanguageInjector {
 	override fun getLanguagesToInject(host: PsiLanguageInjectionHost, places: InjectedLanguagePlaces) {
 		when (host) {
+			// xml content
 			is XmlText -> {
-				val h = (host as XmlTextImpl)
-				val begin = h.text.indicesOf("{{")
-				val end = h.text.indicesOf("}}")
-				if (begin.size == end.size && begin.isNotEmpty()) {
-					for (i in begin.indices) {
-						val b = begin[i] + 2
-						val e = end[i]
-						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(b, e), "const _privateWxapp=", null)
-					}
-				}
+				val text = (host as XmlText).text
+				fragment(text, places)
 			}
+			// xml attr value
 			is XmlAttributeValue -> {
-				val attrvalue = (host as XmlAttributeValue)
-				attrvalue.apply {
-					text.let {
-						val lprs = it.indicesOf("{{")
-						val rprs = it.indicesOf("}}")
-						if (lprs.size == 1 && rprs.size == 1) {
-							val begin = lprs.first() + 2
-							println("$text: $begin ")
-							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(begin, rprs.first()), "const _privateWxapp=", null)
-						} else {
+				val text = (host as XmlAttributeValue).text
+				fragment(text, places)
+			}
+		}
+	}
 
-						}
-					}
-					((host as XmlAttributeValue).parent as XmlAttribute).let { attr ->
-						if (attr.nameElement.text.startsWith("bind")) {
-							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, textLength), "const _=", "")
-						}
-					}
-				}
+	private fun fragment(text: String, places: InjectedLanguagePlaces) {
+		val begin = text.indicesOf("{{")
+		val end = text.indicesOf("}}")
+		if (begin.size == end.size && begin.isNotEmpty()) {
+			for (i in begin.indices) {
+				val b = begin[i] + 2
+				val e = end[i]
+				places.addPlace(JavascriptLanguage.INSTANCE, TextRange(b, e), "get(", ")")
 			}
 		}
 	}

@@ -36,6 +36,7 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 //			id or class
 			grandpar is XmlAttribute && grandpar.nameElement.text
 				.let { it == "id" && it == "class" } -> {
+
 //				val ret = PsiTreeUtil.findChildrenOfType(wxssFile, CssTokenImpl::class.java).filter { token ->
 //					token.text == grandpar.nameElement.text
 //				}.mapNotNull { it as PsiElement }.firstOrNull() ?: return null

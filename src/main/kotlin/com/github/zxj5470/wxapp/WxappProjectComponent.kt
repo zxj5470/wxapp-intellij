@@ -71,16 +71,16 @@ fun Project.syncDTsLibrary() {
 		val f = JSLibraryUtil.findFileByIO(dtsFile, true)
 		f ?: return@runWriteAction
 		val model = ProjectLibraryTableImpl(this).modifiableModel
-		println(model)
 		val module = ModuleManager.getInstance(this).modules.first()
 		OrderEntryUtil.getModuleLibraries(ModuleRootManager.getInstance(module))
 		val s = OrderEntryUtil.getModuleLibraries(ModuleRootManager.getInstance(module))
-		if (s.none { it.name == "wx.d.ts" }) {
-			val lib = model.createLibrary("wx.d.ts")
-			lib.modifiableModel.addRoot(dtsFile.absolutePath, OrderRootType.SOURCES)
-			lib.modifiableModel.commit()
-			ModuleRootModificationUtil.addDependency(module, lib)
-			StubIndex.getInstance().forceRebuild(RuntimeException("Rebuild Index Error!"))
-		}
+		(s.size)
+//		if (s.none { it.name == "wx.d.ts" }) {
+//			val lib = model.createLibrary("wx.d.ts")
+//			lib.modifiableModel.addRoot(dtsFile.absolutePath, OrderRootType.SOURCES)
+//			lib.modifiableModel.commit()
+//			ModuleRootModificationUtil.addDependency(module, lib)
+//			StubIndex.getInstance().forceRebuild(RuntimeException("Rebuild Index Error!"))
+//		}
 	}
 }
