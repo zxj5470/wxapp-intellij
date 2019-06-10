@@ -14,12 +14,26 @@
 
 ### 代码智能提示
 首先确保了你的目录结构是那样的……然后有一个 wx.d.ts 文件……
+在 [Typescript-wxApi.d.ts](https://github.com/Adherentman/Typescript-wxApi.d.ts) 这个仓库中。
+[直接下载](https://github.com/Adherentman/Typescript-wxApi.d.ts/raw/master/wx.d.ts)
+
+然后这个亚子：
+
 ![](https://user-images.githubusercontent.com/20026798/59198243-d3382100-8bc5-11e9-8bda-ec0c1491a608.png)
 
 好了，那没事了
 
 ![](https://user-images.githubusercontent.com/20026798/59198181-ac79ea80-8bc5-11e9-9512-3240faeaefaf.png)
 
+## 功能
+### 跳转
+- js
+	- 上面【那没事了】那张图，点击 url 的字符串可跳转到对于 .js
+- wxml
+	- `{{ identifier }}`中的跳转到变量
+	- `bind***="函数名"` 跳转到对应函数
+	- `class='cls'` 跳转到 `当前.wxss` 和 `app.wxss`
+	
 ## Pending……
 
 ## ScreenShots
