@@ -24,28 +24,43 @@
 [直接下载](https://github.com/Adherentman/Typescript-wxApi.d.ts/raw/master/wx.d.ts)
 
 然后这个亚子：
-
 ![](https://user-images.githubusercontent.com/20026798/59198243-d3382100-8bc5-11e9-8bda-ec0c1491a608.png)
-
 好了，那没事了
-
 ![](https://user-images.githubusercontent.com/20026798/59198181-ac79ea80-8bc5-11e9-9512-3240faeaefaf.png)
 
-## 功能
-### 跳转
+## 插件相关内容
+
+### 兼容性：
+- 支持 IntelliJ IDEA U, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand
+- 有关CSS部分跳转的内容最低兼容到172（虽然我写的最低是162版本安装）
+- 172到182版本可能会报错（内嵌的加载wx.d.ts的功能未完成所以可能会报错但不影响使用）
+- 183及以上正常
+
+### 功能
 - js
-	- 上面【那没事了】那张图，点击 url 的字符串可跳转到对于 .js
-- wxml
+	- 跳转：上面【好了，那没事了】那张图，ctrl+左键 点击 url 的字符串内容可跳转到对于 .js。。。
+		- 甚至你写 `/pages/index/index` 也是支持跳转的，当然了不建议各位这么写
+	- 内嵌了 Matchmaker 插件的功能。并且修改为以当前光标位置插入相应函数。那个插件居然是直接在 `Page({` 后面插入，tql
+- wxml 跳转
 	- `{{ identifier }}`中的跳转到变量
 	- `bind***="函数名"` 跳转到对应函数
 	- `class='cls'` 跳转到 `当前.wxss` 或 `app.wxss`
+- wxss
+	- rpx 问题：
+		- 解决rpx底下红色 “报错” 标注以及代码格式化 Ctrl(cmd)+ Alt(option) + L 后 数字与rpx之间出现空格的问题
+		![](https://user-images.githubusercontent.com/20026798/59233255-4a97a000-8c1a-11e9-819f-e648f7ea1ef0.png)
+		- Alt + Enter，关闭检查。
+		![](https://user-images.githubusercontent.com/20026798/59233270-58e5bc00-8c1a-11e9-9d81-736709fe2633.png)
+		- 显示结果：
+		![](https://user-images.githubusercontent.com/20026798/59233421-f214d280-8c1a-11e9-843f-57a498e8e248.png)
 	
+
 ## Pending……
 
 ## ScreenShots
 
 ### WXSS
-![](screenShot/wxss-01.png)
+rpx
 
 ### WXML
 ![](screenShot/wxml-01.png)
