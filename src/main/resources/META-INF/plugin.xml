@@ -49,6 +49,13 @@
                                  implementationClass="com.github.zxj5470.wxapp.navigator.WxssFindUsageProvider"/>
     </extensions>
 
+<!-- third part -->
+    <actions>
+        <action class="com.lypeer.matchmaker.Matchmaker" id="com.lypeer.matchmaker" text="Make match" description="Plugin to easy your work on Wechat Weapp . This can help you inject functions to js file .">
+            <add-to-group group-id="GenerateGroup"/>
+        </action>
+    </actions>
+
     <project-components>
         <component>
             <implementation-class>com.github.zxj5470.wxapp.WxappProjectComponent</implementation-class>

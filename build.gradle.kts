@@ -1,30 +1,10 @@
-import groovy.lang.Closure
 import org.gradle.api.internal.HasConvention
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.intellij.tasks.PatchPluginXmlTask
-import java.io.*
-import java.nio.file.*
-import java.net.URL
-import java.util.stream.Collectors
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.io.*
-import java.nio.file.Paths
 
 val kotlinVersion: String by extra
 val alternative_ide_path: String by extra
-
-buildscript {
-	var kotlinVersion: String by extra
-	kotlinVersion = "1.2.31"
-
-	repositories {
-		mavenCentral()
-	}
-
-	dependencies {
-		classpath(kotlin("gradle-plugin", kotlinVersion))
-	}
-}
 
 val commitHash = kotlin.run {
 	val process: Process = Runtime.getRuntime().exec("git rev-parse --short HEAD")
