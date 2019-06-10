@@ -20,8 +20,14 @@ class WxmlInjectJavascript : LanguageInjector {
 			}
 			// xml attr value
 			is XmlAttributeValue -> {
-				val text = (host as XmlAttributeValue).text
+				val value = host as XmlAttributeValue
+				val text = value.text
 				fragment(text, places)
+				(value.parent as? XmlAttribute)?.let { attr ->
+					if (attr.nameElement.text.startsWith("bind")) {
+						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), "call(", ")")
+					}
+				}
 			}
 		}
 	}

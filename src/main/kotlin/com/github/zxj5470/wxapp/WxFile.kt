@@ -2,24 +2,17 @@ package com.github.zxj5470.wxapp
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.psi.FileViewProvider
-import com.intellij.psi.impl.source.xml.XmlFileImpl
 import com.intellij.psi.tree.IElementType
-import com.intellij.psi.xml.XmlFile
-import org.jetbrains.annotations.NotNull
+import javax.swing.Icon
 
-/**
- * Even if you're using Kotlin, you have to annotate with @NotNull.
- */
-
-class WxmlFile(@NotNull viewProvider: FileViewProvider, element: IElementType) : PsiFileBase(viewProvider, WxmlLanguage.INSTANCE) {
-	@NotNull
+class WxmlFile(viewProvider: FileViewProvider, element: IElementType) : PsiFileBase(viewProvider, WxmlLanguage.INSTANCE) {
 	override fun getFileType() = WxmlFileType
+	override fun getIcon(flags: Int): Icon = WxappIcons.wxmlIcon
 	override fun toString() = "Wxml File"
 }
 
-class WxssFile(@NotNull viewProvider: FileViewProvider) : PsiFileBase(viewProvider, WxssLanguage.INSTANCE) {
-	@NotNull
+class WxssFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, WxssLanguage.INSTANCE) {
 	override fun getFileType() = WxssFileType
-
+	override fun getIcon(flags: Int): Icon = WxappIcons.wxssIcon
 	override fun toString() = "Wxss File"
 }

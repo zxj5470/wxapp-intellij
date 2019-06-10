@@ -24,29 +24,36 @@ class WxssFindUsageProvider : FindUsagesProvider {
 
 	override fun getType(element: PsiElement): String {
 		val var10000: String?
-		if (element is CssKeyframesRule) {
-			var10000 = CssBundle.message("css.terms.animation", *arrayOfNulls(0))
-			return var10000
-		} else if (element is CssSelectorSuffix) {
-			var10000 = CssBundle.message("css.terms.selector", *arrayOfNulls(0))
-			return var10000
-		} else if (element is CssRuleset) {
-			var10000 = CssBundle.message("css.terms.ruleset", *arrayOfNulls(0))
-			return var10000
-		} else if (element is CssCustomMixin) {
-			var10000 = CssBundle.message("css.terms.custom.property.set", *arrayOfNulls(0))
-			return var10000
-		} else if (element is CssDeclaration) {
-			var10000 = CssBundle.message(if (element.isCustomProperty) "css.terms.variable" else "css.terms.property", *arrayOfNulls(0))
-			return var10000
-		} else if (element is CssAtRule) {
-			var10000 = element.name
-			return var10000
-		} else if (element !is CssValueDeclaration && element !is CssValueImportedAlias) {
-			return ""
-		} else {
-			var10000 = CssBundle.message("css.value.defined.in.at.value.rule", *arrayOfNulls(0))
-			return var10000
+		when {
+			element is CssKeyframesRule -> {
+				var10000 = CssBundle.message("css.terms.animation", *arrayOfNulls(0))
+				return var10000
+			}
+			element is CssSelectorSuffix -> {
+				var10000 = CssBundle.message("css.terms.selector", *arrayOfNulls(0))
+				return var10000
+			}
+			element is CssRuleset -> {
+				var10000 = CssBundle.message("css.terms.ruleset", *arrayOfNulls(0))
+				return var10000
+			}
+			element is CssCustomMixin -> {
+				var10000 = CssBundle.message("css.terms.custom.property.set", *arrayOfNulls(0))
+				return var10000
+			}
+			element is CssDeclaration -> {
+				var10000 = CssBundle.message(if (element.isCustomProperty) "css.terms.variable" else "css.terms.property", *arrayOfNulls(0))
+				return var10000
+			}
+			element is CssAtRule -> {
+				var10000 = element.name
+				return var10000
+			}
+			element !is CssValueDeclaration && element !is CssValueImportedAlias -> return ""
+			else -> {
+				var10000 = CssBundle.message("css.value.defined.in.at.value.rule", *arrayOfNulls(0))
+				return var10000
+			}
 		}
 	}
 

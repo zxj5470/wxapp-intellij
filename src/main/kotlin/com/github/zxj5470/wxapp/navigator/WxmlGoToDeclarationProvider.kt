@@ -5,11 +5,11 @@ import com.github.zxj5470.wxapp.ktlext.isWxFunction
 import com.intellij.lang.javascript.navigation.JSGotoDeclarationHandler
 import com.intellij.lang.javascript.psi.JSExpression
 import com.intellij.lang.javascript.psi.JSFunctionExpression
-import com.intellij.lang.javascript.psi.JSObjectLiteralExpression
 import com.intellij.lang.javascript.psi.JSProperty
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiElement
+import com.intellij.psi.css.impl.CssTokenImpl
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.PsiUtilCore
 import com.intellij.psi.xml.XmlAttribute
@@ -34,37 +34,22 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 		val grandpar = elem.parent.parent
 		when {
 //			id or class
-			grandpar is XmlAttribute && grandpar.nameElement.text
-				.let { it == "id" && it == "class" } -> {
-
-//				val ret = PsiTreeUtil.findChildrenOfType(wxssFile, CssTokenImpl::class.java).filter { token ->
-//					token.text == grandpar.nameElement.text
-//				}.mapNotNull { it as PsiElement }.firstOrNull() ?: return null
-//				return arrayOf(ret)
+			grandpar is XmlAttribute && grandpar.nameElement.text == "class" -> {
+				val collection = PsiTreeUtil.findChildrenOfType(wxssFile, CssTokenImpl::class.java) + PsiTreeUtil.findChildrenOfType(globalWxssFile, CssTokenImpl::class.java)
+				val ret = collection
+					.filter { token ->
+						token.text == identifierName
+					}.mapNotNull { it as PsiElement }.toTypedArray()
+				return ret
 			}
-
-//		 data variable
-			"{{" in identifierName && "}}" in identifierName -> {
-				val ident = identifierName.substringAfter("{{").substringBefore("}}")
-				val ret = PsiTreeUtil.findChildrenOfType(jsFile, JSExpression::class.java).flatMap {
-					PsiTreeUtil.findChildrenOfType(it, JSProperty::class.java).filter {
-						it.nameIdentifier?.text == "data" &&
-							it.value is JSObjectLiteralExpression
-					}.mapNotNull {
-						(it.value as JSObjectLiteralExpression).findProperty(ident) as PsiElement?
-					}
-				}.toTypedArray().firstOrNull() ?: return null
-				return arrayOf(ret)
-			}
-
-//		 function
+//			function
 			identifierName.isWxFunction() -> {
-				val ret = PsiTreeUtil.findChildrenOfType(jsFile, JSExpression::class.java).flatMap {
-					PsiTreeUtil.findChildrenOfType(it, JSProperty::class.java).filter {
+				val ret = PsiTreeUtil.findChildrenOfType(jsFile, JSExpression::class.java).asSequence().flatMap {
+					PsiTreeUtil.findChildrenOfType(it, JSProperty::class.java).asSequence().filter {
 						it.value is JSFunctionExpression && it.nameIdentifier?.text == identifierName
 					}
-				}.mapNotNull { it as PsiElement }.toTypedArray().firstOrNull() ?: return null
-				return arrayOf(ret)
+				}.mapNotNull { it as PsiElement }.toList().toTypedArray()
+				return ret
 			}
 		}
 		return null
