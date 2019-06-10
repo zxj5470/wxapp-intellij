@@ -31,7 +31,7 @@
 ## 插件相关内容
 
 ### 兼容性：
-- 支持 IntelliJ IDEA U, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand
+- 支持 IntelliJ IDEA Ultimate, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand
 - 有关CSS部分跳转的内容最低兼容到172（虽然我写的最低是162版本安装）
 - 172到182版本可能会报错（内嵌的加载wx.d.ts的功能未完成所以可能会报错但不影响使用）
 - 183及以上正常
