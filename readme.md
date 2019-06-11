@@ -24,17 +24,20 @@
 [直接下载](https://github.com/Adherentman/Typescript-wxApi.d.ts/raw/master/wx.d.ts)
 
 然后这个亚子：
+
 ![](https://user-images.githubusercontent.com/20026798/59198243-d3382100-8bc5-11e9-8bda-ec0c1491a608.png)
+
 好了，那没事了
+
 ![](https://user-images.githubusercontent.com/20026798/59198181-ac79ea80-8bc5-11e9-9512-3240faeaefaf.png)
 
 ## 插件相关内容
 
 ### 兼容性：
 - 支持 IntelliJ IDEA Ultimate, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand
-- 有关CSS部分跳转的内容最低兼容到172（虽然我写的最低是162版本安装）
-- 172到182版本可能会报错（内嵌的加载wx.d.ts的功能未完成所以可能会报错但不影响使用）
-- 183及以上正常
+- 有关CSS部分跳转的内容最低兼容到172（虽然我写的最低是162版本可安装）
+- 172到182版本可能会报错（内嵌的加载wx.d.ts的功能未完成所以可能会报错但完全不影响使用）
+- 183及以上完全正常使用
 
 ### 插件功能及相关解决方案
 - js
@@ -63,9 +66,10 @@
 	
 
 ## Pending……
+- 内嵌能用的 wx.d.ts 声明文件
 - wxml缩进
-- wxss的class内容跳转到wxml（估计做不了，我不会，但是如果用不优雅的方法倒是可以实现）
-- 另外理论上说完全可以实现做到实时预览。
+- wxss的class内容跳转到wxml（估计做不了，我不会，但是如果用不优雅的方法倒是可以实现，我就不恶心自己了）
+- 另外理论上说完全可以实现做到实时预览。（谁去实现？）
 
 ## 效果图
 ### WXML
