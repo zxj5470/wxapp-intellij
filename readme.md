@@ -12,7 +12,7 @@
   </tr>
 </table>
 
-预览新版本, 见 https://ci.appveyor.com/project/zxj5470/bugkotlindocument/build/artifacts/
+预览新版本, 见 https://ci.appveyor.com/project/zxj5470/wxapp-intellij/build/artifacts/
 
 ## 额外的配置
 ### 代码缩进 
