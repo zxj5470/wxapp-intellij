@@ -3,7 +3,6 @@ import org.jetbrains.intellij.tasks.PatchPluginXmlTask
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val kotlinVersion: String by extra
 val alternative_ide_path: String by extra
 
 val commitHash = kotlin.run {
@@ -64,8 +63,8 @@ tasks.withType<PatchPluginXmlTask> {
 
 
 dependencies {
-	compile(kotlin("stdlib-jdk8"))
-	testCompile(kotlin("test-junit", kotlinVersion))
+	compileOnly(kotlin("stdlib-jdk8"))
+	testCompile(kotlin("test-junit"))
 	testCompile("junit", "junit", "4.12")
 }
 
