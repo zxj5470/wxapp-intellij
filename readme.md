@@ -13,13 +13,6 @@
 </table>
 
 预览新版本, 见 https://ci.appveyor.com/project/zxj5470/bugkotlindocument/build/artifacts/
-## 关于代码格式化
-首先……个人建议
-对于微信小程序，请多一层目录拿来搞配置文件……因为微信的谜之编译喜欢把他自己的整个目录搞上去……
-
-具体例子见 [wildfire-wxapp](https://github.com/zxj5470/wildfire-wxapp)
-
-当然了大家也可以不这么做，等什么时候我把 <del>external library 和 (划掉。已经做出来了)</del>代码 format 格式做出来就不需要这个亚子了……
 
 ## 额外的配置
 ### 代码缩进 
