@@ -23,13 +23,7 @@
 配置见 [.editorconfig](https://github.com/zxj5470/wildfire-wxapp/blob/master/.editorconfig)
 
 ### 代码智能提示
-首先确保了你的目录结构是那样的……然后有一个 wx.d.ts 文件……
-在 [Typescript-wxApi.d.ts](https://github.com/Adherentman/Typescript-wxApi.d.ts) 这个仓库中。
-[直接下载](https://github.com/Adherentman/Typescript-wxApi.d.ts/raw/master/wx.d.ts)
-
-然后这个亚子：
-
-![](https://user-images.githubusercontent.com/20026798/59198243-d3382100-8bc5-11e9-8bda-ec0c1491a608.png)
+（功能做出来了，不需要额外配置wx.d.ts了，直接打开一个project就能添加）
 
 好了，那没事了
 
@@ -62,10 +56,13 @@
 - wxss
 	- rpx 问题：
 		- 解决rpx底下红色 “报错” 标注以及代码格式化 Ctrl(cmd)+ Alt(option) + L 后 数字与rpx之间出现空格的问题
+		
 		![](https://user-images.githubusercontent.com/20026798/59233255-4a97a000-8c1a-11e9-819f-e648f7ea1ef0.png)
 		- Alt + Enter，关闭检查。
+		
 		![](https://user-images.githubusercontent.com/20026798/59233270-58e5bc00-8c1a-11e9-9d81-736709fe2633.png)
 		- 显示结果：
+		
 		![](https://user-images.githubusercontent.com/20026798/59233421-f214d280-8c1a-11e9-843f-57a498e8e248.png)
 	
 
