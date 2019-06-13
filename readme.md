@@ -1,14 +1,25 @@
 # wxapp Plugin
 [![JetBrains plugins](https://img.shields.io/jetbrains/plugin/v/12539-wxapp-support.svg)](https://plugins.jetbrains.com/plugin/12539-wxapp-support)
 [![JetBrains plugins](https://img.shields.io/jetbrains/plugin/d/12539-wxapp-support.svg)](https://plugins.jetbrains.com/plugin/12539-wxapp-support)
+<table>
+  <tr>
+    <th>CI</th>
+    <th>Status</th>
+  </tr>
+  <tr>
+    <td>AppVeyor (on Windows)</td>
+    <td><a href="https://ci.appveyor.com/project/zxj5470/wxapp-intellij"><img src="https://ci.appveyor.com/api/projects/status/github/zxj5470/wxapp-intellij?branch=master&svg=true" alt="AppVeyor Build status"></a></td>
+  </tr>
+</table>
+
+预览新版本, 见 https://ci.appveyor.com/project/zxj5470/bugkotlindocument/build/artifacts/
 ## 关于代码格式化
 首先……个人建议
 对于微信小程序，请多一层目录拿来搞配置文件……因为微信的谜之编译喜欢把他自己的整个目录搞上去……
-（为什么这么做在下面有说明，因为大家写代码肯定需要智能提示各种函数吧……）
 
 具体例子见 [wildfire-wxapp](https://github.com/zxj5470/wildfire-wxapp)
 
-当然了大家也可以不这么做，等什么时候我把 external library 和 代码 format 格式做出来就不需要这个亚子了……
+当然了大家也可以不这么做，等什么时候我把 <del>external library 和 (划掉。已经做出来了)</del>代码 format 格式做出来就不需要这个亚子了……
 
 ## 额外的配置
 ### 代码缩进 

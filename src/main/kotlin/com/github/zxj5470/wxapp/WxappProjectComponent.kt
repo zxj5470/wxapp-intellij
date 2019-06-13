@@ -80,7 +80,5 @@ fun Project.syncDTsLibrary() {
 				ModuleRootModificationUtil.addDependency(module, library)
 			}
 		}
-	} else {
-		println("already")
 	}
 }
