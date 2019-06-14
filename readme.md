@@ -32,15 +32,15 @@
 
 ### 兼容性：
 - 支持 IntelliJ IDEA Ultimate, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand
-- 有关CSS部分跳转的内容最低兼容到172（虽然我写的最低是162版本可安装）
-- 172到182版本可能会报错（内嵌的加载wx.d.ts的功能未完成所以可能会报错但完全不影响使用）
+- 最低兼容版本到 162
+- 有关CSS部分跳转的内容最低兼容到172
 - 183及以上完全正常使用
 
 ### 插件功能及相关解决方案
 - js
-	- - 内嵌了 wx.d.ts 声明文件。
+	- 内嵌了 wx.d.ts 声明文件
 	- 跳转：上面【好了，那没事了】那张图，ctrl+左键 点击 url 的字符串内容可跳转到对于 .js。。。
-		- 甚至你写 `/pages/index/index` 也是支持跳转的，当然了不建议各位这么写
+			- 甚至你写 `/pages/index/index` 也是支持跳转的，当然了不建议各位这么写
 	- 内嵌了 [Matchmaker](https://github.com/lypeer/Matchmaker) 插件的功能。
 		- Alt + Insert 或者光标右键 Generate... | Make match
 		- 并且修改为以当前光标位置插入相应函数。那个插件居然是直接在 `Page({` 后面插入，这太鬼畜了……
