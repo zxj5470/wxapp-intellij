@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td>AppVeyor (on Windows)</td>
-    <td><a href="https://ci.appveyor.com/project/zxj5470/wxapp-intellij"><img src="https://ci.appveyor.com/api/projects/status/github/zxj5470/wxapp-intellij?branch=master&svg=true&style=flat-square" alt="AppVeyor Build status"></a></td>
+    <td><a href="https://ci.appveyor.com/project/zxj5470/wxapp-intellij"><img src="https://ci.appveyor.com/api/projects/status/github/zxj5470/wxapp-intellij?branch=master&svg=true" alt="AppVeyor Build status"></a></td>
   </tr>
 </table>
 
@@ -32,9 +32,7 @@
 
 ### 兼容性：
 - 支持 IntelliJ IDEA Ultimate, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand
-- 最低兼容版本到 162
-- 有关CSS部分跳转的内容最低兼容到172
-- 183及以上完全正常使用
+- 有关CSS部分跳转的内容，因此最低兼容版本到 172 
 
 ### 插件功能及相关解决方案
 - js

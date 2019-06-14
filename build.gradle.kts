@@ -18,7 +18,7 @@ val commitHash = kotlin.run {
 	output.trim()
 }
 val isCI = !System.getenv("CI").isNullOrBlank()
-val pluginComingVersion = "0.2.2"
+val pluginComingVersion = "0.2.3"
 val pluginVersion = if (isCI) "$pluginComingVersion-$commitHash" else pluginComingVersion
 val packageName = "com.github.zxj5470.wxapp"
 
@@ -39,7 +39,7 @@ allprojects {
 		instrumentCode = true
 		// use WebStorm
 		alternativeIdePath = alternative_ide_path
-		setPlugins("JavaScriptLanguage","CSS")
+		setPlugins("JavaScriptLanguage", "CSS")
 	}
 }
 

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.github.zxj5470.wxapp</id>
     <name>Wxapp Support</name>
-    <idea-version since-build="162.0"/>
+    <idea-version since-build="172.0"/>
     <vendor email="zxj5470@foxmail.com" url="http://www.github.com/zxj5470">zxj5470</vendor>
 
     <depends>com.intellij.modules.lang</depends>
@@ -48,6 +48,9 @@
                 implementationClass="com.intellij.psi.css.impl.util.editor.WxssFormattingModelBuilder"/>
         <lang.findUsagesProvider language="wxss"
                                  implementationClass="com.github.zxj5470.wxapp.navigator.WxssFindUsageProvider"/>
+<!--        <toolWindow id="wxapp.Project" anchor="left" icon="AllIcons.Toolwindows.ToolWindowProject"-->
+<!--                    factoryClass="com.intellij.ide.projectView.impl.ProjectViewToolWindowFactory"/>-->
+        <projectViewPane implementation="com.github.zxj5470.wxapp.WxProjectViewPane"/>
     </extensions>
 
 <!-- third part -->

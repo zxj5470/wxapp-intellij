@@ -27,16 +27,20 @@ class WxappProjectComponent(private val project: Project) : ProjectComponent, Di
 	}
 
 	fun setupWxapp() {
+		fun VirtualFile?.toPsiFile() = this?.let { PsiManager.getInstance(project).findFile(it) }
 		val vf = project.getWxRootDir
 		if (vf != null) {
 			project.syncDTsLibrary()
-			val f = PsiManager.getInstance(project).findFile(vf)
-			project.putUserData(APP_JS_KEY, f)
-
+			val appJs = vf.toPsiFile()
+			val appWxss = vf.parent.findChild("app.wxss").toPsiFile()
+			val appJson = vf.parent.findChild("app.json").toPsiFile()
+			project.putUserData(APP_JS_KEY, appJs)
+			project.putUserData(APP_WXSS_KEY, appWxss)
+			project.putUserData(APP_JSON_KEY, appJson)
 		}
 	}
-
 }
+
 
 val Project.getWxRootDir: VirtualFile?
 	get() = if (isDefault) {

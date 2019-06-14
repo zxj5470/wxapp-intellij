@@ -24,8 +24,13 @@ class WxmlInjectJavascript : LanguageInjector {
 				val text = value.text
 				fragment(text, places)
 				(value.parent as? XmlAttribute)?.let { attr ->
-					if (attr.nameElement.text.startsWith("bind")) {
-						places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), "call(", ")")
+					val txt = attr.nameElement.text
+					if (txt.startsWith("bind")) {
+						if(txt=="binginput"){
+							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), "get(", ")")
+						}else {
+							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), "call(", ")")
+						}
 					}
 				}
 			}
