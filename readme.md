@@ -1,5 +1,6 @@
 # Wxapp Support
-[中文](readme_zh_CN.md)
+[中文文档](readme_zh_CN.md)
+
 [![JetBrains plugins](https://img.shields.io/jetbrains/plugin/v/12539-wxapp-support.svg?style=flat-square)](https://plugins.jetbrains.com/plugin/12539-wxapp-support)
 [![JetBrains plugins](https://img.shields.io/jetbrains/plugin/d/12539-wxapp-support.svg?style=flat-square)](https://plugins.jetbrains.com/plugin/12539-wxapp-support)
 <table>
