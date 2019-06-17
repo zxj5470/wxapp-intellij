@@ -9,6 +9,7 @@ import com.intellij.lang.javascript.psi.JSProperty
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiElement
+import com.intellij.psi.css.CssElement
 import com.intellij.psi.css.impl.CssTokenImpl
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.PsiUtilCore
@@ -23,7 +24,6 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 		val elem: PsiElement = sourceElement ?: return null
 		if (elem.containingFile.language != WxmlLanguage.INSTANCE) return null
 		val el = PsiUtilCore.getElementAtOffset(elem.containingFile, offset)
-
 		val fileName = el.containingFile.virtualFile.nameWithoutExtension
 		val dir = el.containingFile.containingDirectory ?: return null
 		val jsFile = dir.findFile("$fileName.js") ?: return null
@@ -35,7 +35,7 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 		when {
 //			id or class
 			grandpar is XmlAttribute && grandpar.nameElement.text == "class" -> {
-				val collection = PsiTreeUtil.findChildrenOfType(wxssFile, CssTokenImpl::class.java) + PsiTreeUtil.findChildrenOfType(globalWxssFile, CssTokenImpl::class.java)
+				val collection = PsiTreeUtil.findChildrenOfType(wxssFile, CssElement::class.java) + PsiTreeUtil.findChildrenOfType(globalWxssFile, CssTokenImpl::class.java)
 				val ret = collection
 					.filter { token ->
 						token.text == identifierName
@@ -54,5 +54,6 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 		}
 		return null
 	}
+
 	override fun getActionText(context: DataContext): String? = null
 }

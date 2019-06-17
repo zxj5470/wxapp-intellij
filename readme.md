@@ -12,10 +12,15 @@
   </tr>
 </table>
 
-预览新版本, 见 https://ci.appveyor.com/project/zxj5470/wxapp-intellij/build/artifacts/
+## Installation \& Usage
+Install IntelliJ IDEA Ultimate, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, AppCode, CLion, GoLand (these ONLY supported!)
+open `Settings | Plugins | Browse repositories`,
+install `Wxapp Support` plugin.
 
-## 额外的配置
-### 代码缩进 
+To download a nightly build (buggy!), visit https://ci.appveyor.com/project/zxj5470/wxapp-intellij/build/artifacts/ .<br/>
+
+## Additional configuration
+### Code indentation
 另外请安装 editorconfig 插件（2018及以后的 IDEA-U 是内置了，但是 PhpStorm 和 WebStorm 我不确定有没有内置）
 
 这个是用来保证代码缩进 2 个空格的。
