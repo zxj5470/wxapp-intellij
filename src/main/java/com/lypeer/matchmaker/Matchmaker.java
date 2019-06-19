@@ -1,11 +1,10 @@
 package com.lypeer.matchmaker;
 
-import com.intellij.codeInsight.CodeInsightActionHandler;
-import com.intellij.codeInsight.generation.actions.BaseGenerateAction;
-import com.intellij.codeInsight.generation.actions.GenerateAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.ide.actions.UndoAction;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.ActionsKt;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
@@ -24,7 +23,13 @@ import java.util.regex.Pattern;
  * <p>
  * Created by lypeer on 2016/9/28.
  */
-class Matchmaker extends GenerateAction {
+class Matchmaker extends AnAction {
+	@Override
+	public void update(@NotNull AnActionEvent e) {
+		boolean b = Ext.available(e);
+		e.getPresentation().setEnabled(b);
+	}
+
 	@Override
 	public void actionPerformed(AnActionEvent anActionEvent) {
 		List<String> functionsName = new ArrayList<>();
@@ -41,10 +46,6 @@ class Matchmaker extends GenerateAction {
 			Utils.showErrorNotification(project, Constants.Message.ERROR_FILE_NULL);
 			return;
 		}
-		if (!file.getName().endsWith(".js")) {
-			return;
-		}
-		//验空
 
 		String wxmlFileName = file.getName().replace("js", "wxml");
 		PsiFile[] wxmlFiles = FilenameIndex.getFilesByName(project, wxmlFileName, GlobalSearchScope.allScope(project));
@@ -84,15 +85,16 @@ class Matchmaker extends GenerateAction {
 
 		try {
 			int r = editor.getCaretModel().getOffset();
-			System.out.println(r);
-			ActionsKt.runWriteAction(()->{
-				try {
-					new Writer(file, functionsName,r).run();
-				} catch (Throwable throwable) {
-					throwable.printStackTrace();
-				}
-				return 0;
-			});
+			CommandProcessor.getInstance().executeCommand(project, () -> {
+				ActionsKt.runWriteAction(() -> {
+					try {
+						new Writer(file, functionsName, r).run();
+					} catch (Throwable throwable) {
+						throwable.printStackTrace();
+					}
+					return 0;
+				});
+			}, null, null);
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
 		}

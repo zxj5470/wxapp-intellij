@@ -18,7 +18,7 @@ val commitHash = kotlin.run {
 	output.trim()
 }
 val isCI = !System.getenv("CI").isNullOrBlank()
-val pluginComingVersion = "0.2.3"
+val pluginComingVersion = "0.2.4"
 val pluginVersion = if (isCI) "$pluginComingVersion-$commitHash" else pluginComingVersion
 val packageName = "com.github.zxj5470.wxapp"
 

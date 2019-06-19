@@ -95,13 +95,14 @@ class WxssElementDescriptorFactory2 @JvmOverloads constructor(private val myProg
 
 	@Synchronized
 	fun reload(): CssDescriptorsHolder {
-		val loader = CssDescriptorsLoader(if (this.myProgressManager != null) this.myProgressManager.progressIndicator else null)
+		val loader = WxssDescriptorsLoader(if (this.myProgressManager != null) this.myProgressManager.progressIndicator else null)
 		val var2 = this.mySchemesToLoad
 		val var3 = var2.size
 
-		for (var4 in 0 until var3) {
-			val scheme = var2[var4]
+		for (it in 0 until var3) {
+			val scheme = var2[it]
 			val resource = this.javaClass.getResource("xml/$scheme")
+			println(it)
 			if (resource == null) {
 				LOG.warn("Cannot find CSS scheme: $scheme")
 			} else {
@@ -140,7 +141,7 @@ class WxssElementDescriptorFactory2 @JvmOverloads constructor(private val myProg
 
 	companion object {
 		private val LOG = Logger.getInstance(WxssElementDescriptorFactory2::class.java)
-		val SCHEME_NAMES = arrayOf("css-cascade-4.xml", "css1.0.xml", "css2.0.xml", "css2.1.xml", "css3.0.xml", "css-overflow-3.xml", "css-box.xml", "css3-gcpm.xml", "css-page-floats.xml", "css3-page.xml", "custom-elements.xml", "css3-images.xml", "css4-images.xml", "css3-line-grid.xml", "css3-mediaqueries.xml", "view-mode.xml", "css3-animations.xml", "css-device-adapt.xml", "css3-transitions.xml", "css3-transforms.xml", "css-text-3.xml", "css-ruby-1.xml", "css3-speech.xml", "css3-ui.xml", "css-counter-styles-3.xml", "css-lists-3.xml", "css3-filter-effects.xml", "css-scoping1.xml", "css-regions.xml", "css3-break.xml", "css3-flexbox.xml", "css3-grid.xml", "css-masking-1.xml", "css-shapes-1.xml", "css3-background.xml", "css-display-3.xml", "css3-fonts.xml", "fontface.xml", "css-text-decor-3.xml", "css3-preslev.xml", "css3-positioning.xml", "css-compositing-1.xml", "css3-align.xml", "ie.xml", "css3-writing-modes.xml", "jquery.xml", "mozilla.xml", "mso.xml", "opera.xml", "svg.xml", "webkit.xml", "css-snappoints-1.xml", "css-will-change.xml", "css-inline-3.xml", "appmanifest.xml", "css-color-4.xml", "css-selectors-4.xml", "cssModules.xml", "css-contain-1.xml", "cssom-view-1.xml", "mediaqueries4.xml")
+		val SCHEME_NAMES = arrayOf("css-cascade-4.xml", "css1.0.xml", "css2.0.xml", "css2.1.xml", "css-overflow-3.xml", "css-box.xml", "css3-gcpm.xml", "css-page-floats.xml", "css3-page.xml", "custom-elements.xml", "css3-images.xml", "css4-images.xml", "css3-line-grid.xml", "css3-mediaqueries.xml", "view-mode.xml", "css3-animations.xml", "css-device-adapt.xml", "css3-transitions.xml", "css3-transforms.xml", "css-text-3.xml", "css-ruby-1.xml", "css3-speech.xml", "css3-ui.xml", "css-counter-styles-3.xml", "css-lists-3.xml", "css3-filter-effects.xml", "css-scoping1.xml", "css-regions.xml", "css3-break.xml", "css3-flexbox.xml", "css3-grid.xml", "css-masking-1.xml", "css-shapes-1.xml", "css3-background.xml", "css-display-3.xml", "css3-fonts.xml", "fontface.xml", "css-text-decor-3.xml", "css3-preslev.xml", "css3-positioning.xml", "css-compositing-1.xml", "css3-align.xml", "ie.xml", "css3-writing-modes.xml", "jquery.xml", "mozilla.xml", "mso.xml", "opera.xml", "svg.xml", "webkit.xml", "css-snappoints-1.xml", "css-will-change.xml", "css-inline-3.xml", "appmanifest.xml", "css-color-4.xml", "css-selectors-4.xml", "cssModules.xml", "css-contain-1.xml", "cssom-view-1.xml", "mediaqueries4.xml", "wxss3.0.xml")
 		val instance: WxssElementDescriptorFactory2
 			get() = ServiceManager.getService(WxssElementDescriptorFactory2::class.java) as WxssElementDescriptorFactory2
 	}

@@ -1,3 +1,4 @@
+@file:Suppress("DEPRECATION", "OverridingDeprecatedMember")
 package com.github.zxj5470.wxapp
 
 import com.intellij.ide.*
@@ -115,7 +116,7 @@ interface FileGroupNode {
 
 class WxappAppGlobalGroupNode(project: Project,
 										file: PsiFile,
-										settings: ViewSettings) : ProjectViewNode<Any>(project, file, settings), FileGroupNode {
+										settings: ViewSettings) : ProjectViewNode<Any>(project, file, settings), FolderGroupNode {
 	override fun contains(file: VirtualFile): Boolean {
 		return true
 	}
@@ -133,8 +134,7 @@ class WxappAppGlobalGroupNode(project: Project,
 		val appJs = project.getUserData(APP_JS_KEY) ?: return children
 		val appWxss = project.getUserData(APP_WXSS_KEY) ?: return children
 		val appJson = project.getUserData(APP_JSON_KEY) ?: return children
-		@Suppress("unsupported")
-		val arr = [appJs, appWxss, appJson]
+		val arr = arrayOf(appJs, appWxss, appJson)
 		arr.map { PsiFileNode(project, it, settings) }.forEach {
 			children.add(it)
 		}

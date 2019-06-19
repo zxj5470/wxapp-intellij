@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="urn:schemas-jetbrains-com:css-xml">
+
+  <named-value id="comma-separator" declared-in="0">
+    <text value=","/>
+  </named-value>
+  
+  <named-value id="custom-ident" declared-in="3.0" url="http://www.w3.org/TR/css3-values/#identifier-value">
+    <description><![CDATA[
+      <p>Some properties accept arbitrary author-defined identifiers as a component value. This generic data type is denoted by &lt;custom-ident&gt;,
+        and represents any valid CSS identifier that does not otherwise appear as a pre-defined keyword in that property's value definition.
+        Such identifiers are fully case-sensitive, even in the ASCII range (e.g. ‘example’ and ‘EXAMPLE’ are two different, unrelated
+        user-defined identifiers).</p>
+]]></description>
+    <name>
+      <exclusion>
+        <group type="or">
+          <name value="default" />
+          <name value="inherit" />
+          <name value="initial" />
+          <name value="unset" />
+        </group>
+      </exclusion>
+    </name>
+  </named-value>
+  
+  <!-- CSS properties -->
+  <property id="atsc-dynamic-refresh" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="atsc-nav-down" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="atsc-nav-index" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="atsc-nav-left" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="atsc-nav-right" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="atsc-nav-up" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="interpret-as" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="key-equivalent" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="tab-index" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="user-input" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="user-modify" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="user-focus" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="user-focus-key" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="user-focus-pointer" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="toggle-group" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="group-reset" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="glyph-orientation-vertical" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="glyph-orientation-horizontal" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="min-font-size" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="max-font-size" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-justify-trim" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-kashida-space" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="word-break-cjk" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="word-break-inside" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-space" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-end-overflow" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-after-overflow" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="punctuation-trim" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="kerning-mode" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="kerning-pair-treshold" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-underline-mode" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-line-through-style" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-line-through-color" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-line-through-mode" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-overline-style" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-overline-color" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-overline-mode" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-overline" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-combine" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="display-model" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="display-role" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="margin-inside" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="margin-outside" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="link" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="all-space-treatment" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="line-grid-mode" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="line-grid-progression" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="linefeed-treatment" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-script" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-overflow-ellipsis" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-overflow-mode" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="white-space-treatment" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="wrap-option" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="text-blink" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="marquee" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="marquee-repetition" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="overflow-clip" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="block-progression" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="word-break-wrap" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="round-clip" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="collapse" declared-in="3.0">
+    <any max="-1"/>
+  </property>
+  <property id="color" declared-in="3.0" rules="noname,@page,page-margin" url="http://www.w3.org/TR/css3-color/#color" initial="depends on user agent" applies="all" inherited="yes" media="visual">
+    <group type="or">
+      <inline id="color"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  
+  <property id="opacity" declared-in="3.0" browsers="C1,FF3.6,IE9,O9,S1.2" url="http://www.w3.org/TR/2008/WD-css3-color-20080721/#opacity" initial="1" applies="all" media="visual">
+    <group type="or">
+      <number/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="bikeshedding" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#bikeshedding" initial="collapse" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="collapse"/>
+      <name value="discard"/>
+      <group type="and">
+        <group type="or">
+          <name value="preserve"/>
+          <name value="preserve-breaks"/>
+        </group>
+        <group type="any">
+          <name value="trim-inner"/>
+          <name value="consume-before"/>
+          <name value="consume-after"/>
+        </group>
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="hyphenate-character" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#hyphenate-character" initial="auto" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="auto"/>
+      <string/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="hyphenate-limit-chars" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#hyphenate-limit-chars" initial="auto" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="auto"/>
+      <integer min="1" max="3"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="hyphenate-limit-last" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#hyphenate-limit-last" initial="none" applies="block containers" inherited="yes" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <name value="always"/>
+      <name value="column"/>
+      <name value="page"/>
+      <name value="spread"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="hyphenate-limit-lines" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#hyphenate-limit-lines" initial="no-limit" applies="block containers" inherited="yes" media="visual">
+    <group type="or">
+      <name value="no-limit"/>
+      <integer/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="hyphenate-limit-zone" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#hyphenate-limit-zone" initial="0" applies="block containers" inherited="yes" percentage="refers to width of the line box" media="visual">
+    <group type="or">
+      <percentage/>
+      <length/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="hyphenate-resource" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#hyphenate-resource" initial="none" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <group>
+        <invoke id="url"/>
+        <group min="0" max="-1">
+          <text value=","/>
+          <invoke id="url"/>
+        </group>
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="text-autospace" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#text-autospace" initial="none" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <group type="any">
+        <name value="ideograph-numeric"/>
+        <name value="ideograph-alpha"/>
+        <name value="punctuation"/>
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="text-outline" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#text-outline" initial="none" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <group type="or">
+        <group>
+          <inline id="color"/>
+          <length/>
+          <length min="0"/>
+        </group>
+        <group>
+          <length/>
+          <length min="0"/>
+          <inline id="color"/>
+        </group>
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="text-trim" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#text-trim" initial="normal" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="normal"/>
+      <group type="any">
+        <name value="force-start"/>
+        <name value="no-justify"/>
+        <group type="or">
+          <name value="keep-end"/>
+          <name value="force-end"/>
+        </group>
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="text-wrap" declared-in="3.0" url="http://www.w3.org/TR/css3-text/#text-wrap" initial="normal" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <name value="normal"/>
+      <name value="avoid"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="binding" declared-in="3.0" url="http://www.w3.org/TR/becss/#binding1" initial="none" applies="all elements (but not pseudo-elements)" inherited="no" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <invoke id="url" min="1" max="-1"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="binding" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-binding"/>
+  
+  <property id="marquee-direction" declared-in="3.0" url="http://www.w3.org/TR/css3-box/#marquee-direction" initial="reverse" applies="same as ‘overflow’" inherited="yes" media="visual">
+    <group type="or">
+      <name value="forward"/>
+      <name value="reverse"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="marquee-loop" declared-in="3.0" url="http://www.w3.org/TR/css3-box/#marquee-loop" initial="1" applies="same as ‘overflow’" inherited="no" media="visual">
+    <group type="or">
+      <name value="infinite"/>
+      <integer/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="marquee-speed" declared-in="3.0" url="http://www.w3.org/TR/css3-box/#marquee-speed" initial="normal" applies="same as ‘overflow’" inherited="no" media="visual">
+    <group type="or">
+      <name value="slow"/>
+      <name value="normal"/>
+      <name value="fast"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="marquee-style" declared-in="3.0" url="http://www.w3.org/TR/css3-box/#marquee-style" initial="scroll" applies="same as ‘overflow’" inherited="no" media="visual">
+    <group type="or">
+      <name value="scroll"/>
+      <name value="slide"/>
+      <name value="alternate"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="marquee-play-count" declared-in="3.0" url="http://www.w3.org/TR/css3-marquee/#marquee-play-count" initial="1" applies="same as ‘overflow’" inherited="no" media="visual">
+    <group type="or">
+      <name value="infinite"/>
+      <integer/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="overflow-style" declared-in="3.0" url="http://www.w3.org/TR/css3-marquee/#overflow-style" initial="auto" applies="same as ‘overflow’" inherited="yes" media="visual">
+    <group type="or">
+      <name value="auto"/>
+      <name value="marquee-line"/>
+      <name value="marquee-block"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="rotation" declared-in="3.0" url="http://www.w3.org/TR/css3-box/#rotation" initial="0" applies="block-level elements, inline-table and inline-block" inherited="no" media="visual">
+    <group type="or">
+      <angle />
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="rotation-point" declared-in="3.0" url="http://www.w3.org/TR/css3-box/#rotation-point" initial="50% 50%" applies="block-level elements" inherited="no" percentage="width and height of border box" media="visual">
+    <group type="or">
+      <position/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="crop" declared-in="3.0" url="http://www.w3.org/TR/css3-content/#crop" initial="auto" applies="replaced elements" inherited="no" percentage="relative to intrinsic size" media="visual">
+    <group type="or">
+      <inline id="shape"/>
+      <name value="auto"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="move-to" declared-in="3.0" url="http://www.w3.org/TR/css3-content/#move-to" initial="normal" applies="all elements, ::before, ::after, and ::alternate" inherited="no" media="all">
+    <group type="or">
+      <name value="normal"/>
+      <name value="here"/>
+      <name/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="page-policy" declared-in="3.0" url="http://www.w3.org/TR/css3-content/#page-policy" initial="start" applies="@counter and @string blocks" inherited="no" media="paged">
+    <group type="or">
+      <name value="start"/>
+      <name value="first"/>
+      <name value="last"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="target" declared-in="3.0" url="http://www.w3.org/TR/css3-hyperlinks/#target" initial="see individual properties" applies="hyperlinks" inherited="no" media="interactive visual">
+    <group type="or">
+      <group type="any">
+        <property id="target-name" />
+        <property id="target-new" />
+        <property id="target-position" />
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="target-name" declared-in="3.0" url="http://www.w3.org/TR/css3-hyperlinks/#target-name" initial="current" applies="hyperlinks" inherited="no" media="interactive visual">
+    <group type="or">
+      <name value="current"/>
+      <name value="root"/>
+      <name value="parent"/>
+      <name value="new"/>
+      <name value="modal"/>
+      <string/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="target-new" declared-in="3.0" url="http://www.w3.org/TR/css3-hyperlinks/#target-new" initial="window" applies="hyperlinks" inherited="no" media="interactive visual">
+    <group type="or">
+      <name value="window"/>
+      <name value="tab"/>
+      <name value="none"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="target-position" declared-in="3.0" url="http://www.w3.org/TR/css3-hyperlinks/#target-position" initial="above" applies="hyperlinks" inherited="no" media="interactive visual">
+    <group type="or">
+      <name value="above"/>
+      <name value="behind"/>
+      <name value="front"/>
+      <name value="back"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="column-count" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-count" initial="auto" 
+            applies="non-replaced block-level elements (except table elements), table cells, and inline-block elements" inherited="no" 
+            media="visual" browsers="S9.0">
+    <group type="or">
+      <name value="auto"/>
+      <integer/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-count" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-count" browsers="FF1.5"/>
+  <prefixed-property id="column-count" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-count" browsers="C1.0,S3.0"/>
+  
+  <property id="column-fill" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-fill" initial="balance" 
+            applies="multicol elements" inherited="no" media="visual" browsers="S9.0">
+    <group type="or">
+      <name value="auto"/>
+      <name value="balance"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-fill" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-count" browsers="FF13.0"/>
+
+  <property id="column-rule" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-rule" initial="see individual properties" 
+            applies="multicol elements" inherited="no" media="visual" browsers="IE10,O11.1,S9.0">
+    <group type="any">
+      <property id="column-rule-width"/>
+      <property id="column-rule-style"/>
+      <group type="or">
+        <property id="column-rule-color"/>
+        <name value="transparent"/>
+      </group>
+    </group>
+  </property>
+  <prefixed-property id="column-rule" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule" browsers="FF3.5"/>
+  <prefixed-property id="column-rule" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule" browsers="C1.0,S3.0"/>
+  
+  <property id="column-rule-color" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-rule-color" 
+            initial="same as for ‘color’ property" applies="multicol elements" inherited="no" media="visual" browsers="IE10,O11.1,S9.0">
+    <group type="or">
+      <inline id="color" />
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-rule-color" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color" browsers="FF3.5"/>
+  <prefixed-property id="column-rule-color" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color" browsers="C1.0,S3.0"/>
+  
+  <property id="column-rule-style" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-rule-style" initial="none" 
+            applies="multicol elements" inherited="no" media="visual" browsers="IE10,O11.1,S9.0">
+    <group type="or">
+      <inline id="border-style" />
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-rule-style" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style" browsers="FF3.5"/>
+  <prefixed-property id="column-rule-style" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style" browsers="C1.0,S3.0"/>
+  
+  <property id="column-rule-width" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-rule-width" initial="medium" 
+            applies="multicol elements" inherited="no" media="visual" browsers="IE10,O11.1,S9.0">
+    <group type="or">
+      <inline id="border-width" />
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-rule-width" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width" browsers="FF3.5"/>
+  <prefixed-property id="column-rule-width" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width" browsers="C1.0,S3.0"/>
+  
+  <property id="columns" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#columns" initial="see individual properties" 
+            browsers="IE10,O11.1,S9.0" applies="non-replaced block-level elements (except table elements), table cells, and inline-block elements" inherited="no" media="visual">
+    <group type="any">
+      <property id="column-width"/>
+      <property id="column-count"/>
+    </group>
+  </property>
+  <prefixed-property id="columns" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/columns" browsers="FF9"/>
+  <prefixed-property id="columns" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/columns" browsers="C1.0,S3.0"/>
+  <property id="column-span" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-span" initial="none" 
+            browsers="IE10,O11.1,S9.0" applies="block-level elements, except floating and absolutely positioned elements" inherited="no" media="visual">
+    <group type="or">
+      <name value="none"/>
+      <name value="all"/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-span" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-span" 
+                     browsers="C1.0,S3.0"/>
+  
+  <property id="column-width" declared-in="3.0" url="http://www.w3.org/TR/css3-multicol/#column-width" initial="auto" 
+            applies="non-replaced block-level elements (except table elements), table cells, and inline-block elements" 
+            inherited="no" media="visual" browsers="IE10,O11.1,S9.0">
+    <group type="or">
+      <name value="auto"/>
+      <name value="min-content"/>
+      <name value="max-content"/>
+      <name value="fill-available"/>
+      <name value="fit-content"/>
+      <length/>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <prefixed-property id="column-width" prefix="moz" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-width" browsers="FF1.5"/>
+  <prefixed-property id="column-width" prefix="webkit" url="https://developer.mozilla.org/en-US/docs/Web/CSS/column-width" browsers="C1.0,S3.0"/>
+  
+  <property id="touch-action" declared-in="3.0" url="http://www.w3.org/TR/pointerevents/#the-touch-action-css-property" initial="auto" 
+            inherited="no" percentage="N/A" media="visual" applies="block-level elements, SVG elements">
+    <description><![CDATA[
+      <p>The touch-action CSS property determines whether touch input may trigger default behavior supplied by user agent. This includes,
+        but is not limited to, behaviors such as panning or zooming.</p>
+      ]]></description>
+    <group type="or">
+      <name value="auto" tooltip="The user agent may determine any permitted touch behaviors, such as panning and zooming manipulations of the viewport, for touches that begin on the element."/>
+      <name value="none" tooltip="Touches that begin on the element must not trigger default touch behaviors."/>
+      <group type="any">
+        <name value="pan-x" tooltip="The user agent may consider touches that begin on the element only for the purposes of horizontally scrolling the element's nearest ancestor with horizontally scrollable content."/>
+        <name value="pan-y" tooltip="The user agent may consider touches that begin on the element only for the purposes of vertically scrolling the element's nearest ancestor with vertically scrollable content."/>
+      </group>
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="pointer-events" declared-in="3.0" url="http://www.w3.org/TR/SVG/interact.html#PointerEventsProperty" initial="auto" applies="graphics elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="auto" />
+      <name value="none" />
+      <name value="visiblePainted" />
+      <name value="visibleFill" />
+      <name value="visibleStroke" />
+      <name value="visible" />
+      <name value="painted" />
+      <name value="fill" />
+      <name value="stroke" />
+      <name value="all" />
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+  <property id="overflow-scrolling" tooltip="Specifies whether to use native-style scrolling in an overflow:scroll element." declared-in="3.0" initial="auto" applies="all elements" inherited="yes" media="visual">
+    <group type="or">
+      <name value="auto" tooltip="One finger scrolling without momentum." />
+      <name value="touch" tooltip="Native-style scrolling. Specifying this style has the effect of creating a staking context (like opacity, masks, and transforms)." />
+      <inline id="wide-keywords" inline="yes"/>
+    </group>
+  </property>
+
+  <!-- CSS pseudo classes : -->
+  <pseudo-class id="root" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#root-pseudo"
+                browsers="C1.0,FF1.0,IE9,O9.5,S1.0"
+                tooltip="The :root pseudo-class represents an element that is the root of the document. In HTML 4, this is always the HTML element."/>
+
+  <pseudo-class id="last-child" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#last-child-pseudo"
+                browsers="C1.0,FF1.0,IE9,O9.2,S3.2"
+                tooltip="The :last-child pseudo-class represents an element that is the last child of some other element.">
+    <description><![CDATA[<p>Same as :<see cref="PC:nth-last-child"/>(1).</p><p>The <b>:last-child</b> pseudo-class represents an element that is the last child of some other element.</p><br/>
+    <p>The following selector represents a list item <b>li</b> that is the last child of an ordered list <b>ol</b>.</p>
+    <br/>
+    <code>ol > li:last-child</code>]]></description>
+  </pseudo-class>
+  <pseudo-class id="first-of-type" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#first-of-type-pseudo"
+                elementRequired="yes" browsers="C1.0,FF3.5,IE9,O9.5,S3.2"
+                tooltip="The :first-of-type pseudo-class represents an element that is the first sibling of its type in the list of children of its parent element.">
+    <description><![CDATA[<p>Same as :<see cref="PC:nth-of-type"/>(1).</p><p>The <b>:first-of-type</b> pseudo-class represents an element that is the first sibling of its type in the list of children of its parent element.</p>]]></description>
+  </pseudo-class>
+  <pseudo-class id="last-of-type" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#last-of-type-pseudo"
+                elementRequired="yes" browsers="C1.0,FF3.5,IE9,O9.5,S3.2"
+                tooltip="The :last-of-type pseudo-class represents an element that is the last sibling of its type in the list of children of its parent element.">
+    <description><![CDATA[<p>Same as :<see cref="PC:nth-last-of-type"/>(1).</p><p>The :last-of-type pseudo-class represents an element that is the last sibling of its type in the list of children of its parent element.</p>
+      <br/><p>The following selector represents the last data cell td of a table row tr.</p>
+      <br/><code>tr > td:last-of-type.</code>]]></description>
+  </pseudo-class>
+  <pseudo-class id="only-child" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#only-child-pseudo"
+                elementRequired="yes" browsers="C2.0,FF1.5,IE9,O9.5,S3.1"
+                tooltip="Represents an element that has a parent element and whose parent element has no other element children.">
+    <description><![CDATA[<p>Represents an element that has a parent element and whose parent element has no other element children.</p><br/>
+      <p>Same as :<see cref="PC:first-child"/>:<see cref="PC:last-child"/> or :<see cref="PC:nth-child"/>(1):<see cref="PC:nth-last-child"/>(1), but with a lower specificity.</p>]]></description>
+  </pseudo-class>
+  <pseudo-class id="only-of-type" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#only-of-type-pseudo"
+                elementRequired="yes" browsers="C1.0,FF3.5,IE9,O9.5,S3.2"
+                tooltip="Represents an element that has a parent element and whose parent element has no other element children with the same expanded element name.">
+    <description><![CDATA[<p>Represents an element that has a parent element and whose parent element has no other element children with the same expanded element name.</p><br/>
+    <p>Same as :<see cref="PC:first-of-type"/>:<see cref="PC:last-of-type"/> or :<see cref="PC:nth-of-type"/>(1):<see cref="PC:nth-last-of-type"/>(1), but with a lower specificity.</p>]]></description>
+  </pseudo-class>
+  <pseudo-class id="empty" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#empty-pseudo"
+                browsers="C1.0,FF1.0,IE9,O9.5,S3.1"
+                tooltip="Represents an element that has no children at all.">
+    <description><![CDATA[
+        <p>The <b>:empty</b> pseudo-class represents an element that has no children at all.</p>
+        <p>In terms of the document tree, only element nodes and content nodes whose data has a non-zero length must be considered
+         as affecting emptiness; comments, processing instructions, and other nodes must not affect whether an element is considered empty or not.</p><br/>
+        <p><b>p:empty</b> is a valid representation of the following fragment:</p>
+        <code>&lt;p&gt;&lt;/p&gt;</code>
+        <br/>
+        <br/>
+        <p><b>foo:empty</b> is not a valid representation for the following fragments:</p>
+        <code>
+        &lt;foo&gt;bar&lt;/foo&gt;<br/>
+        &lt;foo&gt;&lt;bar&gt;bla&lt;/bar&gt;&lt;/foo&gt;<br/>
+        &lt;foo&gt;this is not &lt;bar&gt;:empty&lt;/bar&gt;&lt;/foo&gt;<br/>
+        </code>]]></description>
+  </pseudo-class>
+  <pseudo-class id="target" declared-in="3.0" url="http://www.w3.org/TR/css3-selectors/#target-pseudo"
+                browsers="C1.0,FF1.0,IE9,O9.5,S1.3" tooltip="Represents a target element.">
+    <description><![CDATA[The <b>:target</b> pseudo-class selects the target element of the referring URI.
+    A fragment identifier is used to identify a location within a document, and is formed using a number sign followed by an anchor identifier—for example, http://www.example.com/mypage.html#section_3.]]></description> </pseudo-class>
+  <pseudo-class id="enabled" declared-in="3.0" url="http://www.w3.org/TR/css3-selectors/#enableddisabled"
+                browsers="C1.0,FF1.0,IE9,O9.0,S3.1" tooltip="Represents user interface elements that are in an enabled state.">
+    <description><![CDATA[The <b>:enabled</b> pseudo-class is a UI element states pseudo-class.
+    UI element states pseudo-classes select UI elements (form controls such as radio buttons or check boxes) that are in a certain state—enabled, disabled, or selected (checked).]]></description>
+  </pseudo-class>
+  <pseudo-class id="disabled" declared-in="3.0" url="http://www.w3.org/TR/css3-selectors/#enableddisabled"
+                browsers="C1.0,FF1.0,IE9,O9.0,S3.1" tooltip="Represents user interface elements that are in an disabled state.">
+    <description><![CDATA[The <b>:disabled</b> pseudo-class is a UI element states pseudo-class.
+    UI element states pseudo-classes select UI elements (form controls such as radio buttons or check boxes) that are in a certain state—enabled, disabled, or selected (checked).]]></description>
+  </pseudo-class>
+  <pseudo-class id="checked" declared-in="3.0" url="http://www.w3.org/TR/css3-selectors/#checked"
+                browsers="C1.0,FF1.0,IE9,O9.0,S3.1" tooltip="Represents toggable elements (e.g. radio buttons or checkboxes) that are toggled on.">
+  </pseudo-class>
+  <pseudo-class id="indeterminate" declared-in="3.0" url="http://www.w3.org/TR/css3-selectors/#indeterminate">
+    <description><![CDATA[<p>Radio and checkbox elements can be toggled by the user, but are sometimes in an indeterminate state, neither checked nor unchecked. This can be due to an element attribute, or DOM manipulation.</p>
+      <p>A future version of <a href="http://www.w3.org/TR/css3-selectors/">CSS3-selectors specification</a> may introduce an <b>:indeterminate</b> pseudo-class that applies to such elements.]]></description>
+  </pseudo-class>
+
+  
+  <pseudo-class id="bound-element" url="http://www.w3.org/TR/becss/#bound-element" declared-in="3.0"/>
+  <pseudo-class id="menu" url="http://www.w3.org/TR/2000/WD-css3-userint-20000216#pseudo-menu" declared-in="3.0"/>
+  <pseudo-class id="fullscreen" url="http://www.w3.org/TR/fullscreen/#:fullscreen-pseudo-class" declared-in="3.0">
+    <description><![CDATA[The <b>:fullscreen</b> pseudo-class must match the top element of the document's fullscreen element stack (if any).]]></description>
+  </pseudo-class>
+
+  <!-- CSS pseudo elements :: -->
+  <named-value id="AnPlusB" declared-in="3.0" url="http://dev.w3.org/csswg/css-syntax/#anb">
+    <group type="or">
+      <integer/>
+      <name value="odd"/>
+      <name value="even"/>
+      <position/>
+      <group>
+        <group ignoreWhitespaces="no">
+          <integer/>
+          <text value="n"/>
+        </group>
+        <group min="0">
+          <text value="+"/>
+          <integer/>
+        </group>
+      </group>
+    </group>
+  </named-value>
+  <pseudo-element id="first-letter" declared-in="3.0"
+                  browsers="C1.0,FF1.0,IE9,O7.0,S1.0" url="http://dev.w3.org/csswg/selectors3/#first-letter"
+                  tooltip="The ::first-letter pseudo-element selects the first letter of the first line of a block.">
+    <description><![CDATA[The <b>::first-letter</b> pseudo-element must select the first letter of the first line of a block,
+        if it is not preceded by any other content (such as images or inline tables) on its line.]]></description>
+  </pseudo-element>
+  <pseudo-element id="first-line" declared-in="3.0"
+                  browsers="C1.0,FF1.0,IE9,O7.0,S1.0" url="http://dev.w3.org/csswg/selectors3/#first-line"
+                  tooltip="The :first-line pseudo-element applies special styles to the contents of the first formatted line of a paragraph.">
+    <description><![CDATA[<p>The <b>::first-line</b> pseudo-element applies special styles to the contents of the first formatted line of a paragraph.</p>]]></description>
+  </pseudo-element>
+  <pseudo-element id="before" declared-in="3.0" browsers="C4.0,FF1.5,IE9,O7.0,S4.0"
+                  url="http://dev.w3.org/csswg/selectors3/#gen-content"
+                  tooltip="The ::before pseudo-element specifies the location of content before an element in the document tree."/>
+  <pseudo-element id="after" declared-in="3.0" tooltip="The ::after pseudo-element specifies the location of content after an element in the document tree."
+                  url="http://dev.w3.org/csswg/selectors3/#gen-content"
+                  browsers="C4.0,FF1.5,IE9,O7.0,S4.0"/>
+  <pseudo-element id="selection" declared-in="3.0" url="http://www.w3.org/TR/css3-selectors/#selection"
+      tooltip="Applies rules to the portion of a document that has been highlighted (e.g., selected with the mouse or another pointing device) by the user."
+      browsers="C1.0,FF17.0,IE9,O9.5,S1.1"/>
+
+  <pseudo-element id="backdrop" declared-in="3.0" url="http://www.w3.org/TR/fullscreen/#::backdrop-pseudo-element">
+    <description><![CDATA[Each element in the top layer's stack has a <b>::backdrop</b> pseudo-element. 
+    This pseudo-element is a box rendered immediately below the element (and above the element below the element in the stack, if any), within the same top layer.
+    The <b>::backdrop</b> pseudo-element can be used to create a backdrop that hides the underlying document for an element in the top layer's stack. 
+    E.g. for the element that is displayed fullscreen as described by this specification.
+    It does not inherit from any element and is not inherited from. No restrictions are made on what properties apply to this pseudo-element either.]]></description>
+  </pseudo-element>
+
+  <pseudo-element id="slotted" declared-in="3.0" url="https://drafts.csswg.org/css-scoping/#slotted-pseudo">
+    <description><![CDATA[Represents any element that has been placed into a slot inside an HTML template.]]></description>
+    <selector/>
+  </pseudo-element>
+
+  <!--https://www.w3.org/TR/webvtt1/-->
+  <pseudo-element id="cue" declared-in="3.0" url="https://www.w3.org/TR/webvtt1/#the-cue-pseudo-element">
+    <description><![CDATA[ <p>The ::cue pseudo-element (with no argument) matches any list of WebVTT Node Objects constructed for the matched element, with the exception that
+    the properties corresponding to the background shorthand must be applied to the WebVTT cue background box rather than the list of WebVTT Node Objects.</p>
+    <p>The ::cue(selector) pseudo-element with an argument matches any WebVTT Internal Node Object constructed for the matched element that also matches the given CSS selector.</p>]]></description>
+  </pseudo-element>
+  <pseudo-class id="past" declared-in="3.0" url="https://www.w3.org/TR/webvtt1/#the-past-and-future-pseudo-classes">
+    <description><![CDATA[The :past pseudo-class only matches WebVTT Node Objects that are in the past.]]></description>
+  </pseudo-class>
+  <pseudo-class id="future" declared-in="3.0" url="https://www.w3.org/TR/webvtt1/#the-past-and-future-pseudo-classes">
+    <description><![CDATA[The :future pseudo-class only matches WebVTT Node Objects that are in the future.]]></description>
+  </pseudo-class>
+  <pseudo-element id="cue-region" declared-in="3.0" url="https://www.w3.org/TR/webvtt1/#the-cue-region-pseudo-element">
+    <description><![CDATA[ <p>The ::cue-region pseudo-element (with no argument) matches any list of WebVTT region objects constructed for the matched element.</p>
+    <p>The ::cue-region(selector) pseudo-element with an argument matches any list of WebVTT region objects constructed for the matched element that also matches the given CSS selector.</p>]]></description>
+  </pseudo-element>
+
+  <!--https://www.w3.org/TR/css-pseudo-4/-->
+  <pseudo-element id="inactive-selection" declared-in="3.0" url="https://www.w3.org/TR/css-pseudo-4/#selectordef-inactive-selection">
+    <description><![CDATA[ The ::selection and ::inactive-selection pseudo-elements represent the portion of a document that has been highlighted by the user. This also applies, for example, to selected text within an editable text field.]]></description>
+  </pseudo-element>
+  <pseudo-element id="spelling-error" declared-in="3.0" url="https://www.w3.org/TR/css-pseudo-4/#selectordef-spelling-error">
+    <description><![CDATA[The ::spelling-error pseudo-element represents a portion of text that has been flagged by the user agent as misspelled.]]></description>
+  </pseudo-element>
+  <pseudo-element id="grammar-error" declared-in="3.0" url="https://www.w3.org/TR/css-pseudo-4/#selectordef-grammar-error">
+    <description><![CDATA[The ::grammar-error pseudo-element represents a portion of text that has been flagged by the user agent as grammatically incorrect.]]></description>
+  </pseudo-element>
+
+  <!-- CSS pseudo functions: -->
+  <pseudo-class id="nth-child" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#nth-child-pseudo"
+                browsers="C1.0,FF3.5,IE9,O9.5,S3.1" elementRequired="yes"
+                tooltip="Matches an element that has an+b-1 siblings before it in the document tree, for a given positive or zero value for n, and has a parent element.">
+    <description><![CDATA[<p>The <b>:nth-child</b> CSS pseudo-class matches an element that has <b>an+b-1</b> siblings before it in the document tree, for a given positive or zero value for <b>n</b>, and has a parent element.</p>
+      <p>This can more clearly be described this way: the matching element is the <b>b</b>th child of an element after all its children have been split into groups of a elements each.</p>
+      <h6>Syntax</h6><p><code>element:nth-child(an + b) {}</code></p>]]></description>
+    <inline id="AnPlusB" name="An+B"/>
+  </pseudo-class>
+  <pseudo-class id="nth-last-child" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#nth-last-child-pseudo"
+                tooltip="Matches an element that has an+b-1 siblings after it in the document tree, for a given positive or zero value for n, and has a parent element."
+                browsers="C4.0,FF3.5,IE9,O9.5,S3.2" elementRequired="yes">
+    <description><![CDATA[<p>The <b>:nth-last-child</b> CSS pseudo-class matches an element that has <b>an+b-1</b> siblings after it in the document tree, for a given positive or zero value for <b>n</b>, and has a parent element.</p>
+      <p>See :<see cref="PC:nth-child"/> for a more thorough description of the syntax of its argument.</p>
+      <h6>Syntax</h6><p><code>element:nth-last-child(an + b) {}</code></p>]]></description>
+    <inline id="AnPlusB" name="An+B"/>
+  </pseudo-class>
+  <pseudo-class id="nth-of-type" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#nth-of-type-pseudo"
+                tooltip="Matches an element that has an+b-1 siblings with the same element name before it in the document tree, for a given positive or zero value for n, and has a parent element."
+                browsers="C1.0,FF3.5,IE9,O9.5,S3.1" elementRequired="yes">
+    <description><![CDATA[<p>The <b>:nth-of-type</b> CSS pseudo-class matches an element that has <b>an+b-1</b> siblings with the same element name before it in the document tree, for a given positive or zero value for <b>n</b>, and has a parent element.</p>
+      <p>See :<see cref="PC:nth-child"/> for a more thorough description of the syntax of its argument.</p>
+      <h6>Syntax</h6><p><code>element:nth-of-type(an + b) {}</code></p>]]></description>
+    <inline id="AnPlusB" name="An+B"/>
+  </pseudo-class>
+  <pseudo-class id="nth-last-of-type" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#nth-last-of-type-pseudo"
+                tooltip="Matches an element that has an+b-1 siblings with the same element name after it in the document tree, for a given positive or zero value for n, and has a parent element."
+                browsers="C4.0,FF3.5,IE9,O9.5,S3.2" elementRequired="yes">
+    <description><![CDATA[<p>The <b>:nth-last-of-type</b> CSS pseudo-class matches an element that has <b>an+b-1</b> siblings with the same element name after it in the document tree, for a given positive or zero value for <b>n</b>, and has a parent element.</p>
+      <p>See :<see cref="PC:nth-child"/> for a more thorough description of the syntax of its argument.</p>
+      <h6>Syntax</h6><p><code>element:nth-last-of-type(an + b) {}</code></p>]]></description>
+    <inline id="AnPlusB" name="An+B"/>
+  </pseudo-class>
+  <pseudo-class id="not" declared-in="3.0" url="http://dev.w3.org/csswg/selectors3/#negation"
+                browsers="C1.0,FF1.0,IE9,O9.5,S3.2"
+                tooltip="Matches an element that is not represented by the argument.">
+    <description><![CDATA[The negation pseudo-class, <b>:not(X)</b>, is a functional notation taking a simple selector <b>X</b> as an argument.
+    It matches an element that is not represented by the argument. <b>X</b> must not contain another negation selector, or any pseudo-elements.]]></description>
+    <selector/>
+  </pseudo-class>
+
+  <!-- CSS functions -->
+  <function id="toggle" declared-in="3.0" url="http://dev.w3.org/csswg/css-values/#funcdef-toggle">
+    <any comma-separated="yes"/>
+  </function>
+  <function id="rgba" declared-in="3.0" url="http://www.w3.org/TR/css3-color/#rgba-color">
+    <group>
+      <separator>
+        <text value="," min="0"/>
+      </separator>
+      <group type="or" name="red">
+        <integer/>
+        <percentage/>
+      </group>
+      <group type="or" name="green">
+        <integer/>
+        <percentage/>
+      </group>
+      <group type="or" name="blue">
+        <integer/>
+        <percentage/>
+      </group>
+      <number name="alphavalue"/>
+    </group>
+  </function>
+  <function id="hsl" declared-in="3.0" url="http://www.w3.org/TR/css3-color/#hsl-color">
+    <group>
+      <separator>
+        <text value=","/>
+      </separator>
+      <integer name="hue"/>
+      <percentage name="saturation"/>
+      <percentage name="lightness"/>
+    </group>
+  </function>
+  <function id="hsla" declared-in="3.0" url="http://www.w3.org/TR/css3-color/#hsla-color">
+    <group>
+      <separator>
+        <text value="," min="0"/>
+      </separator>
+      <integer name="hue"/>
+      <percentage name="saturation"/>
+      <percentage name="lightness"/>
+      <number name="alphavalue"/>
+    </group>
+  </function>
+  <function id="attr" declared-in="3.0" url="http://www.w3.org/TR/css3-values/#attribute">
+    <group>
+      <name/>
+      <inline id="type" min="0"/>
+      <group min="0">
+        <text value=","/>
+        <any/>
+      </group>
+    </group>
+  </function>
+  <function id="calc" declared-in="3.0" dynamic="yes" url="http://www.w3.org/TR/css3-values/#calc">
+    <expression/>
+  </function>
+  <prefixed-function id="calc" prefix="moz"/>
+  <prefixed-function id="calc" prefix="webkit"/>
+  
+  <function id="stylistic" declared-in="3.0" tooltip="Enables display of stylistic alternates (font specific, OpenType feature: salt &lt;feature-value-name&gt;).">
+    <inline id="feature-value-name" />
+  </function>
+  <function id="styleset" declared-in="3.0" tooltip="Enables display with stylistic sets (font specific, OpenType feature: ss&lt;feature-index&gt; OpenType currently defines ss01 through ss20)." >
+    <group>
+      <inline id="feature-value-name" />
+      <group min="0" max="-1">
+        <text value=","/>
+        <inline id="feature-value-name" />
+      </group>
+    </group>
+  </function>
+  <function id="character-variant" declared-in="3.0" tooltip="Enables display of specific character variants (font specific, OpenType feature: cv&lt;feature-index&gt; OpenType currently defines cv01 through cv99)." >
+    <group>
+      <inline id="feature-value-name" />
+      <group min="0" max="-1">
+        <text value=","/>
+        <inline id="feature-value-name" />
+      </group>
+    </group>
+  </function>
+  <function id="swash" declared-in="3.0" tooltip="Enables display of swash glyphs (font specific, OpenType feature: swsh &lt;feature-index&gt;, cswh &lt;feature-index&gt;).">
+    <inline id="feature-value-name" />
+  </function>
+  <function id="ornaments" declared-in="3.0" tooltip="Enables replacement of default glyphs with ornaments, if provided in the font (font specific, OpenType feature: ornm &lt;feature-index&gt;).">
+    <inline id="feature-value-name" />
+  </function>
+  <function id="annotation" declared-in="3.0" tooltip="Enables display of alternate annotation forms (font specific, OpenType feature: nalt &lt;feature-index&gt;).">
+    <inline id="feature-value-name" />
+  </function>
+
+  <!-- CSS named values-->
+  <named-value id="type" declared-in="3.0" url="http://www.w3.org/TR/css3-values/#attribute">
+    <group type="or">
+      <name value="color" tooltip="The value is a CSS &lt;color&gt; value. The default is UA dependent but must be the same as the initial value of the 'color' property. " />
+      <name value="string" tooltip="The value is the contents of a CSS string. The default is the empty string." />
+      <name value="url" tooltip="The value is the URI part of a 'url()' expression. The default is a UA-dependent URI defined to point to a non-existent document with a generic error condition. (i.e. it shouldn't be an FTP URI that causes a DNS error, or an HTTP URI that results in a 404, it should be a non-descript error condition.) " />
+      <name value="integer" tooltip="The value is a CSS integer. The default is 0. The default should also be used if the property in question only accepts integers within a certain range and the attribute is out of range. " />
+      <name value="number" tooltip="The value is a CSS number. The default is 0.0. The default should also be used if the property in question only accepts numbers within a certain range and the attribute is out of range. " />
+      <group type="or">
+        <name value="length" tooltip="The value is a CSS length, and the unit identifier (if any) will appear in the attribute value. The default is 0. " />
+        <name value="angle" tooltip="The value is a CSS angle, and the unit identifier (if any) will appear in the attribute value. The default is 0." />
+        <name value="time" tooltip="The value is a CSS time, and the unit identifier (if any) will appear in the attribute value. The default is 0." />
+        <name value="frequency" tooltip="The value is a CSS frequency, and the unit identifier (if any) will appear in the attribute value. The default is 0." />
+      </group>
+      <group type="or">
+        <name value="em"/>
+        <name value="ex"/>
+        <name value="ch"/>
+        <name value="rem"/>
+        <name value="vw"/>
+        <name value="vh"/>
+        <name value="vmin"/>
+        <name value="vmax"/>
+
+        <name value="cm"/>
+        <name value="mm"/>
+        <name value="Q"/>
+        <name value="in"/>
+        <name value="pc"/>
+        <name value="pt"/>
+        <name value="px"/>
+        <name value="rpx"/>
+
+        <name value="deg"/>
+        <name value="grad"/>
+        <name value="rad"/>
+        <name value="turn"/>
+
+        <name value="s"/>
+        <name value="ms"/>
+
+        <name value="Hz"/>
+        <name value="kHz"/>
+
+        <text value="%"/>
+      </group>
+    </group>
+  </named-value>
+  <named-value id="color" declared-in="3.0">
+    <group type="or">
+      <color/>
+      <name value="transparent"/>
+      <name value="currentColor"/>
+      <inline id="named-color"/>
+      <inline id="system-color"/>
+      <inline id="mozilla-color"/>
+      <inline id="webkit-color"/>
+      <invoke id="rgb"/>
+      <invoke id="rgba"/>
+      <invoke id="hsl"/>
+      <invoke id="hsla"/>
+    </group>
+  </named-value>
+  <named-value id="border-style" declared-in="3.0" url="http://www.w3.org/TR/2002/WD-css3-border-20021107/#the-border-style">
+    <group type="or">
+      <name value="none"/>
+      <name value="hidden"/>
+      <name value="dotted"/>
+      <name value="dashed"/>
+      <name value="solid"/>
+      <name value="double"/>
+      <name value="dot-dash"/>
+      <name value="dot-dot-dash"/>
+      <name value="wave"/>
+      <name value="groove"/>
+      <name value="ridge"/>
+      <name value="inset"/>
+      <name value="outset"/>
+    </group>
+  </named-value>
+  <named-value id="target-name" declared-in="3.0">
+    <group type="or">
+      <name/>
+    </group>
+  </named-value>
+  <named-value id="shape" declared-in="3.0" url="http://www.w3.org/TR/css3-content/#crop">
+    <group type="or">
+      <invoke id="rect"/>
+      <invoke id="inset-rect"/>
+    </group>
+  </named-value>
+</definitions>
