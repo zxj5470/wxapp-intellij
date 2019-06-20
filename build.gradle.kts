@@ -58,6 +58,7 @@ val SourceSet.kotlin
 
 tasks.withType<PatchPluginXmlTask> {
 	pluginDescription(file("description.html").readText())
+	changeNotes(file("change-notes.html").readText())
 	version(pluginComingVersion)
 }
 
