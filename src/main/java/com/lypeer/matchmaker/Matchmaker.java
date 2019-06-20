@@ -1,8 +1,6 @@
 package com.lypeer.matchmaker;
 
-import com.intellij.ide.actions.UndoAction;
 import com.intellij.openapi.actionSystem.*;
-import com.intellij.openapi.application.ActionsKt;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.editor.Editor;
@@ -88,7 +86,9 @@ class Matchmaker extends AnAction {
 			ApplicationManager.getApplication().runWriteAction(() -> {
 				CommandProcessor.getInstance().runUndoTransparentAction(() -> {
 					try {
-						new Writer(file, functionsName, r).run();
+						Writer writer = new Writer(file, functionsName);
+						writer.run();
+						editor.getDocument().insertString(r, writer.res);
 					} catch (Throwable throwable) {
 						throwable.printStackTrace();
 					}

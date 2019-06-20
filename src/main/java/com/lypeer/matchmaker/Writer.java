@@ -20,21 +20,20 @@ class Writer extends WriteCommandAction.Simple {
 
     //存放wxml文件里包含的所有方法头的列表
     private final List<String> mFunctionsName;
-    private int currentOffset;
 
-    Writer(PsiFile psiFile, List<String> functionsName,int currentOffset) {
+    String res = "";
+
+    Writer(PsiFile psiFile, List<String> functionsName) {
         super(psiFile.getProject(), psiFile);
         mFile = psiFile;
         mFunctionsName = functionsName;
-        this.currentOffset = currentOffset;
     }
 
     @Override
-    protected void run() throws Throwable {
-        VirtualFile virtualFile = mFile.getVirtualFile();
+    protected void run() {
         String content = mFile.getText();
         int injectNum = 0;
-        StringBuilder contentBuffer = new StringBuilder(content);
+        StringBuilder contentBuffer = new StringBuilder();
 
         for (String functionName : mFunctionsName) {
             Pattern pattern = Pattern.compile("\\n([\\s]*)" + functionName);
@@ -43,21 +42,15 @@ class Writer extends WriteCommandAction.Simple {
                 continue;
 
             injectNum++;
-            String functionBuffer = functionName.concat(": function (event) {\n\n  },\n");
-            contentBuffer.insert(currentOffset, "\n\t" + functionBuffer);
+            String functionBuffer = functionName.concat(": function (event) {\n\n  },");
+            contentBuffer.append("\n\t").append(functionBuffer);
         }
 
         if (injectNum == 0) {
             Utils.showInfoNotification(mFile.getProject(), Constants.Message.MESSAGE_INJECT_NOTHING);
             return;
         }
-
-        OutputStream outputStream = virtualFile.getOutputStream(this);
-
-        outputStream.write(contentBuffer.toString().getBytes());
-        outputStream.flush();
-        outputStream.close();
-
         Utils.showInfoNotification(mFile.getProject(), String.format(Constants.Message.MESSAGE_INJECT_SUCCESSFULLY, injectNum));
+        res = contentBuffer.toString();
     }
 }
