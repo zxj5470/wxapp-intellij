@@ -17,7 +17,6 @@ const val WXSS_EXT = "wxss"
 val APP_JS_KEY = Key.create<PsiFile?>("wxapp-app.js")
 val APP_WXSS_KEY = Key.create<PsiFile?>("wxapp-app.wxss")
 val APP_JSON_KEY = Key.create<PsiFile?>("wxapp-app.json")
-typealias JavaStr = java.lang.String
 
 object WxappBundle {
 	const val NAME = "message.wxapp-bundle"

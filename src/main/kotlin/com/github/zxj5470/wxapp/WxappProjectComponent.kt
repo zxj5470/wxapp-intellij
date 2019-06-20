@@ -94,7 +94,21 @@ class WxappProjectComponent(private val project: Project) : ProjectComponent, Di
 	private fun InspectionProfileModifiableModel.ignores(name: String) {
 		getToolsOrNull(name, project)?.apply {
 			isEnabled = false
-			setDefaultEnabled(false)
+			// some function become private
+			defaultState.isEnabled = isEnabled
+			isEnabled = if (isEnabled) {
+				true
+			} else {
+				if (defaultState.isEnabled) {
+					return
+				}
+				for (tool in tools) {
+					if (tool.isEnabled) {
+						return
+					}
+				}
+				false
+			}
 			commit()
 		}
 	}
