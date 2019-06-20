@@ -32,9 +32,9 @@ import java.util.*
 
 class WxssElementDescriptorFactory2 @JvmOverloads constructor(private val myProgressManager: ProgressManager?, vararg schemesToLoad: String = SCHEME_NAMES) {
 	private val mySchemesToLoad: Array<out String> = schemesToLoad
-	private var myCssDescriptorsHolderRef: Reference<CssDescriptorsHolder>? = null
+	private var myCssDescriptorsHolderRef: Reference<WxssDescriptorsHolder>? = null
 
-	private val descriptors: CssDescriptorsHolder
+	private val descriptors: WxssDescriptorsHolder
 		@Synchronized get() = SoftReference.dereference(this.myCssDescriptorsHolderRef) ?: this.reload()
 
 	val properties: MultiMap<String, CssPropertyDescriptor>
@@ -94,7 +94,7 @@ class WxssElementDescriptorFactory2 @JvmOverloads constructor(private val myProg
 //	}
 
 	@Synchronized
-	fun reload(): CssDescriptorsHolder {
+	fun reload(): WxssDescriptorsHolder {
 		val loader = WxssDescriptorsLoader(if (this.myProgressManager != null) this.myProgressManager.progressIndicator else null)
 		val var2 = this.mySchemesToLoad
 		val var3 = var2.size
@@ -102,7 +102,6 @@ class WxssElementDescriptorFactory2 @JvmOverloads constructor(private val myProg
 		for (it in 0 until var3) {
 			val scheme = var2[it]
 			val resource = this.javaClass.getResource("xml/$scheme")
-			println(it)
 			if (resource == null) {
 				LOG.warn("Cannot find CSS scheme: $scheme")
 			} else {

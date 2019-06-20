@@ -34,10 +34,11 @@ import java.net.URL
 import java.util.*
 import java.util.regex.Pattern
 
-class WxssDescriptorsLoader(private val myProgressIndicator: ProgressIndicator?) {
-	private val myDescriptors = CssDescriptorsHolder()
 
-	val descriptors: CssDescriptorsHolder
+class WxssDescriptorsLoader(private val myProgressIndicator: ProgressIndicator?) {
+	private val myDescriptors = WxssDescriptorsHolder()
+
+	val descriptors: WxssDescriptorsHolder
 		get() = myDescriptors
 
 	fun loadDescriptors(resource: URL) {
@@ -602,7 +603,6 @@ class WxssDescriptorsLoader(private val myProgressIndicator: ProgressIndicator?)
 		} else {
 			val inlineValue = CssInlineValue(name, parseCommonDescriptorData(element, name, PROCESS_VALUE_PRESENTABLE_NAME), this.parseValueDescriptorData(element, parent))
 			if (inline) {
-				println("by :$name")
 				val namedValues = this.myDescriptors.namedValues.get(name)
 				if (namedValues.size == 1) {
 					val namedValue = ContainerUtil.getFirstItem(namedValues)
@@ -613,13 +613,8 @@ class WxssDescriptorsLoader(private val myProgressIndicator: ProgressIndicator?)
 						} else CssValueDescriptorModificator.withQuantifiers(result, inlineValue.minOccur, inlineValue.maxOccur, inlineValue.isCommaSeparated)
 					}
 				}
-				LOG.error("Named value should be declared before inlining.", *arrayOf(name))
+//				LOG.error("Named value should be declared before inlining.", *arrayOf(name))
 			}
-
-			if (inlineValue == null) {
-
-			}
-
 			return inlineValue
 		}
 	}

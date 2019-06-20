@@ -4,8 +4,8 @@ end_of_line=lf
 indent_style=tab
 tab_width=3
 
-[*.bnf]
+[*.xml]
 charset=utf-8
 end_of_line=lf
-indent_style=tab
-tab_width=3
+indent_style=space
+tab_width=2

@@ -1,15 +1,17 @@
 package com.github.zxj5470.wxapp
 
+import com.intellij.codeInspection.ex.InspectionProfileModifiableModel
+import com.intellij.notification.*
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.*
 import com.intellij.openapi.components.ProjectComponent
 import com.intellij.openapi.module.ModuleManager
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.project.guessProjectDir
+import com.intellij.openapi.project.*
 import com.intellij.openapi.roots.ModuleRootModificationUtil
 import com.intellij.openapi.roots.OrderRootType
 import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar
 import com.intellij.openapi.vfs.*
+import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiManager
 import com.intellij.util.io.createFile
 import com.intellij.util.io.exists
@@ -26,10 +28,82 @@ class WxappProjectComponent(private val project: Project) : ProjectComponent, Di
 		setupWxapp()
 	}
 
+	private fun VirtualFile.setupInspection() {
+		runWriteAction {
+			val idea = this.findChild(".idea") ?: return@runWriteAction
+			val dirName = "inspectionProfiles"
+			val profile = "Project_Default.xml"
+			val inspectionProfiles = idea.findChild(dirName) ?: idea.createChildDirectory(null, dirName)
+			val path = Paths.get(inspectionProfiles.path, profile)
+			if (!path.exists()) {
+				Notifications.Bus.notify(Notification("com.github.zxj5470.wxapp.notification",
+					WxappBundle.message("notification.title"),
+					WxappBundle.message("notification.create.profile"),
+					NotificationType.INFORMATION,
+					NotificationListener { notification, event ->
+						when (event.description) {
+							"createProfile" -> {
+								path.createFile()
+								val bytes = WxappProjectComponent::class.java
+									.getResource("/$dirName/$profile").readBytes()
+								path.toFile().writeBytes(bytes)
+								notification.hideBalloon()
+								ProjectManager.getInstance().reloadProject(project)
+							}
+						}
+					}
+				), project)
+			} else {
+				var ret = false
+				run {
+					InspectionProjectProfileManager.getInstance(project).profiles.forEach {
+						it.getToolsOrNull("CheckTagEmptyBody", project)?.apply {
+							if (isEnabled) apply { ret = true;return@run }
+						} ?: apply { ret = true;return@run }
+						it.getToolsOrNull("CssInvalidPropertyValue", project)?.apply {
+							if (isEnabled) apply { ret = true;return@run }
+						} ?: apply { ret = true;return@run }
+						it.getToolsOrNull("UnterminatedStatementJS", project)?.apply {
+							if (isEnabled) apply { ret = true;return@run }
+						} ?: apply { ret = true;return@run }
+					}
+				}
+				if (!ret) return@runWriteAction
+				Notifications.Bus.notify(Notification("com.github.zxj5470.wxapp.notification.exist",
+					WxappBundle.message("notification.title"),
+					WxappBundle.message("notification.create.profile.exist"),
+					NotificationType.INFORMATION,
+					NotificationListener { notification, event ->
+						if (event.description == "existCheck") {
+							InspectionProjectProfileManager.getInstance(project).profiles.forEach {
+								it.modifiableModel.apply {
+									ignores("CheckTagEmptyBody")
+									ignores("CssInvalidPropertyValue")
+									ignores("UnterminatedStatementJS")
+								}
+							}
+							notification.hideBalloon()
+							ProjectManager.getInstance().reloadProject(project)
+						}
+					}
+				), project)
+			}
+		}
+	}
+
+	private fun InspectionProfileModifiableModel.ignores(name: String) {
+		getToolsOrNull(name, project)?.apply {
+			isEnabled = false
+			setDefaultEnabled(false)
+			commit()
+		}
+	}
+
 	fun setupWxapp() {
 		fun VirtualFile?.toPsiFile() = this?.let { PsiManager.getInstance(project).findFile(it) }
-		val vf = project.getWxRootDir
+		val vf = project.getWxAppJs
 		if (vf != null) {
+			vf.parent.findChild("app.json") ?: return
 			project.syncDTsLibrary()
 			val appJs = vf.toPsiFile()
 			val appWxss = vf.parent.findChild("app.wxss").toPsiFile()
@@ -37,12 +111,13 @@ class WxappProjectComponent(private val project: Project) : ProjectComponent, Di
 			project.putUserData(APP_JS_KEY, appJs)
 			project.putUserData(APP_WXSS_KEY, appWxss)
 			project.putUserData(APP_JSON_KEY, appJson)
+			vf.parent.setupInspection()
 		}
 	}
 }
 
 
-val Project.getWxRootDir: VirtualFile?
+val Project.getWxAppJs: VirtualFile?
 	get() = if (isDefault) {
 		@Suppress("deprecation")
 		baseDir

@@ -1,13 +1,10 @@
 package com.github.zxj5470.wxapp.navigator
 
-import com.github.zxj5470.wxapp.getWxRootDir
-import com.intellij.ide.impl.ProjectUtil
+import com.github.zxj5470.wxapp.getWxAppJs
 import com.intellij.lang.javascript.*
 import com.intellij.lang.javascript.navigation.JSGotoDeclarationHandler
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.project.guessProjectDir
-import com.intellij.openapi.util.io.FileSystemUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.ex.VirtualFileManagerEx
 import com.intellij.psi.*
@@ -36,7 +33,7 @@ class JsGoToDeclarationProvider : JSGotoDeclarationHandler() {
 			"JS:STRING_LITERAL" -> {
 				val path = sourceElement.text.trim('\'', '\"') + ".js"
 				if (path[0] == '/') {
-					val f = elem.project.getWxRootDir ?: return null
+					val f = elem.project.getWxAppJs ?: return null
 					val par = f.parent
 					return arrayOfPsiElements(par, path)
 				}
