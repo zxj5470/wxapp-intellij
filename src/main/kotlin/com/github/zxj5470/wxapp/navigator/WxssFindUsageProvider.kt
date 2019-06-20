@@ -2,6 +2,8 @@ package com.github.zxj5470.wxapp.navigator
 
 import com.intellij.lang.cacheBuilder.WordsScanner
 import com.intellij.lang.findUsages.FindUsagesProvider
+import com.intellij.lang.javascript.JavascriptLanguage
+import com.intellij.lang.javascript.findUsages.JSWordsScanner
 import com.intellij.psi.ElementDescriptionUtil
 import com.intellij.psi.PsiElement
 import com.intellij.psi.css.*
@@ -14,13 +16,17 @@ import com.intellij.usageView.UsageViewShortNameLocation
  */
 class WxssFindUsageProvider : FindUsagesProvider {
 
-	override fun canFindUsagesFor(element: PsiElement): Boolean {
-		return element is CssKeyframesRule || element is CssCustomMixin || element is CssDeclaration && element.isCustomProperty || element is CssSelectorSuffix && element.type != CssSelectorSuffixType.UNKNOWN || element is CssValueDeclaration || element is CssValueImportedAlias
-	}
+	override fun canFindUsagesFor(element: PsiElement): Boolean =
+		element is CssKeyframesRule ||
+			element is CssCustomMixin ||
+			element is CssDeclaration &&
+			element.isCustomProperty ||
+			element is CssSelectorSuffix &&
+			element.type != CssSelectorSuffixType.UNKNOWN ||
+			element is CssValueDeclaration ||
+			element is CssValueImportedAlias
 
-	override fun getHelpId(element: PsiElement): String? {
-		return "reference.dialogs.findUsages.other"
-	}
+	override fun getHelpId(element: PsiElement): String? = "reference.dialogs.findUsages.other"
 
 	override fun getType(element: PsiElement): String {
 		val var10000: String?
@@ -57,17 +63,11 @@ class WxssFindUsageProvider : FindUsagesProvider {
 		}
 	}
 
-	override fun getDescriptiveName(element: PsiElement): String {
-		val var10000 = ElementDescriptionUtil.getElementDescription(element, UsageViewLongNameLocation.INSTANCE)
-		return var10000
-	}
+	override fun getDescriptiveName(element: PsiElement): String =
+		ElementDescriptionUtil.getElementDescription(element, UsageViewLongNameLocation.INSTANCE)
 
-	override fun getNodeText(element: PsiElement, useFullName: Boolean): String {
-		val var10000 = ElementDescriptionUtil.getElementDescription(element, UsageViewShortNameLocation.INSTANCE)
-		return var10000
-	}
+	override fun getNodeText(element: PsiElement, useFullName: Boolean): String =
+		ElementDescriptionUtil.getElementDescription(element, UsageViewShortNameLocation.INSTANCE)
 
-	override fun getWordsScanner(): WordsScanner? {
-		return null
-	}
+	override fun getWordsScanner(): WordsScanner? = JSWordsScanner(JavascriptLanguage.E4X_OPTION_HOLDER)
 }

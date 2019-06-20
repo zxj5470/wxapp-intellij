@@ -1,11 +1,6 @@
 package com.github.zxj5470.wxapp
 
-import com.intellij.lang.Language
-import com.intellij.openapi.fileTypes.FileTypeConsumer
-import com.intellij.openapi.fileTypes.FileTypeFactory
-import com.intellij.openapi.fileTypes.LanguageFileType
-import com.intellij.openapi.vfs.VirtualFile
-import com.intellij.psi.*
+import com.intellij.openapi.fileTypes.*
 
 object WxssFileType : LanguageFileType(WxssLanguage.INSTANCE) {
 	override fun getDefaultExtension() = WXSS_EXT

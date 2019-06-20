@@ -35,7 +35,7 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 		when {
 //			id or class
 			grandpar is XmlAttribute && grandpar.nameElement.text == "class" -> {
-				val collection = PsiTreeUtil.findChildrenOfType(wxssFile, CssElement::class.java) + PsiTreeUtil.findChildrenOfType(globalWxssFile, CssTokenImpl::class.java)
+				val collection = PsiTreeUtil.findChildrenOfType(wxssFile, CssTokenImpl::class.java) + PsiTreeUtil.findChildrenOfType(globalWxssFile, CssTokenImpl::class.java)
 				val ret = collection
 					.filter { token ->
 						token.text == identifierName
@@ -48,7 +48,7 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 					PsiTreeUtil.findChildrenOfType(it, JSProperty::class.java).asSequence().filter {
 						it.value is JSFunctionExpression && it.nameIdentifier?.text == identifierName
 					}
-				}.mapNotNull { it as PsiElement }.toList().toTypedArray()
+				}.mapNotNull { it as PsiElement }.toSet().toTypedArray()
 				return ret
 			}
 		}

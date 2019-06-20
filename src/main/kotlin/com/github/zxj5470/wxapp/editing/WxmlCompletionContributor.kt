@@ -5,6 +5,7 @@ import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.lang.javascript.psi.JSExpressionStatement
+import com.intellij.openapi.project.DumbAware
 import com.intellij.patterns.PlatformPatterns.psiElement
 import com.intellij.psi.xml.XmlTag
 import com.intellij.psi.xml.XmlTokenType.XML_ATTRIBUTE_VALUE_TOKEN
@@ -15,7 +16,7 @@ import com.intellij.util.ProcessingContext
  * @author zxj5470
  * @date 2018/5/12
  */
-class WxmlCompletionContributor : XmlCompletionContributor() {
+class WxmlCompletionContributor : XmlCompletionContributor(), DumbAware {
 
 	private val tags by lazy {
 		this.javaClass.getResource("/templates/xmlTags.txt")
