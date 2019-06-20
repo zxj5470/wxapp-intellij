@@ -25,16 +25,21 @@ class WxmlInjectJavascript : LanguageInjector {
 				fragment(text, places)
 				(value.parent as? XmlAttribute)?.let { attr ->
 					val txt = attr.nameElement.text
-					if (txt.startsWith("bind")) {
-						if(txt=="binginput"){
-							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), "get(", ")")
-						}else {
-							places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), "call(", ")")
-						}
+					when {
+						txt == "open-type" -> inject(places, value)
+						txt.startsWith("bind") ->
+							when (txt) {
+								"binginput" -> inject(places, value, "get(")
+								else -> inject(places, value)
+							}
 					}
 				}
 			}
 		}
+	}
+
+	private fun inject(places: InjectedLanguagePlaces, value: XmlAttributeValue, prefix: String = "call(") {
+		places.addPlace(JavascriptLanguage.INSTANCE, TextRange(0, value.textLength), prefix, ")")
 	}
 
 	private fun fragment(text: String, places: InjectedLanguagePlaces) {

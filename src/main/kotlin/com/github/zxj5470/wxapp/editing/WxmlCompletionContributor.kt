@@ -46,7 +46,12 @@ class WxmlCompletionContributor : XmlCompletionContributor() {
 			.create(it)
 			.withIcon(WxappIcons.weChatIcon)
 			.withTypeText(it.substring(3), true)
-//			.withInsertHandler(WxmlAttributeInsertHandler())
+			.withInsertHandler { context, item ->
+				context.editor.apply {
+					document.insertString(context.tailOffset, "=\"\"")
+					caretModel.moveToOffset(context.tailOffset + 2)
+				}
+			}
 	}
 
 	/**
@@ -59,6 +64,12 @@ class WxmlCompletionContributor : XmlCompletionContributor() {
 			.create(it)
 			.withIcon(WxappIcons.weChatIcon)
 			.withTypeText(it.substring(3), true)
+			.withInsertHandler { context, item ->
+				context.editor.apply {
+					document.insertString(context.tailOffset, "=\"\"")
+					caretModel.moveToOffset(caretModel.offset + 2)
+				}
+			}
 	}
 
 	private val values = listOf(

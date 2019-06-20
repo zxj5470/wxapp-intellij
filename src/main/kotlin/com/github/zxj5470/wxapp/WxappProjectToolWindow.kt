@@ -1,4 +1,5 @@
 @file:Suppress("DEPRECATION", "OverridingDeprecatedMember")
+
 package com.github.zxj5470.wxapp
 
 import com.intellij.ide.*
@@ -48,18 +49,18 @@ class WxProjectViewPane(val project: Project) : AbstractProjectViewPSIPane(proje
 
 	override fun getIcon(): Icon = WxappIcons.weChatIcon
 	override fun getWeight(): Int = 0x8ab8ec
-	override fun getId(): String = "WxProject"
-	override fun getTitle(): String = "WxProject"
+	override fun getId(): String = ID
+	override fun getTitle(): String = ID
 
 	private inner class MyProjectViewPaneTreeStructure internal constructor() : ProjectTreeStructure(project, id), ProjectViewSettings {
 
 		override fun createRoot(project: Project, settings: ViewSettings): AbstractTreeNode<*> {
 			return object : ProjectViewProjectNode(project, settings) {
 				override fun getChildren(): MutableCollection<AbstractTreeNode<Any>> {
-//					val ret = super.getChildren()
+					val ret = super.getChildren()
 					val file = project.getUserData(APP_JS_KEY) ?: return mutableListOf()
 					val collection = mutableListOf<AbstractTreeNode<Any>>(WxappAppGlobalGroupNode(project, file, settings))
-//					collection.addAll(ret)
+					collection.addAll(ret)
 					return collection
 				}
 			}
@@ -104,6 +105,11 @@ class WxProjectViewPane(val project: Project) : AbstractProjectViewPSIPane(proje
 		override fun getMinorViewId(): String? = id
 		override fun getWeight(): Float = StandardTargetWeights.PROJECT_SETTINGS_WEIGHT
 	}
+
+	companion object {
+		@JvmField
+		val ID = "WxProject"
+	}
 }
 
 interface FolderGroupNode {
@@ -115,6 +121,38 @@ interface FileGroupNode {
 }
 
 class WxappAppGlobalGroupNode(project: Project,
+										file: PsiFile,
+										settings: ViewSettings) : ProjectViewNode<Any>(project, file, settings), FolderGroupNode {
+	override fun contains(file: VirtualFile): Boolean {
+		return true
+	}
+
+	override fun update(presentation: PresentationData) {
+		presentation.addText(APP_NODE, REGULAR_BOLD_ATTRIBUTES)
+		val icon = WxappIcons.weChatIcon
+		presentation.setIcon(icon)
+		presentation.presentableText = APP_NODE
+	}
+
+	override fun getChildren(): MutableCollection<out AbstractTreeNode<out Any>> {
+		val children = ArrayList<AbstractTreeNode<PsiFile>>()
+		val project = project ?: return children
+		val appJs = project.getUserData(APP_JS_KEY) ?: return children
+		val appWxss = project.getUserData(APP_WXSS_KEY) ?: return children
+		val appJson = project.getUserData(APP_JSON_KEY) ?: return children
+		val arr = arrayOf(appJs, appWxss, appJson)
+		arr.map { PsiFileNode(project, it, settings) }.forEach {
+			children.add(it)
+		}
+		return children
+	}
+
+	override fun expandOnDoubleClick(): Boolean = true
+	private val APP_NODE = "app [global]"
+
+}
+
+class WxappSinglePageGroupNode(project: Project,
 										file: PsiFile,
 										settings: ViewSettings) : ProjectViewNode<Any>(project, file, settings), FolderGroupNode {
 	override fun contains(file: VirtualFile): Boolean {

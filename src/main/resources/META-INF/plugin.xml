@@ -20,21 +20,23 @@
 
         <!--WXML-->
         <lang.parserDefinition language="wxml" implementationClass="com.github.zxj5470.wxapp.WxmlParserDefinition"/>
+        <lang.fileViewProviderFactory language="wxml"
+                                      implementationClass="com.github.zxj5470.wxapp.WxmlFileViewProviderFactory"/>
         <lang.syntaxHighlighterFactory language="wxml"
                                        implementationClass="com.github.zxj5470.wxapp.highlighter.WxmlSyntaxHighlighterFactory"/>
         <highlightErrorFilter implementation="com.github.zxj5470.wxapp.annotator.WxmlHighlightErrorFilter"/>
         <colorSettingsPage implementation="com.github.zxj5470.wxapp.highlighter.WxmlColorSettingsPage"/>
         <annotator language="wxml"
                    implementationClass="com.github.zxj5470.wxapp.annotator.WxmlHighlightingAnnotator"/>
-        <!--<annotator language="JavaScript"-->
-        <!--implementationClass="com.github.zxj5470.wxapp.registry.annotator.WxmlInjectJsAnnotator"/>-->
         <completion.contributor language="wxml"
                                 implementationClass="com.github.zxj5470.wxapp.editing.WxmlCompletionContributor"/>
         <languageInjector implementation="com.github.zxj5470.wxapp.editing.WxmlInjectJavascript"/>
-        <!--<globalInspection implementationClass="com.github.zxj5470.wxapp.registry.annotator.W" displayName="emm"/>-->
+        <backspaceHandlerDelegate implementation="com.github.zxj5470.wxapp.editing.WxmlBackspaceHandler"/>
+        <typedHandler implementation="com.github.zxj5470.wxapp.editing.WxmlTypedHandlerDelegate"/>
         <!--<referenceInjector implementation="com.github.zxj5470.wxapp.registry.navigator.WxmlToJsReferenceInjector"/>-->
         <gotoDeclarationHandler implementation="com.github.zxj5470.wxapp.navigator.WxmlGoToDeclarationProvider"/>
         <gotoDeclarationHandler implementation="com.github.zxj5470.wxapp.navigator.JsGoToDeclarationProvider"/>
+        <lang.formatter language="wxml" implementationClass="com.intellij.lang.xml.XmlFormattingModelBuilder"/>
         <!--WXSS-->
         <lang.parserDefinition language="wxss" implementationClass="com.github.zxj5470.wxapp.WxssParserDefinition"/>
         <lang.syntaxHighlighterFactory language="wxss"

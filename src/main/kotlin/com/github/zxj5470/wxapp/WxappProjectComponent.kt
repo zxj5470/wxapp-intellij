@@ -1,6 +1,7 @@
 package com.github.zxj5470.wxapp
 
 import com.intellij.codeInspection.ex.InspectionProfileModifiableModel
+import com.intellij.ide.projectView.ProjectView
 import com.intellij.notification.*
 import com.intellij.openapi.Disposable
 import com.intellij.openapi.application.*
@@ -10,7 +11,10 @@ import com.intellij.openapi.project.*
 import com.intellij.openapi.roots.ModuleRootModificationUtil
 import com.intellij.openapi.roots.OrderRootType
 import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar
+import com.intellij.openapi.util.Key
 import com.intellij.openapi.vfs.*
+import com.intellij.openapi.wm.ToolWindowId
+import com.intellij.openapi.wm.ToolWindowManager
 import com.intellij.profile.codeInspection.InspectionProjectProfileManager
 import com.intellij.psi.PsiManager
 import com.intellij.util.io.createFile

@@ -85,16 +85,15 @@ class Matchmaker extends AnAction {
 
 		try {
 			int r = editor.getCaretModel().getOffset();
-			CommandProcessor.getInstance().executeCommand(project, () -> {
-				ActionsKt.runWriteAction(() -> {
+			ApplicationManager.getApplication().runWriteAction(() -> {
+				CommandProcessor.getInstance().runUndoTransparentAction(() -> {
 					try {
 						new Writer(file, functionsName, r).run();
 					} catch (Throwable throwable) {
 						throwable.printStackTrace();
 					}
-					return 0;
 				});
-			}, null, null);
+			});
 		} catch (Throwable throwable) {
 			throwable.printStackTrace();
 		}

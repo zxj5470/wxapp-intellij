@@ -46,6 +46,7 @@
 	- 内嵌了 [Matchmaker](https://github.com/lypeer/Matchmaker) 插件的功能。
 		- Alt + Insert 或者光标右键 Generate... | Make match
 		- 并且修改为以当前光标位置插入相应函数。那个插件居然是直接在 `Page({` 后面插入，这太鬼畜了……
+		- 而且加上了可撤销。。。（原来不能撤销这也很鬼畜）
 	- 对于分号的标黄处理：
 	![](https://user-images.githubusercontent.com/20026798/59234137-fd1d3200-8c1d-11e9-93dc-682a69237cdc.png)
 - wxml 跳转
