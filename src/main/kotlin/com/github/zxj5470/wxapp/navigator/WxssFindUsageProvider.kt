@@ -69,5 +69,5 @@ class WxssFindUsageProvider : FindUsagesProvider {
 	override fun getNodeText(element: PsiElement, useFullName: Boolean): String =
 		ElementDescriptionUtil.getElementDescription(element, UsageViewShortNameLocation.INSTANCE)
 
-	override fun getWordsScanner(): WordsScanner? = JSWordsScanner(JavascriptLanguage.E4X_OPTION_HOLDER)
+	override fun getWordsScanner(): WordsScanner? = null
 }
