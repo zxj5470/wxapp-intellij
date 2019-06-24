@@ -9,7 +9,7 @@ import javax.swing.Icon
 fun compare(version: String): Boolean {
 	val str = version.substringBefore('.')
 	return try {
-		str.toInt() >= 183
+		str.toInt() > 183
 	} catch (e: Exception) {
 		false
 	}
