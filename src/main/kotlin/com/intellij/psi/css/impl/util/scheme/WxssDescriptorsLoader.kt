@@ -26,7 +26,6 @@ import com.intellij.psi.css.impl.util.table.CssElementDescriptorConstants
 import com.intellij.util.Function
 import com.intellij.util.Functions
 import com.intellij.util.containers.ContainerUtil
-import com.intellij.util.containers.ContainerUtilRt
 import com.intellij.util.io.URLUtil
 import org.jdom.*
 import java.io.IOException
@@ -490,29 +489,11 @@ class WxssDescriptorsLoader(private val myProgressIndicator: ProgressIndicator?)
 	}
 
 	private fun parseColorValue(element: Element, parent: CssValueDescriptor?): CssValueDescriptor {
-		if (element == null) {
-
-		}
-
-		val var10000 = CssColorValue(parseCommonDescriptorData(element, CssBundle.message("color.value.presentable.name", *arrayOfNulls(0)), PROCESS_VALUE_PRESENTABLE_NAME), this.parseValueDescriptorData(element, parent), true)
-		if (var10000 == null) {
-
-		}
-
-		return var10000
+		return CssColorValue(parseCommonDescriptorData(element, CssBundle.message("color.value.presentable.name", *arrayOfNulls(0)), PROCESS_VALUE_PRESENTABLE_NAME), parseValueDescriptorData(element, parent), true)
 	}
 
 	private fun parseAnyValue(element: Element, parent: CssValueDescriptor?): CssValueDescriptor {
-		if (element == null) {
-
-		}
-
-		val var10000 = CssAnyValueImpl(parseCommonDescriptorData(element, CssBundle.message("any.value.presentable.name", *arrayOfNulls(0)), PROCESS_VALUE_PRESENTABLE_NAME), this.parseValueDescriptorData(element, parent))
-		if (var10000 == null) {
-
-		}
-
-		return var10000
+		return CssAnyValueImpl(parseCommonDescriptorData(element, CssBundle.message("any.value.presentable.name", *arrayOfNulls(0)), PROCESS_VALUE_PRESENTABLE_NAME), parseValueDescriptorData(element, parent))
 	}
 
 	private fun parseIntegerValue(element: Element, parent: CssValueDescriptor?): CssValueDescriptor {
