@@ -802,7 +802,7 @@ class WxssDescriptorsLoader(private val myProgressIndicator: ProgressIndicator?)
 			if (Strings.isNullOrEmpty(browsers)) {
 				return BrowserVersion.EMPTY_ARRAY
 			} else {
-				val result = ContainerUtilRt.newTreeSet(BrowserVersion.COMPARATOR)
+				val result = TreeSet(BrowserVersion.COMPARATOR)
 				val var3 = COMMA_SPLITTER.split(browsers).iterator()
 
 				while (var3.hasNext()) {
