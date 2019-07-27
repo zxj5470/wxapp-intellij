@@ -9,9 +9,17 @@ charset = utf-8
 end_of_line = lf
 indent_style = space
 tab_width = 2
+insert_final_newline = false
 
 [*.java]
 charset = utf-8
 end_of_line = lf
 indent_style = space
 tab_width = 4
+
+[*.txt]
+end_of_line = lf
+insert_final_newline = false
+
+[.editorconfig]
+insert_final_newline = false

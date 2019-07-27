@@ -11,10 +11,11 @@ import com.intellij.psi.xml.XmlTag
  */
 class WxmlHighlightErrorFilter : HighlightErrorFilter() {
 	override fun shouldHighlightErrorElement(element: PsiErrorElement): Boolean {
+		println(element.errorDescription.apply { println(this=="Should have prefix ':'") })
 		return when {
 			element.errorDescription in errors ||
 				element.multiRootElement ||
-				element.equalsExpected -> false
+				element.wxKeywords -> false
 			else -> true
 		}
 	}
@@ -23,9 +24,12 @@ class WxmlHighlightErrorFilter : HighlightErrorFilter() {
 inline val PsiErrorElement.multiRootElement: Boolean
 	get() = this.parent.parent is XmlDocument && this.parent is XmlTag
 
-val errors = arrayOf(
-	"Unescaped & or nonterminated character/entity reference"
-)
+@Suppress("unsupported")
+val errors = [
+	"Unescaped & or nonterminated character/entity reference",
+	"'=' expected",
+	"Should have prefix ':'"
+]
 
-inline val PsiErrorElement.equalsExpected: Boolean
-	get() = this.errorDescription == "'=' expected" && this.prevSibling.text.startsWith("wx:")
+inline val PsiErrorElement.wxKeywords: Boolean
+	get() = this.prevSibling.text.startsWith("wx:")

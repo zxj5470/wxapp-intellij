@@ -16,10 +16,15 @@ import com.intellij.util.ProcessingContext
  * @author zxj5470
  * @date 2018/5/12
  */
-class WxmlCompletionContributor : XmlCompletionContributor(), DumbAware {
+class WxmlCompletionContributor : CompletionContributor(), DumbAware {
 
 	private val tags by lazy {
-		this.javaClass.getResource("/templates/xmlTags.txt")
+		this.javaClass.getResource("/templates/wxmlTags.txt")
+			.readText().split("\n")
+	}
+
+	private val attrs by lazy {
+		this.javaClass.getResource("/templates/wxmlAttr.txt")
 			.readText().split("\n")
 	}
 
@@ -29,6 +34,23 @@ class WxmlCompletionContributor : XmlCompletionContributor(), DumbAware {
 				.create(it)
 				.withIcon(WxappIcons.wxmlTagIcon)
 				.withTypeText("WeiXin $it", true)
+		}
+
+	/**
+	 * with attribute value
+	 */
+	private val wxssWithAttr = attrs
+		.map {
+			LookupElementBuilder
+				.create(it)
+				.withIcon(WxappIcons.weChatIcon)
+				.withTypeText("Wxml Attr $it", true)
+				.withInsertHandler { context, item ->
+					context.editor.apply {
+						document.insertString(context.tailOffset, "=\"\"")
+						caretModel.moveToOffset(context.tailOffset - 1)
+					}
+				}
 		}
 
 	/**
@@ -50,7 +72,7 @@ class WxmlCompletionContributor : XmlCompletionContributor(), DumbAware {
 			.withInsertHandler { context, item ->
 				context.editor.apply {
 					document.insertString(context.tailOffset, "=\"\"")
-					caretModel.moveToOffset(context.tailOffset + 2)
+					caretModel.moveToOffset(context.tailOffset - 1)
 				}
 			}
 	}
@@ -87,7 +109,10 @@ class WxmlCompletionContributor : XmlCompletionContributor(), DumbAware {
 			psiElement()
 				.inside(XmlTag::class.java),
 			WxmlCompletionProvider(wxKeywordsWithAttr))
-
+		extend(CompletionType.BASIC,
+			psiElement()
+				.inside(XmlTag::class.java),
+			WxmlCompletionProvider(wxssWithAttr))
 		extend(CompletionType.BASIC,
 			psiElement()
 				.inside(XmlTag::class.java)

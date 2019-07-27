@@ -70,6 +70,9 @@ class WxappProjectComponent(private val project: Project) : ProjectComponent, Di
 						it.getToolsOrNull("UnterminatedStatementJS", project)?.apply {
 							if (isEnabled) apply { ret = true;return@run }
 						} ?: apply { ret = true;return@run }
+						it.getToolsOrNull("CssInvalidPseudoSelector", project)?.apply {
+							if (isEnabled) apply { ret = true;return@run }
+						}
 					}
 				}
 				if (!ret) return@runWriteAction
@@ -84,6 +87,8 @@ class WxappProjectComponent(private val project: Project) : ProjectComponent, Di
 									ignores("CheckTagEmptyBody")
 									ignores("CssInvalidPropertyValue")
 									ignores("UnterminatedStatementJS")
+									ignores("CssInvalidPseudoSelector")
+
 								}
 							}
 							notification.hideBalloon()

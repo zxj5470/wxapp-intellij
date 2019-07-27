@@ -1,6 +1,9 @@
+id
+class
 value
 bingtap
 bindchange
 bindchanging
 type
 open-type
+mode
