@@ -1,9 +1,10 @@
-id
-class
-value
-bingtap
 bindchange
 bindchanging
-type
-open-type
+bingtap
+class
+id
 mode
+open-type
+style
+type
+value

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author zxj5470
  */
-public final class WxssLanguage extends Language {
+public final class WxssLanguage extends CSSLanguage {
 	public static final @NotNull
 	WxssLanguage INSTANCE = new WxssLanguage();
 

@@ -1,13 +1,17 @@
 package com.github.zxj5470.wxapp.editing
 
-import com.github.zxj5470.wxapp.WxappIcons
+import com.github.zxj5470.wxapp.*
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElement
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.lang.javascript.psi.JSExpressionStatement
 import com.intellij.openapi.project.DumbAware
+import com.intellij.openapi.util.Iconable.ICON_FLAG_VISIBILITY
 import com.intellij.patterns.PlatformPatterns.psiElement
+import com.intellij.psi.css.*
+import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.xml.XmlTag
+import com.intellij.psi.xml.XmlToken
 import com.intellij.psi.xml.XmlTokenType.XML_ATTRIBUTE_VALUE_TOKEN
 import com.intellij.psi.xml.XmlTokenType.XML_NAME
 import com.intellij.util.ProcessingContext
@@ -107,6 +111,11 @@ class WxmlCompletionContributor : CompletionContributor(), DumbAware {
 	init {
 		extend(CompletionType.BASIC,
 			psiElement()
+				.inside(XmlToken::class.java),
+			WxmlReferenceCompletionProvider())
+
+		extend(CompletionType.BASIC,
+			psiElement()
 				.inside(XmlTag::class.java),
 			WxmlCompletionProvider(wxKeywordsWithAttr))
 		extend(CompletionType.BASIC,
@@ -138,4 +147,67 @@ open class WxmlCompletionProvider(private val list: List<LookupElement>) : Compl
 	override fun addCompletions(
 		parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) =
 		list.forEach(result::addElement)
+}
+
+class WxmlReferenceCompletionProvider() : CompletionProvider<CompletionParameters>() {
+
+	override fun addCompletions(
+		parameters: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
+		val pos = parameters.originalPosition ?: return
+		val kvPair = pos.parent?.parent ?: return
+		val project = pos.project
+		val attrName = kvPair.firstChild.text
+		val name = pos.text.substringAfterLast(' ')
+		when (attrName) {
+			"id" -> {
+				val wxssFile = pos.containingFile.containingDirectory.children.firstOrNull { it.language is WxssLanguage } as? WxssFile
+				wxssFile?.let {
+					val ret = PsiTreeUtil.findChildrenOfType(it, CssIdSelector::class.java)
+					ret.asSequence().filter { it.text.contains(name, true) }
+						.forEach { str ->
+							result.addElement(LookupElementBuilder
+								.create(str)
+								.withIcon(str.getIcon(ICON_FLAG_VISIBILITY))
+								.withTypeText(str.containingFile.name)
+								.prioritized(0))
+						}
+				}
+				val globalWxss = project.getUserData(APP_WXSS_KEY) ?: return
+				val ret = PsiTreeUtil.findChildrenOfType(globalWxss, CssIdSelector::class.java)
+				ret.asSequence().filter { it.text.contains(name, true) }
+					.forEach { str ->
+						result.addElement(LookupElementBuilder
+							.create(str)
+							.withIcon(str.getIcon(ICON_FLAG_VISIBILITY))
+							.withTypeText(str.containingFile.name)
+							.prioritized(0))
+					}
+
+			}
+			"class" -> {
+				val wxssFile = pos.containingFile.containingDirectory.children.firstOrNull { it.language is WxssLanguage } as? WxssFile
+				wxssFile?.let {
+					val ret = PsiTreeUtil.findChildrenOfType(it, CssClass::class.java)
+					ret.asSequence().filter { it.text.contains(name, true) }
+						.forEach { str ->
+							result.addElement(LookupElementBuilder
+								.create(str)
+								.withIcon(str.getIcon(ICON_FLAG_VISIBILITY))
+								.withTypeText(str.containingFile.name)
+								.prioritized(0))
+						}
+				}
+				val globalWxss = project.getUserData(APP_WXSS_KEY) ?: return
+				val ret = PsiTreeUtil.findChildrenOfType(globalWxss, CssClass::class.java)
+				ret.asSequence().filter { it.text.contains(name, true) }
+					.forEach { str ->
+						result.addElement(LookupElementBuilder
+							.create(str)
+							.withIcon(str.getIcon(ICON_FLAG_VISIBILITY))
+							.withTypeText(str.containingFile.name)
+							.prioritized(0))
+					}
+			}
+		}
+	}
 }

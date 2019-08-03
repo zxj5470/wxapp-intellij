@@ -48,8 +48,8 @@
                                        implementationClass="com.github.zxj5470.wxapp.highlighter.WxssSyntaxHighlighterFactory"/>
         <annotator language="wxss"
                    implementationClass="com.github.zxj5470.wxapp.annotator.WxssHighlightingAnnotator"/>
-        <applicationService serviceInterface="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"
-                            serviceImplementation="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"/>
+        <applicationService
+                serviceImplementation="com.intellij.psi.css.impl.util.scheme.WxssElementDescriptorFactory2"/>
         <lang.formatter
                 language="wxss"
                 implementationClass="com.intellij.psi.css.impl.util.editor.WxssFormattingModelBuilder"/>
