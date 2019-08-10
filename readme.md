@@ -19,6 +19,7 @@ Install IntelliJ IDEA Ultimate, PhpStorm, PyCharm, Rider, RubyMine, WebStorm, Ap
 open `Settings | Plugins | Browse repositories`,
 install `Wxapp Support` plugin.
 
+Jetbrains官方的插件审核可能需要一点时间……体验最新特性的构建版本下载链接
 To download a nightly build (buggy!), visit https://ci.appveyor.com/project/zxj5470/wxapp-intellij/build/artifacts/ .<br/>
 
 ## Additional configuration
