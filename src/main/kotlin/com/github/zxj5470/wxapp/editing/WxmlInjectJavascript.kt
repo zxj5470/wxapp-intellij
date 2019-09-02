@@ -1,5 +1,6 @@
 package com.github.zxj5470.wxapp.editing
 
+import com.github.zxj5470.wxapp.WxmlFile
 import com.github.zxj5470.wxapp.ktlext.indicesOf
 import com.intellij.lang.javascript.JavascriptLanguage
 import com.intellij.openapi.util.TextRange
@@ -12,6 +13,9 @@ import com.intellij.psi.xml.*
  */
 class WxmlInjectJavascript : LanguageInjector {
 	override fun getLanguagesToInject(host: PsiLanguageInjectionHost, places: InjectedLanguagePlaces) {
+		if (host.containingFile !is WxmlFile) {
+			return
+		}
 		when (host) {
 			// xml content
 			is XmlText -> {
