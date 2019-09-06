@@ -33,7 +33,7 @@ class WxmlInjectJavascript : LanguageInjector {
 						txt == "open-type" -> inject(places, value)
 						txt.startsWith("bind") ->
 							when (txt) {
-								"binginput" -> inject(places, value, "get(")
+								"bindinput" -> inject(places, value, "get(")
 								else -> inject(places, value)
 							}
 					}
