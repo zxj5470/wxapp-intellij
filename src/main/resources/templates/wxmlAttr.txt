@@ -1,6 +1,6 @@
 bindchange
 bindchanging
-bingtap
+bindtap
 class
 id
 mode
