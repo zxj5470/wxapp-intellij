@@ -26,6 +26,7 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 		val el = PsiUtilCore.getElementAtOffset(elem.containingFile, offset)
 		val fileName = el.containingFile.virtualFile.nameWithoutExtension
 		val dir = el.containingFile.containingDirectory ?: return null
+		val tsFile = dir.findFile("$fileName.ts")
 		val jsFile = dir.findFile("$fileName.js") ?: return null
 		val wxssFile = dir.findFile("$fileName.wxss") ?: return null
 		val globalWxssFile = dir.parentDirectory?.parentDirectory?.findFile("app.wxss")
@@ -44,7 +45,8 @@ class WxmlGoToDeclarationProvider : JSGotoDeclarationHandler() {
 			}
 //			function
 			identifierName.isWxFunction() -> {
-				val ret = PsiTreeUtil.findChildrenOfType(jsFile, JSExpression::class.java).asSequence().flatMap {
+				val tsOrJsFile = if(tsFile!=null) tsFile else jsFile
+				val ret = PsiTreeUtil.findChildrenOfType(tsOrJsFile, JSExpression::class.java).asSequence().flatMap {
 					PsiTreeUtil.findChildrenOfType(it, JSProperty::class.java).asSequence().filter {
 						it.value is JSFunctionExpression && it.nameIdentifier?.text == identifierName
 					}
