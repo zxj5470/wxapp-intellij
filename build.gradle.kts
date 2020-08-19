@@ -33,7 +33,7 @@ plugins {
 }
 allprojects {
 	intellij {
-		version = "2018.3"
+		version = "2020.2"
 		type = "IU"
 		updateSinceUntilBuild = false
 		instrumentCode = true
